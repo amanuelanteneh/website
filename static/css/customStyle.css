@@ -91,6 +91,9 @@ header {
   border-radius: 10px;
 }
 @media (max-width: 500px) {
+    header {
+      position: absolute;
+    }  
     .ham-menu {
       display: flex;
     }
@@ -143,8 +146,8 @@ header {
     background-repeat: no-repeat;
     }
 #aboutPage .bio {
-    width: 68vmin;
-    height: 70vmin;
+    width: 75vmin;
+    height: 79vmin;
     left: 10%;
     background: transparent;
     font-family: 'Courier New', Courier, monospace;
