@@ -97,6 +97,10 @@ header {
 @media (max-width: 500px) {
     header {
       position: absolute;
+    }
+    #simulatePage {
+       background-image: url("/static/img/image16.png");
+       background-size: cover;
     }  
     .ham-menu {
       display: flex;
@@ -153,7 +157,7 @@ header {
 #aboutPage .bio {
     width: 75vmin;
     height: 79vmin;
-    right: 10%;
+    left: 10%;
     background: transparent;
     font-family: 'Courier New', Courier, monospace;
     font-size: 3.95vmin;
@@ -211,7 +215,7 @@ header {
     border-radius: 5px;
     position: absolute;
     text-align: center;
-    left: 10vw;
+    right: 10vw;
     height: 5vmin;
     width: 35vmin;
     backdrop-filter: blur(20px);
