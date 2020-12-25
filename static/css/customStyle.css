@@ -99,7 +99,7 @@ header {
     }
     .navButtons {
       display: none; 
-      width: 100%;      
+      width: 100%;
     }
     .myNavbar {
       flex-direction: column;
@@ -110,6 +110,7 @@ header {
       flex-direction: column;
     }
     .navButtons li {
+      padding: 0.8rem;
       text-align: center;
     }
 
