@@ -88,5 +88,4 @@ wcwidth==0.2.5
 webencodings==0.5.1
 Werkzeug==1.0.1
 wheel==0.35.1
-xrootd==5.0.1
 zipp==3.1.0
