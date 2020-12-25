@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block icon %}{{ url_for('static', filename='img/laplaceIcon.png') }}{% endblock %}
+{% block title %}Amanuel Anteneh{% endblock %}
+{% block content %}
+<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="{{url_for('static', filename='appBubbleScript.js')}}"></script>
+<script src="{{url_for('static', filename='quoteChange.js')}}"></script>
+
+<!-- Page 1 -->
+<div id="homePage">
+    <div id="floatingQuote">The philosophers have only interpreted the world, in various ways. The point, however, is to change it.</div>
+</div>
+
+<!-- Page 2 -->
+<div id="aboutPage">
+    <div class="bio">
+        <u>About Me:</u><br><br>
+        I am a student at the University of Virginia pursuing a B.S. in physics and B.A. in computer science with
+        a minor in mathematics. Interested in: <br><br>
+        Quantum Information <br><br>
+        Quantum Computing <br><br>
+        Software Development
+    </div>
+</div>
+<!-- Page 3 -->
+<div id="simulatePage">
+    <div id="appBubble">
+        <b>Cool
+            Simulators</b>
+        <button class="RSbtn" onclick="window.open('https://repl.it/@amanuelanteneh/reimannSphere#main.py')">
+            <img src="{{url_for('static', filename='img/sphereIcon.png')}}" alt="sphere" width="30" height="30">
+            Riemann Sphere
+        </button>
+    </div>
+</div>
+
+
+{% endblock %}

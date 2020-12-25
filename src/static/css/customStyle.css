@@ -1,0 +1,228 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+html::-webkit-scrollbar{
+  display: none; /* For Chrome */
+}
+body, html {
+  -ms-overflow-style: none;  /* For IE and Edge */
+  scrollbar-width: none;  /* For Firefox */
+  height: 100%;
+} 
+body {
+    color: white;
+    height: 300%;
+}
+b {
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+header {
+  z-index: 1;
+  background: transparent;
+  position: fixed;
+  width: 100%;
+  border: 2px solid white;
+  border-radius: 2px; 
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+.myNavbar {
+    display: flex;
+    width: 90%;
+    min-height: 8vh;
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Courier New', Courier, monospace;
+    background: transparent;
+}
+
+.name {
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.5rem;
+      
+}
+
+.navButtons { /* navbar items w/o a href */
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    width: 60%;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+}
+.navButtons ul { 
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.navButtons li {
+  list-style: none;
+}
+.navButtons li a { /* navbar items with a href */
+  text-decoration: none;
+  padding: 1rem;
+  list-style: none;
+  color: white;
+}
+
+.ham-menu {
+  position: absolute;
+  top: 1.3rem;
+  right: 1rem;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+}
+.ham-menu .bar {
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+}
+@media (max-width: 500px) {
+    .ham-menu {
+      display: flex;
+    }
+    .navButtons {
+      display: none; 
+      width: 100%;      
+    }
+    .myNavbar {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .navButtons ul {
+      width: 100%;
+      flex-direction: column;
+    }
+    .navButtons li {
+      text-align: center;
+    }
+
+    .navButtons.active {
+      display: flex;
+    }
+
+}
+/* First page (home) */
+#homePage {
+    width: 100%;
+    height: 100vh;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-image: url("/static/img/image11.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+}
+/* Second page (about) */
+#aboutPage {
+    width: 100%;
+    height: 100vh;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-image: url("/static/img/image12.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    }
+#aboutPage .bio {
+    width: 68vmin;
+    height: 70vmin;
+    left: 10%;
+    background: transparent;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 3.1vmin;
+    border: 2px solid;
+    border-radius: 15px;
+    backdrop-filter: blur(1.5px);
+    -webkit-backdrop-filter: blur(1.5px);
+    position: absolute;
+    text-align: center;
+    color: white;
+    /*display: flex; */
+}
+/* Third page (simulators) */
+#simulatePage {
+    width: 100%;
+    height: 100vh;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-image: url("/static/img/image13.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;   
+    color: white;
+}
+@keyframes float {
+  0% {top: 36.5%}
+  50% {top: 37.5%}
+  100% {top: 36.5%}
+}
+#floatingQuote {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2.9vmin;
+    border: 2px solid;
+    border-radius: 3px;
+    position: absolute;
+    text-align: center;
+    left: 45vw;
+    top: 36.5%;
+    height: 28vmin;
+    width: 38vmin;
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+    animation-name: float;
+    animation-duration: 2s;
+    animation-iteration-count: infinite; 
+    cursor: pointer;
+}
+
+#appBubble{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 3.5vmin;
+    border: 2px solid;
+    border-radius: 5px;
+    position: absolute;
+    text-align: center;
+    right: 10vw;
+    height: 5vmin;
+    width: 35vmin;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    -webkit-transition: all 0.0s ease-in-out; /* set to 0.0s to stop spamming glitch */
+    -moz-transition: all 0.0s ease-in-out;
+    -o-transition: all 0.0s ease-in-out;
+    transition: all 0.0s ease-in-out;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.RSbtn {
+  position: fixed;
+  top: 7vh;
+  left: 10%;
+  border: none; 
+  background-color: transparent;
+  color: white;
+  font-size: 2.5vmin; 
+  cursor: pointer; /* Make mouse pointer on hover */   
+}

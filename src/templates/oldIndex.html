@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="laplaceIcon.png"> 
+    <!-- <meta name="description" content=" [content displayed on google] "> -->
+    <link rel="stylesheet" href="style.css">
+    <title> Amanuel Anteneh</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="name">
+                <h1>Amanuel Anteneh</h1>
+            </div>
+            <!-- Making navbar -->
+            <ul class="navButtons"> 
+                <li><a href="#homePage">
+                    <img src="{{url_for('static', filename='homeIcon.png')}}" alt="home" width="25" height="25">
+                    Home
+                    </a>
+                </li>
+                <li><a href="#aboutPage">
+                    <img src="meIcon.png" alt="about" width="25" height="25">
+                    About
+                    </a>
+                </li>
+                <li><a href="#simulatePage">
+                    <img src="js.png" alt="simulators" width="25" height="25"> 
+                    Visualizers
+                    </a>
+                </li>                
+                <li onclick="window.open('https://github.com/amanuelanteneh')">
+                    <img src="githubIcon.png" alt="github" width="25" height="25">
+                    Github
+                </li>
+                <li onclick="window.open('Resume.pdf')">
+                    <img src="CVIcon.png" alt="CV" width="25" height="25">
+                    Resume
+                </li>
+                <li><a href="readings.html">
+                    <img src="bookIcon.png" alt="books" width="25" height="25"> 
+                    Readings
+                    </a>
+                </li>
+                <li><a href="writings.html">
+                    <img src="writingIcon.png" alt="pencil" width="25" height="25"> 
+                    Essays
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="appBubbleScript.js"></script>
+    <!-- Page 1 -->
+    <div id="homePage">
+        <div class="floatingQuote">
+         The philosophers have only <u><i>interpreted</i></u> the world, in various ways. The point, however, is to change it.
+        </div>
+    </div>
+    <div class="floatingQuoteAttribution">
+        <i>- Thesis XI on Feuerbach</i>
+    </div>
+    <!-- Page 2 -->
+    <div id="aboutPage">
+        <div class="bio">
+            <u>About Me:</u><br><br>
+            I am a student at the University of Virginia pursuing a B.S. in physics and B.A. in computer science with 
+            a minor in mathamatics. Interested in researching: <br><br>
+            Quantum Information <br><br>
+            Quantum Computing 
+        </div>
+    </div>
+    <!-- Page 3 -->
+    <div id="simulatePage">
+        <div id="appBubble">
+           <b>Cool
+            Simulators</b>
+            <button class="RSbtn" onclick="window.open('https://repl.it/@amanuelanteneh/reimannSphere#main.py')">
+                <img src="sphereIcon.png" alt="sphere" width="30" height="30">
+                Riemann Sphere
+            </button>
+        </div>
+    </div>
+</body>
+
+</html>
