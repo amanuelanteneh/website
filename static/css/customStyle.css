@@ -76,7 +76,7 @@ header {
 
 .ham-menu {
   position: absolute;
-  top: 1.3rem;
+  top: 1.0rem;
   right: 1rem;
   display: none;
   flex-direction: column;
@@ -179,15 +179,15 @@ header {
 }
 #floatingQuote {
     font-family: 'Courier New', Courier, monospace;
-    font-size: 2.6vmin;
+    font-size: 3.7vmin;
     border: 2px solid;
     border-radius: 3px;
     position: absolute;
     text-align: center;
     left: 45vw;
     top: 36.5%;
-    height: 28vmin;
-    width: 38vmin;
+    height: 40vmin;
+    width: 50vmin;
     backdrop-filter: blur(9px);
     -webkit-backdrop-filter: blur(9px);
     animation-name: float;
