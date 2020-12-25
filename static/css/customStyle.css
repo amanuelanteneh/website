@@ -73,7 +73,11 @@ header {
   list-style: none;
   color: white;
 }
-
+/*
+.navButtons li:hover {
+  
+}
+*/
 .ham-menu {
   position: absolute;
   top: 1.0rem;
@@ -149,7 +153,7 @@ header {
 #aboutPage .bio {
     width: 75vmin;
     height: 79vmin;
-    left: 10%;
+    right: 10%;
     background: transparent;
     font-family: 'Courier New', Courier, monospace;
     font-size: 3.95vmin;
@@ -207,11 +211,11 @@ header {
     border-radius: 5px;
     position: absolute;
     text-align: center;
-    right: 10vw;
+    left: 10vw;
     height: 5vmin;
     width: 35vmin;
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     -webkit-transition: all 0.0s ease-in-out; /* set to 0.0s to stop spamming glitch */
     -moz-transition: all 0.0s ease-in-out;
     -o-transition: all 0.0s ease-in-out;
