@@ -30,12 +30,43 @@
     <div id="appBubble">
         <b>Cool
             Simulators</b>
-        <button class="riemann-sphere" onclick="window.open('https://repl.it/@amanuelanteneh/reimannSphere#main.py')">
-            <img src="{{url_for('static', filename='img/sphereIcon.png')}}" alt="sphere" width="30" height="30">
-            Riemann Sphere
-        </button>
-    </div>
-</div>
-
-
-{% endblock %}
+            <ul>
+                <li>
+                    <a href="#">
+                        <img src="{{url_for('static', filename='img/sphereIcon.png')}}" alt="sphere" width="30" height="30">
+                        Riemann Sphere
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="{{url_for('static', filename='img/doubleIcon.png')}}" alt="double" width="30" height="30">
+                        Double Pendulum
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="{{url_for('static', filename='img/particleInBoxIcon.png')}}" alt="particle" width="30"
+                            height="30">
+                        Particle in a Box
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="{{url_for('static', filename='img/annealingIcon.png')}}" alt="particle" width="30"
+                            height="30">
+                        Simulated Annealing
+                    </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="{{url_for('static', filename='img/laplaceIcon.png')}}" alt="particle" width="30" height="30">
+                            Wave Equation
+                        </a>
+                    </li>
+                    
+                    </ul>
+                    </div>
+                    </div>
+                    
+                    
+                    {% endblock %}

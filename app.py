@@ -25,5 +25,13 @@ def home():
 def readings():
     return(render_template("books.html"))
 
+@app.route("/essays")
+def essays():
+    return(render_template("essays.html"))
+
+@app.route("/TheModernUniversity")
+def essay1():
+    return(render_template("The-Modern-University.html"))
+
 if __name__ == "__main__":
     app.run(debug=True)

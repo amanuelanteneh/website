@@ -25,17 +25,6 @@ b {
     font-family: 'Courier New', Courier, monospace;
 }
 
-header {
-  z-index: 1;
-  background: transparent;
-  position: fixed;
-  width: 100%;
-  border: 2px solid white;
-  border-radius: 2px; 
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
-}
-
 body {
     background-image: url("/static/img/image15.png");
     background-size: cover;
@@ -77,7 +66,7 @@ h5 {
   display: none; /* For Chrome */
 }
 
-.col-lg-12 {
+.home-button {
     border-radius: 10px;
     border: 2px solid white;
     backdrop-filter: blur(2px);
