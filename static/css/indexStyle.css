@@ -261,7 +261,7 @@ ul li ul li {  /* for dropdown */
 }
 
 #appBubble ul {
-  position: fixed;
+ /* position: fixed;*/
 /*  top: 7vh; */
 /*  left: 10%;*/
   border: none; 
