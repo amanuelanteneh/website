@@ -262,8 +262,8 @@ ul li ul li {  /* for dropdown */
 
 #appBubble ul {
   position: fixed;
-  top: 7vh;
-  left: 10%;
+/*  top: 7vh; */
+/*  left: 10%;*/
   border: none; 
   background-color: transparent;
   color: white;
