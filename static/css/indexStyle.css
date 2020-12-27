@@ -185,7 +185,15 @@ ul li ul li {  /* for dropdown */
     position: absolute;
     text-align: center;
     color: white;
+    overflow: scroll;
+    -ms-overflow-style: none;  /* For IE and Edge */
+    scrollbar-width: none;  /* For Firefox */
 }
+
+#aboutPage .bio::-webkit-scrollbar{
+  display: none; /* For Chrome */
+}
+
 /* Third page (simulators) */
 #simulatePage {
     width: 100%;
