@@ -4,18 +4,22 @@
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
+
 html::-webkit-scrollbar{
   display: none; /* For Chrome */
 }
+
 body, html {
   -ms-overflow-style: none;  /* For IE and Edge */
   scrollbar-width: none;  /* For Firefox */
   height: 100%;
 } 
+
 body {
     color: white;
     height: 100%;
 }
+
 b {
     color: white;
     font-family: 'Courier New', Courier, monospace;
@@ -36,6 +40,7 @@ body {
     background-image: url("/static/img/image15.png");
     background-size: cover;
 }
+
 .row {
     padding: 1rem;
 }
@@ -67,6 +72,7 @@ h5 {
 .phil a:hover, .hist a:hover {
     text-decoration: underline;
 }
+
 .phil::-webkit-scrollbar, .hist::-webkit-scrollbar {
   display: none; /* For Chrome */
 }
@@ -78,15 +84,12 @@ h5 {
     -webkit-backdrop-filter: blur(2px);
      text-align: center;
 }
-.container-fluid {
-    border-radius: 10px;
-}
 
 .home-button a { /* for home anchor tag */
   text-decoration: none;
   color: white;
  }
  
- .caption {
+.caption {
    display: block; /* to have text appear below icon */ 
  }
