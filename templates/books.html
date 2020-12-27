@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/booksStyle.css') }}">        
+    <link rel="icon" href="{{ url_for('static', filename='img/bookIcon.png') }}"> <!--So you can change tab icon for each HTML file-->
+ 
+    <title>Books</title>
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 home-button">
+             <a href="/"><img src="{{url_for('static', filename='img/homeIcon.png')}}" alt="home" width="25" height="25">
+                <span class="caption">Home</span></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="text-center col-lg-6">
+                <div class="hist">
+                    <u>History</u><br>
+                   <u>American History</u><br>
+        <b><i><a href="https://www.google.com/books/edition/The_Story_of_American_Freedom/YhHcaweX2tIC?hl=en&gbpv=0" target="_blank">
+            The Story of American Freedom</a></i> - <a href="https://en.wikipedia.org/wiki/Eric_Foner" target="_blank">Eric Foner</a></b><br>
+        <h5>History of the U.S. and the evolution of it's concept of freedom by a very respected historian</h5><br>
+        <b><i><a href="https://www.google.com/books/edition/Political_Repression_in_Modern_America_f/2Za8lifq1mYC?hl=en&gbpv=0" target="_blank">
+            Political Repression in Modern America: From 1870 to 1976</a></i> - Robert J. Goldstein</b><br>
+        <h5>Extensively documented history of political repression within the U.S. by a political scientist</h5><br>
+        <b><i><a href="https://www.google.com/books/edition/A_People_s_History_of_the_United_States/KBueCgAAQBAJ?hl=en&gbpv=0" target="_blank">
+            A People's History of the United States</a></i> - <a href="https://en.wikipedia.org/wiki/Howard_Zinn" target="_blank">Howard Zinn</a></b><br>
+        <h5>A history of the U.S. by a radical American historian. 
+            The work has been criticized by certain <u><a href="https://www.chronicle.com/article/howard-zinn-philosopher/" target="_blank">historians</a></u>, some of whom are <u><a href="https://www.dissentmagazine.org/article/howard-zinns-history-lessons" target="_blank">left-wing</a></u>, and praised by <u><a href="https://www.thenation.com/article/archive/zinns-critical-history/" target="_blank">others</a></u>. 
+            Would suggest reading either after Foner or while cross-referencing with Foner.
+        </h5><br>
+        <b><i><a href="https://www.google.com/books/edition/The_Politics_of_History/H_Dv1DBQAZcC?hl=en&gbpv=0" target="_blank">The Politics of History</a></i> - Howard Zinn</b><br><br>
+        <u>European History</u><br>
+        <b><i><a href="https://www.google.com/books/edition/Fire_and_Blood/3p_GjwEACAAJ?hl=en" target="_blank">
+            Fire and Blood: The European Civil War, 1914-1945</a></i> - <a href="https://en.wikipedia.org/wiki/Enzo_Traverso" target="_blank">Enzo Traverso</a></b><br>
+        <h5>History of Europe from the start of WWI to the end of WWII by a left-wing historian.</h5><br>
+		<b><i><a href="https://www.google.com/books/edition/The_Origins_of_Nazi_Violence/tR_K6365WFYC?hl=en&gbpv=0" target="_blank">
+            The Origins of Nazi Violence</a></i> - Enzo Traverso</b><br><br>
+		<b><i><a href="https://www.google.com/books/edition/Understanding_The_Nazi_Genocide/3dQtbFsRzxYC?hl=en&gbpv=0" target="_blank">
+            Understanding The Nazi Genocide: Marxism after Auschwitz</a></i> - Enzo Traverso</b><br><br>
+        <b><i><a href="https://www.google.com/books/edition/Fascism_and_the_Right_in_Europe_1919_194/sGUSBAAAQBAJ?hl=en&gbpv=0" target="_blank">
+            Fascism and the Right in Europe 1919-1945</a></i> - Martin Blinkhorn</b><br><br>
+        <b><i><a href="https://www.google.com/books/edition/_/FvQkAQAAMAAJ?hl=en&sa=X&ved=2ahUKEwiFu4_roMTrAhVIl3IEHaVCDrUQre8FMBN6BAgQEAY" target="_blank">
+            The Age of Revolution, 1789-1848</a></i> - <a href="https://en.wikipedia.org/wiki/Eric_Hobsbawm" target="_blank">Eric Hobsbawn</a></b><br>
+        <h5>Volume 1 of 4-volume history of the 19-20th century by a Marxist historian</h5><br>
+        <b><i><a href="https://www.google.com/books/edition/The_Age_of_Capital_1848_1875/WXO-QgAACAAJ?hl=en" target="_blank">
+            The Age of Capital, 1848-1875</a></i> - Eric Hobsbawn</b><br><br>
+		<b><i>The Age of Empire, 1876-1914</i> - Eric Hobsbawn</b><br><br>           
+		<b><i>The Age of Extremes, 1915-1991</i> - Eric Hobsbawn</b><br><br>
+        <u>Russian History</u><br>
+        <b><i><a href="https://www.google.com/books/edition/The_Soviet_Experiment/D19zQAAACAAJ?hl=en" target="_blank">
+            The Soviet Experiment: Russia, the USSR, and the Successor States</a></i> - <a href="https://en.wikipedia.org/wiki/Ronald_Grigor_Suny" target="_blank">Ronald G. Suny</a></b><br>
+        <h5>General history of the USSR by a "Marxist" historian</h5><br>
+        <b><i><a href="https://www.google.com/books/edition/Red_Flag_Unfurled/CH7cDQAAQBAJ?hl=en&gbpv=0" target="_blank">
+            Red Flag Unfurled: History, Historians, and the Russian Revolution</a></i> - Ronald G. Suny</b><br>
+        <h5>Analysis of the Russian Revolution and the evolution of it's historiography</h5><br>
+        <b><i><a href="https://www.google.com/books/edition/Red_Flag_Wounded/I4XzDwAAQBAJ?hl=en&gbpv=0" target="_blank">
+            Red Flag Wounded: Stalinism and the Fate of the Soviet Experiment</a></i> - Ronald G. Suny</b><br><br>
+        <b><i><a href="https://www.google.com/books/edition/The_Bolsheviks_in_Power/BEoBCGJ4VqYC?hl=en&gbpv=1&dq=The+Bolsheviks+in+Power:+The+First+Year+of+Soviet+Rule+in+Petrograd&printsec=frontcover" target="_blank">
+            The Bolsheviks in Power: The First Year of Soviet Rule in Petrograd</a></i> - <a href = "https://en.wikipedia.org/wiki/Alexander_Rabinowitch" target="_blank">Alexander Rabinowitch</a></b><br><br>
+        <b><i><a href="https://www.google.com/books/edition/_/X3FGDwAAQBAJ?hl=en&sa=X&ved=2ahUKEwj9_KjsgsjrAhXrmHIEHXgdCrkQre8FMBV6BAgSEAY" target="_blank">
+            The Russian Revolution</a></i> - <a href="https://en.wikipedia.org/wiki/Sheila_Fitzpatrick" target="_blank">Sheila Fitzpatrick</a></b><br><br>
+ 		<b><i><a href="https://www.google.com/books/edition/_/iheBbViwVksC?hl=en&gbpv=0" target="_blank">
+             Lenin's Last Struggle</a></i> - <a href="https://en.wikipedia.org/wiki/Moshe_Lewin" target="_blank">Moshe Lewin</a></b><br><br>
+        <b><i>Stalinism: Essays in Historical Interpretation</i> - <a href="https://en.wikipedia.org/wiki/Robert_C._Tucker" target="_blank">Robert C. Tucker</a> et al</b><br>
+        <h5>Essays by scholars that attempt to understand and situate Stalinism within its historical and ideological context.
+            Includes essays from such scholars as Robert Tucker, Stephen Cohen, Moshe Lewin & Leszek Kołakowski.
+        </h5><br>
+        <b><i>Stalinism and Nazism: Dictatorships in Comparison</i> - <a href="https://en.wikipedia.org/wiki/Ian_Kershaw" target="_blank">Ian Kershaw</a>, Moshe Lewin et al</b><br><br>
+        <b><i>Stalin: New Biography of a Dictator</i> - <a href="https://en.wikipedia.org/wiki/Oleg_Khlevniuk" target="_blank">Oleg V. Khlevniuk</a></b><br>
+        <h5>Biography of Stalin rigorously documented with soviet archival sources by a Russian historian.</h5><br>
+        <b><i>Opposing Jim Crow: African Americans and the Soviet Indictment of U.S. Racism, 1928-1937</i> - <a href="https://www.brockport.edu/academics/history/directory/mroman.html" target="_blank"> Meredith L. Roman</a></b><br><br>
+        <u>Chinese History</u><br>
+        <b><i>Mao's China and After: A History of the People's Republic</i> - <a href="https://en.wikipedia.org/wiki/Maurice_Meisner" target="_blank">Maurice Meisner</a></b><br>
+        <h5>One of the most definitive histories of China from 1949-1976 by a leading sinologist and historian</h5><br>
+        <b><i>Mao's China and the Cold War</i> - <a href="https://en.wikipedia.org/wiki/Chen_Jian_(academic)" target="_blank">Jian Chen</a></b><br><br>
+        <b><i>Constructing China: Clashing Views of the Peoples Republic</i> - <a href="https://en.wikipedia.org/wiki/Gao_Mobo" target="_blank">Mobo Gao</a></b><br><br>
+        <u>Latin American History</u><br>
+        <b><i>Shattered Hope: the Guatemalan Revolution and the United States, 1944–1954</i> - <a href="https://en.wikipedia.org/wiki/Piero_Gleijeses" target="_blank">Piero Gleijeses</a></b><br><br>
+        <b><i>Visions of Freedom: Havana, Washington, Pretoria, and the Struggle for Southern Africa, 1976–1991</i> - Piero Gleijeses</b><br><br>
+        <b><i>A Century of Revolution: Insurgent and Counterinsurgent Violence during Latin America’s Long Cold War</i> - <a href="https://en.wikipedia.org/wiki/Greg_Grandin" target="_blank">Greg Grandin</a> et al</b><br><br>
+        <u>Israel-Palestine History</u><br>
+        <b><i>Gaza: An Inquest into Its Martyrdom</i> - <a href="https://en.wikipedia.org/wiki/Norman_Finkelstein" target="_blank">Norman G. Finkelstein</a></b><br>
+        <h5>Political scientist Norman Finkelstein's latest and most up to date work on Israel-Palestine and it's history</h5><br>
+        <b><i>Image and Reality of the Israel-Palestine Conflict</i> - Norman G. Finkelstein</b><br>
+        <h5>Earlier work on the conflict by Finkelstein</h5><br>
+        <b><i>Righteous Victims: A History of the Zionist-Arab Conflict, 1881-2001</i> - <a href="https://en.wikipedia.org/wiki/Benny_Morris" target="_blank">Benny Morris</a></b><br>
+        <h5>History of the conflict by respected Israeli historian</h5><br>
+        <b><i>Defending the Holy Land: A Critical Analysis of Israel's Security and Foreign Policy</i> - <a href="https://en.wikipedia.org/wiki/Zeev_Maoz" target="_blank">Zeev Maoz</a></b><br><br>
+		<b><i>The Hundred Years' War on Palestine: A History of Settler Colonialism and Resistance, 1917–2017</i> - <a href="https://en.wikipedia.org/wiki/Rashid_Khalidi" target="_blank">Rashid Khalidi</a></b><br><br>
+        <b><i>Pity the Nation: Lebanon at War</i> - <a href="https://en.wikipedia.org/wiki/Robert_Fisk" target="_blank">Robert Fisk</a></b><br>
+        <h5>Documents the events of the Lebanese civil war from the perspective of a journalist</h5><br>
+        <u>Other</u><br> 
+		<b><i>Left-Wing Melancholia: Marxism, History, and Memory</i> - Enzo Traverso</b><br><br>
+        <b><i><a href="https://www.google.com/books/edition/A_World_of_Nations/ObAWAQAAIAAJ?hl=en&gbpv=0" target="_blank"> A World of Nations: The International Order Since 1945</i></a> - William R. Keylor</b><br>
+        <h5>Exposition of major events in world history since 1945 by a respected historian</h5><br>
+        <b><i>Liberalism: A Counter-History</i> - <a href="https://en.wikipedia.org/wiki/Domenico_Losurdo" target="_blank">Domenico Losurdo</a></b><br><br>
+        <b><i>Genocide, War Crimes and the West: History and Complicity</i> - Adam Jones et al</b><br><br>
+        <b><i>The United States and Genocide</i> - Jeffrey S. Bachman</b><br>
+        <h5>Examination of the relationship of the U.S. and genocide and certain cases studies by a genocide scholar</h5><br>
+        <b><i>Class Struggle: A Political and Philosophical History</i> - Domenico Losurdo</b><br><br> 
+        <b><i>Empire of Capital</i> - Ellen M. Wood</b><br><br>
+        <b><i>A Brief History of Neoliberalism</i> - David Harvey</b><br><br>
+        <b><i>The New Imperialism</i> - David Harvey</b><br><br>
+        <b><i>The Capitalist University: The Transformations of Higher Education in the United States since 1945</i> - Henry Heller</b><br><br>
+        <b><i>The Contradictions of "Real Socialism": The Conductor and the Conducted</i> - Micahel A. Lebowitz</b><br><br>
+        <b><i>The Condition of Postmodernity: An Enquiry into the Origins of Cultural Change</i> - David Harvey</b><br><br>
+        <b><i>Late Victorian Holocausts: El Niño Famines and the Making of the Third World</i> - Mike Davis</b><br><br>
+        <b><i>Hitler's American Model: The United States and the Making of Nazi Race Law</i> - James Q. Whitman </b><br><br>
+        <b><i>Cuba: A New History</i> - Richard Gott</b><br><br>
+        <b><i>History and Revolution: Refuting Revisionism</i> - Mike Haynes, Jim Wolfreys et al</b><br><br>
+        <b><i>Eurocentrism</i> - Samir Amin</b><br><br>
+        <b><i>What Gandhi Says: About Nonviolence, Resistance and Courage</i> - Norman G. Finkelstein</b><br><br>
+        <b><i>Non-Violence: A History Beyond the Myth</i> - Domenico Losurdo</b>
+        </div>
+        </div>
+            <div class="text-center col-lg-6">
+                <div class="phil">
+                    <u>Philosophy</u><br>
+        <u>Classical/Pre-20th Century</u><br>
+		<b><i>The Republic</i> - Plato</b><br><br>
+		<b><i>Meditations on First Philosophy</i> - René Descartes</b><br><br>
+        <b><i>Grounding for the Metaphysics of Morals</i> - Immanuel Kant</b><br><br>
+
+        <b><i>Introduction to the Philosophy of History</i> - G.W.F. Hegel</b><br><br>
+		<b><i>The Philosophy of Right</i> - G.W.F. Hegel</b><br><br>
+		<b><i>On Art, Religion, and the History of Philosophy: Introductory Lectures</i> - G.W.F. Hegel</b><br><br>
+		<b><i>The Encyclopaedia Logic: Part I of the Encyclopaedia of the Philosophical Sciences</i> - G.W.F. Hegel</b><br><br>
+		<b><i>On Liberty</i> - John S. Mill</b><br><br>
+		<b><i>On the Genealogy of Morals</i> - Friedrich Nietzsche</b><br><br>
+		<b><i>Twilight of the Idols</i> - Friedrich Nietzsche</b><br><br>
+		<b><i>Beyond Good & Evil: Prelude to a Philosophy of the Future</i> - Friedrich Nietzsche</b><br><br>
+		<b><i>Thus Spoke Zarathustra: A Book for Everyone and No One</i> - Friedrich Nietzsche</b><br><br>
+		<b><i>The Will to Power</i> - Friedrich Nietzsche</b><br><br>
+        <u>Marxism</u><br>
+		Why read Marx? In the words of historian Eric Foner:<br><a href="https://historynewsnetwork.org/article/165667">"No one can understand history who does not have at least some familiarity with the writings of Marx."</a><br><br>
+        <b><i>The Marx-Engels Reader</i> - Robert C. Tucker</b><br><br>
+        <b><i>Metaphilosophy</i> - Henri Lefebvre</b><br><br>
+        <b><i>Dialectical Materialism</i> - Henri Lefebvre</b><br><br>
+        <b><i>Critique of Everyday Life</i> - Henri Lefebvre</b><br><br>        
+        <b><i>Prison Notebooks</i> - Antonio Gramsci</b><br><br>    
+        <b><i>On the Reproduction of Capitalism</i> - Louis Althusser</b><br><br>
+        <b><i>Marx's Associated Mode of Production: A Critique of Marxism</i> - Paresh Chattopadhyay</b><br><br>
+        <b><i>From Marxism to Post-Marxism?</i> - Göran Therborn</b><br><br>
+        <b><i>Utopianism and Marxism</i> - Vincent Geoghegan</b><br><br>
+        <b><i>Marxism, Maoism, and Utopianism Eight Essays</i> - Maurice Meisner</b><br><br>
+        <b><i>In Defense of History: Marxism and the Postmodern Agenda</i> - Ellen M. Wood & John B.
+            Foster</b><br>
+        <h5>Collection of essays by Marxist scholars critiquing postmodern philosophy from a marxian perspective</h5><br>
+        <b><i>Proletarian Science?: The Case of Lysenko</i> - Dominique Lecourt</b><br><br>
+        <b><i>Main Currents of Marxism: The Founders, The Golden Age, The Breakdown</i> - Leszek Kołakowski</b><br><br>        
+        <u>Postmodernism/Post-structuralism</u><br>
+        <b><i>Postmodern Theory: Critical Interrogations</i> - Douglas Kellner & Steven Best</b><br><br>
+        <b><i>Discipline & Punish: The Birth of the Prison</i> -  Michel Foucault</b><br><br>
+        <b><i>The Order of Things: An Archaeology of the Human Sciences</i> - Michel Foucault</b><br><br>
+        <u>Critical Theory</u><br>
+        <b><i>Introduction to Dialectics</i> - Theodor W. Adorno</b><br><br>
+        <b><i>The Stars Down to Earth</i> - Theodor W. Adorno</b><br><br>
+        <b><i>The Culture Industry: Selected Essays on Mass Culture</i> - Theodor W. Adorno</b><br><br>
+        <b><i>Can One Live After Auschwitz?: A Philosophical Reader</i> - Theodor W. Adorno</b><br><br>
+        <b><i>The Philosophical Discourse of Modernity</i> - Jürgen Habermas</b><br><br>
+        <b><i>Dialectic of Enlightenment</i> - Max Horkheimer & Theodor Adorno</b><br><br>
+        <b><i>One-Dimensional Man: Studies in the Ideology of Advanced Industrial Society</i> - Herbert Marcuse</b><br><br>           
+        <u>Philosophy of Religion</u><br>
+        <b><i>Atheism: The Basics</i> - <a href="https://en.wikipedia.org/wiki/Graham_Oppy" target="_blank">Graham Oppy</a></b><br><br>
+        <b><i>Arguing about Gods</i> - Graham Oppy</b><br><br>
+		<b><i>The Existence of God</i> - <a href="https://en.wikipedia.org/wiki/Richard_Swinburne" target="_blank">Richard Swinburne</a></b><br><br>
+        <b><i>Pain and Pleasure: An Evidential Problem for Theists</i> - <a href="https://en.wikipedia.org/wiki/Paul_Draper_(philosopher)" target="_blank">Paul Draper</a></b><br><br>
+        <u>Other</u><br>
+		<b><i>An Introduction to Hegel's Logic</i> - Justus Hartnack</b><br><br>
+		
+        <b><i>The Origins of Totalitarianism</i> - Hannah Arendt</b><br><br>
+        <b><i>The Stranger</i> - Albert Camus</b><br><br>
+        <b><i></i></b>
+        <b><i>The Ecology of Freedom: The Emergence and Dissolution of Hierarchy</i> - Murray Bookchin</b><br><br>
+
+
+                
+                </div>
+            </div>
+        </div>
+
+        <!--   <div class="row">
+            <div class="col-lg-6">
+                <u>Philosophy</u>
+            </div>
+            <div class="col-lg-6">
+                <u>History</u>
+            </div>
+        </div> -->
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

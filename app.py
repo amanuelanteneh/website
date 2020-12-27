@@ -21,5 +21,9 @@ def dated_url_for(endpoint, **values):
 def home():
     return(render_template("index.html"))
 
+@app.route("/books")
+def readings():
+    return(render_template("books.html"))
+
 if __name__ == "__main__":
     app.run(debug=True)

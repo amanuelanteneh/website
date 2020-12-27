@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% block stylesheet %}{{ url_for('static', filename='css/indexStyle.css') }}{% endblock %}
 {% block icon %}{{ url_for('static', filename='img/laplaceIcon.png') }}{% endblock %}
 {% block title %}Amanuel Anteneh{% endblock %}
 {% block content %}
@@ -27,7 +28,7 @@
     <div id="appBubble">
         <b>Cool
             Simulators</b>
-        <button class="RSbtn" onclick="window.open('https://repl.it/@amanuelanteneh/reimannSphere#main.py')">
+        <button class="riemann-sphere" onclick="window.open('https://repl.it/@amanuelanteneh/reimannSphere#main.py')">
             <img src="{{url_for('static', filename='img/sphereIcon.png')}}" alt="sphere" width="30" height="30">
             Riemann Sphere
         </button>

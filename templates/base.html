@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/customStyle.css') }}">        
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"> 
+    <link rel="stylesheet" href={% block stylesheet %}{% endblock %}>       
     <link rel="icon" href={% block icon %}{% endblock %}> <!--So you can change tab icon for each HTML file-->
     <script src="{{ url_for('static', filename='navBar.js') }}" defer></script>
 
@@ -27,7 +27,7 @@
                 <span class="bar"></span> 
             </a>
             <div class="navButtons">
-            <ul> 
+            <ul class="button-list"> <!--Naming this ul so the css for it doesn't overlap with the css for the dropdown menu ul-->
                 <li><a href="#homePage">
                     <img src="{{url_for('static', filename='img/homeIcon.png')}}" alt="home" width="25" height="25">
                     Home
@@ -43,28 +43,34 @@
                     Simulators
                     </a>
                 </li>                
-                <li onclick="window.open('https://github.com/amanuelanteneh')">
+                <li onclick="window.open('https://github.com/amanuelanteneh')"><a>
                     <img src="{{url_for('static', filename='img/githubIcon.png')}}" alt="github" width="25" height="25">
                     Github
+                    </a>
                 </li>
-                <li onclick="window.open('{{url_for('static', filename='Resume.pdf')}}')">
+                <li onclick="window.open('{{url_for('static', filename='Resume.pdf')}}')"><a>
                     <img src="{{url_for('static', filename='img/CVIcon.png')}}" alt="CV" width="25" height="25">
                     Resume
-                </li>
-                <li><a href="readings.html">
-                    <img src="{{url_for('static', filename='img/bookIcon.png')}}" alt="books" width="25" height="25"> 
-                    Readings
                     </a>
                 </li>
-                <li><a href="writings.html">
-                    <img src="{{url_for('static', filename='img/writingIcon.png')}}" alt="pencil" width="25" height="25"> 
-                    Essays
-                    </a>
-                </li>
+                <li><a href="#">
+                    <img src="{{url_for('static', filename='img/arrowDownIcon.png')}}" alt="other" width="15" height="15"> 
+                    Personal
+                </a>
+                     <ul class="dropdown"> <!--Using bootstrap dropdown class-->
+                       <li><a href="/books"><img src="{{url_for('static', filename='img/bookIcon.png')}}" alt="books" width="25" height="25">
+                           Readings</a>
+                        </li>
+                       <li><a href="#"><img src="{{url_for('static', filename='img/writingIcon.png')}}" alt="essays" width="25" height="25">
+                            Essays</a>
+                        </li>
+                    </ul>
+                </li> 
             </ul>
             </div>
         </nav>
-    </header>
+    </header> 
+
     {% block content %}{% endblock %} <!-- The rest of the stuff on the page -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
