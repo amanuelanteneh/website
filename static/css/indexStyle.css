@@ -95,10 +95,6 @@ ul li ul li {  /* for dropdown */
   width: 100%;
 }
 
-.caption {
-   display: flex; /* to have text appear below icon */ 
- }
-
  .ham-menu {
   position: absolute;
   top: 1.0rem;
