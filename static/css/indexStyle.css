@@ -188,10 +188,12 @@ ul li ul li {  /* for dropdown */
     overflow: scroll;
     -ms-overflow-style: none;  /* For IE and Edge */
     scrollbar-width: none;  /* For Firefox */
-}
+    scroll-behavior: smooth;
+  }
 
 #aboutPage .bio::-webkit-scrollbar{
   display: none; /* For Chrome */
+  scroll-behavior: smooth;
 }
 
 /* Third page (simulators) */
