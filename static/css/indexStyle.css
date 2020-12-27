@@ -95,7 +95,11 @@ ul li ul li {  /* for dropdown */
   width: 100%;
 }
 
- .ham-menu {
+.caption {
+   display: block; /* to have text appear below icon */ 
+ }
+
+.ham-menu {
   position: absolute;
   top: 1.0rem;
   right: 1rem;
@@ -111,7 +115,7 @@ ul li ul li {  /* for dropdown */
   background-color: white;
   border-radius: 10px;
 }
-@media (max-width: 700px) {
+@media (max-width: 940px) {
     header {
       position: absolute;
     }
@@ -134,11 +138,12 @@ ul li ul li {  /* for dropdown */
       padding: 0.8rem;
       text-align: center;
     }
-
     .navButtons.active {
       display: flex;
     }
-
+  .caption {
+     display: contents; /* to not have text stack with icons bc it's big on mobile */ 
+   }
 }
 /* Navbar style end */
 /* First page (home) */
@@ -176,6 +181,7 @@ ul li ul li {  /* for dropdown */
     font-family: 'Courier New', Courier, monospace;
     font-size: 3.95vmin;
     border: 2px solid;
+    line-height: 1.6;
     border-radius: 15px;
     backdrop-filter: blur(2.5px);
     -webkit-backdrop-filter: blur(2.5px);
@@ -214,7 +220,7 @@ ul li ul li {  /* for dropdown */
 }
 #floatingQuote {
     font-family: 'Courier New', Courier, monospace;
-    font-size: 4vmin;
+    font-size: 4.3vmin;
     border: 2px solid;
     border-radius: 3px;
     position: absolute;
@@ -229,6 +235,12 @@ ul li ul li {  /* for dropdown */
     animation-duration: 2s;
     animation-iteration-count: infinite; 
     cursor: pointer;
+    overflow: scroll;
+    -ms-overflow-style: none;  /* For IE and Edge */
+    scrollbar-width: none;  /* For Firefox */    
+}
+#floatingQuote::-webkit-scrollbar {
+  display : none;
 }
 
 #appBubble {
