@@ -270,6 +270,7 @@ ul li ul li {  /* for dropdown */
   font-size: 2.5vmin;
   text-align: left; 
   cursor: pointer; /* Make mouse pointer on hover */
+  list-style-position: inside;
 }
 
 #appBubble ul li {
