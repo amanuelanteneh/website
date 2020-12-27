@@ -39,7 +39,7 @@ body {
     border: 2px solid white;
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
-     text-align: center;
+    text-align: center;
 }
 
 .home-button a { /* for home anchor tag */
@@ -47,11 +47,14 @@ body {
   color: white;
  }
 
-.essays {
+.caption {
+   display: block; /* to have text appear below icon */ 
+ }
+ .essays {
     border-radius: 10px;
     border: 2px solid white;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     text-align: center;
     height: 85vmin;
     font-family: 'Courier New', Courier, monospace;  

@@ -31,6 +31,7 @@ header {
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
 }
+
 .myNavbar {
     display: flex;
     width: 95%;
@@ -46,7 +47,6 @@ header {
     color: white;
     font-family: 'Courier New', Courier, monospace;
     font-size: 1.5rem;
-      
 }
 
 .navButtons { /* navbar items w/o a href */
@@ -78,18 +78,15 @@ ul li ul { /* for dropdown */
   visibility: hidden;
   opacity: 0;
   position: absolute;
-  transition: all 50.0s ease-in-out;
   margin-top: 0rem;
   left: inherit;
   display: none;
-  
 }
 
 ul li:hover > ul, /* for dropdown */
 ul li ul:hover {  /* on hover show drop down menu */
   visibility: visible;
   opacity: 1;
-  transition: all 50.0s ease-in-out; 
   display: block;
 }
 
@@ -98,7 +95,11 @@ ul li ul li {  /* for dropdown */
   width: 100%;
 }
 
-.ham-menu {
+.caption {
+   display: flex; /* to have text appear below icon */ 
+ }
+
+ .ham-menu {
   position: absolute;
   top: 1.0rem;
   right: 1rem;
@@ -261,9 +262,6 @@ ul li ul li {  /* for dropdown */
 }
 
 #appBubble ul {
- /* position: fixed;*/
-/*  top: 7vh; */
-/*  left: 10%;*/
   border: none; 
   background-color: transparent;
   color: white;
