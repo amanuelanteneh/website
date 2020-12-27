@@ -48,19 +48,20 @@ body {
     text-align: center;
     height: 85vmin;
     font-family: 'Courier New', Courier, monospace;  
-    font-size: 2.5vmin;
+    font-size: 3.1vmin;
     overflow: scroll;
     -ms-overflow-style: none;  /* For IE and Edge */
     scrollbar-width: none;  /* For Firefox */
 }
 
 h5 {
-  font-size: 2.8vmin;
+  font-size: 2.9vmin;
 }
 
 .phil a, .hist a {
     text-decoration: none;
     color: white;  
+    font-size: 3.1vmin;
 }
 
 .phil a:hover, .hist a:hover {
