@@ -271,9 +271,13 @@ padding: 1rem;
     #aboutPage {
       background-image: url("/static/img/image17.png");
     }
+    #aboutPage .bio {
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);      
+    }
     #simulatePage {
       background-image: url("/static/img/image16.png");
-    }    
+    }  
     .ham-menu {
       display: flex;
     }
