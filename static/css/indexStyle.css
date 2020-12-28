@@ -115,36 +115,6 @@ ul li ul li {  /* for dropdown */
   background-color: white;
   border-radius: 10px;
 }
-@media (max-width: 940px) {
-    header {
-      position: absolute;
-    }
-    .ham-menu {
-      display: flex;
-    }
-    .navButtons {
-      display: none; 
-      width: 100%;
-    }
-    .myNavbar {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    .navButtons ul {
-      width: 100%;
-      flex-direction: column;
-    }
-    .navButtons li {
-      padding: 0.8rem;
-      text-align: center;
-    }
-    .navButtons.active {
-      display: flex;
-    }
-  .caption {
-     display: contents; /* to not have text stack with icons bc it's big on mobile */ 
-   }
-}
 /* Navbar style end */
 /* First page (home) */
 #homePage {
@@ -288,4 +258,45 @@ padding: 1rem;
 #appBubble ul a {
   text-decoration: none;
   color: white; 
+}
+
+@media (max-width: 940px) { /* media query's come after the stuff you're changing 
+                                has been given css properties */
+    header {
+      position: absolute;
+    }
+    #homePage {
+      background-image: url("/static/img/image18.png");
+    }
+    #aboutPage {
+      background-image: url("/static/img/image17.png");
+    }
+    #simulatePage {
+      background-image: url("/static/img/image16.png");
+    }    
+    .ham-menu {
+      display: flex;
+    }
+    .navButtons {
+      display: none; 
+      width: 100%;
+    }
+    .myNavbar {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .navButtons ul {
+      width: 100%;
+      flex-direction: column;
+    }
+    .navButtons li {
+      padding: 0.8rem;
+      text-align: center;
+    }
+    .navButtons.active {
+      display: flex;
+    }
+  .caption {
+     display: contents; /* to not have text stack with icons bc it's big on mobile */ 
+   }
 }
