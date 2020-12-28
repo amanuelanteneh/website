@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>Double Pendulum</title>
+    
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<body lang=EN-US link=blue vlink="#954F72" style="background-color: #333333; margin:150;padding:0"> <!--For Dark mode-->
+<font color="white"> <!--For Dark mode-->
+
+<p style="line-height: 1.8; text-align: center;">
+    In classical mechanics the double pendulum demonstrates the advantage of solving mechanics problems using
+    the Euler-Lagrange equations derived from the calculus of variations:
+    \[{d \over dt} {\partial L \over \partial \dot{f}} - {\partial L \over \partial f} = 0 \]
+    Over Newton's Second Law:
+    \[ -{ \partial U \over  \partial x }  = m {\ddot{x}} \]
+    The problem consists of a pendulum suspended from a fixed point with another pendulum attached to
+    it. The relevant parameters consist of \(l \) and \(\ell \), the length of the top and bottom pendulum 
+    respectively, \(m \) and \( M \), the mass of the top and bottom pendulum respectively, as well as
+    \( \theta \) and \( \phi \) where \( \theta \) is the angle made by the vertical from the fixed point the top pendulum is attached
+    to and the rod of the pendulum and \( \phi \) is the angle made by the vertical from the position of the first mass and the rod of the 
+    second pendulum as shown in the figure below:
+</p>
+<img src="{{url_for('static', filename='img/doubleDiagram.png')}}" style="width: 100%; margin-left: auto; margin-right: auto; display:block; height:auto;">
+
+
+</body>
+
+
+
+
+
+
+
+</html>

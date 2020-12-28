@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base.html" %} <!--Template inheritance-->
 {% block stylesheet %}{{ url_for('static', filename='css/indexStyle.css') }}{% endblock %}
 {% block icon %}{{ url_for('static', filename='img/laplaceIcon.png') }}{% endblock %}
 {% block title %}Amanuel Anteneh{% endblock %}
@@ -32,17 +32,23 @@
             Simulators</b>
             <ul>
                 <li>
-                    <a href="#">
+                    <a href="/Riemann-Sphere">
                         <img src="{{url_for('static', filename='img/sphereIcon.png')}}" alt="sphere" width="30" height="30">
                         Riemann Sphere
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/Double-Pendulum">
                         <img src="{{url_for('static', filename='img/doubleIcon.png')}}" alt="double" width="30" height="30">
                         Double Pendulum
                     </a>
                 </li>
+                <li>
+                    <a href="#">
+                        <img src="{{url_for('static', filename='img/singleIcon.png')}}" alt="double" width="30" height="30">
+                        Simple Pendulum
+                    </a>
+                </li>                
                 <li>
                     <a href="#">
                         <img src="{{url_for('static', filename='img/particleInBoxIcon.png')}}" alt="particle" width="30"

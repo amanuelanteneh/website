@@ -33,5 +33,13 @@ def essays():
 def essay1():
     return(render_template("The-Modern-University.html"))
 
+@app.route("/Double-Pendulum")
+def doublePendulum():
+    return(render_template("doublePendulum.html"))
+
+@app.route("/Riemann-Sphere")
+def riemannSphere():
+    return(render_template("riemannSphere.html"))
+
 if __name__ == "__main__":
     app.run(debug=True)
