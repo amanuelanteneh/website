@@ -272,8 +272,8 @@ padding: 1rem;
       background-image: url("/static/img/image17.png");
     }
     #aboutPage .bio {
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);      
+      backdrop-filter: blur(23px);
+      -webkit-backdrop-filter: blur(23px);      
     }
     #simulatePage {
       background-image: url("/static/img/image16.png");
