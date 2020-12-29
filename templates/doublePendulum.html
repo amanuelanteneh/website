@@ -4,9 +4,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/simulatorsStyle.css')}}">      
-    
+        
     <title>Double Pendulum</title>
     
     <script src="https://d3js.org/d3.v6.min.js"></script>
@@ -14,7 +12,25 @@
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 </head>
-
+<style>
+img {
+    width: 20%; 
+    margin-left: auto; 
+    margin-right: auto; 
+    display:block; 
+    height:auto;    
+}
+@media (max-width: 850px) { /* media query's come after the stuff you're changing 
+                                has been given css properties */
+    img {
+        width: 100%; 
+        margin-left: auto; 
+        margin-right: auto; 
+        display:block; 
+        height:auto;
+        }
+}
+</style>
 <body lang=EN-US link=blue vlink="#954F72" style="background-color: #333333; margin:150;padding:0"> <!--For Dark mode-->
 <font color="white"> <!--For Dark mode-->
 

@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/simulatorsStyle.css')}}">   
-           
     <title>Riemann Sphere</title>
     
     <script src="https://d3js.org/d3.v6.min.js"></script>
@@ -15,6 +13,26 @@
 
 </head>
 
+<style>
+img {
+    width: 60%; 
+    margin-left: auto; 
+    margin-right: auto; 
+    display:block; 
+    height:auto;    
+}
+@media (max-width: 850px) { /* media query's come after the stuff you're changing 
+                                has been given css properties */
+    img {
+        width: 100%; 
+        margin-left: auto; 
+        margin-right: auto; 
+        display:block; 
+        height:auto;
+        }
+}
+</style>
+
 <body lang=EN-US link=blue vlink="#954F72" style="background-color: #333333; margin:150;padding:0"> <!--For Dark mode-->
 <font color="white"> <!--For Dark mode-->
 
@@ -22,7 +40,7 @@
     In complex analysis the Riemann Sphere is a model of the extended complex plane. The extended
     complex plane being the union of the complex plane and infinity \( \mathbb{C} \cup \{ \infty \} \)
 </p>
-<img src="{{url_for('static', filename='img/riemannDiagram.png')}}" style="width: 50%; margin-left: auto; margin-right: auto; display:block; height:auto;">
+<img src="{{url_for('static', filename='img/riemannDiagram.png')}}">
 
 
 </body>
