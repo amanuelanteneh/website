@@ -9,10 +9,10 @@
    
     <link rel="icon" href="{{ url_for('static', filename='img/doubleIcon.png') }}">
 
-    <script src="https://d3js.org/d3.v6.min.js" defer></script>
+    <script src="https://d3js.org/d3.v6.min.js" defer></script>   
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
-    <script src="{{url_for('static', filename='quoteChange.js')}}" defer></script>
+    <script src="{{url_for('static', filename='doublePendulumScript.js')}}" defer></script>
 
 </head>
 <style>
@@ -26,6 +26,15 @@ img {
 p {
     font-size: 2.7vmin;
 }
+canvas {
+    top: 0px;
+    left: 0px;
+}
+svg {
+    top: 0px;
+    left: 0px;
+}
+
 @media (max-width: 850px) { /* media query's come after the stuff you're changing 
                                 has been given css properties */
     img {
@@ -57,11 +66,9 @@ p {
 </p>
 <img src="{{url_for('static', filename='img/doubleDiagram.png')}}">
 
-<div id="app">
 
-    <svg></svg>
-
-</div>
+ <canvas></canvas>
+ <svg id="pendulumApp"></svg>
 
 
 </body>
