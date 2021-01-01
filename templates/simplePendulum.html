@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+    <title>Simple Pendulum</title>
+   
+    <link rel="icon" href="{{ url_for('static', filename='img/singleIcon.png') }}">
+
+    <script src="https://d3js.org/d3.v6.min.js" defer></script>   
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+    <script src="{{url_for('static', filename='simplePendulumSmallAngleScript.js')}}" defer></script>
+
+</head>
+<style>
+img {
+    width: 20%; 
+    margin-left: auto; 
+    margin-right: auto; 
+    display:block; 
+    height:auto;
+}
+p {
+    font-size: 2.7vmin;
+    line-height: 1.8; 
+    text-align: center;
+}
+
+@media (max-width: 850px) { /* media query's come after the stuff you're changing 
+                                has been given css properties */
+    img {
+        width: 100%; 
+        margin-left: auto; 
+        margin-right: auto; 
+        display:block; 
+        height:auto;
+        }
+}
+</style>
+<body lang=EN-US link=blue vlink="#954F72" style="background-color: #333333; margin:150;padding:0"> <!-- For Dark mode -->
+<font color="white"> <!-- For Dark mode -->
+<a href="/#simulatePage" style="color:white; font-size: 2.8vmin; border-radius: 1px; border: 1px solid white; padding: 4px; text-decoration: none; font-family: 'Courier New', Courier, monospace;">
+    Back to simulators</a> <!--For leaving document--> 
+
+<p>
+    In classical mechanics a pendulum consists of a ball attached to the end of a rigid rod that has one end fixed to
+    a point with the end the ball is attached to free to move as shown in the diagram below: 
+</p>
+<img src="{{url_for('static', filename='img/simpleDiagram.png')}}">
+
+<p>
+   Using either Lagrangian or Newtonian mechanics it's possible to obtain the equation of
+   motion as a 2nd order nonlinear differential equation: \[ \ddot{ \theta } = {-g \over l} \sin{\theta} \]
+   However there is no analytic solution to this equation but if the small angle approximation is applied ( \( \sin{\theta} \approx \theta \) )
+   then the equation of motion becomes: \[ \ddot{ \theta } = {-g \over l} \theta \] 
+   Which has a solution of the form: \[ \theta = \theta_0 \cos{(\sqrt{ {g \over l} } t}) \]
+</p>
+
+<div style="position: relative;">
+    <canvas style="position: absolute;"></canvas>
+    <svg id="pendulumApp" style="position: absolute; z-index: 1;"></svg>
+</div>
+
+</body>
+
+
+
+</html>

@@ -25,14 +25,8 @@ img {
 }
 p {
     font-size: 2.7vmin;
-}
-canvas {
-    top: 0px;
-    left: 0px;
-}
-svg {
-    top: 0px;
-    left: 0px;
+    line-height: 1.8; 
+    text-align: center;    
 }
 
 @media (max-width: 850px) { /* media query's come after the stuff you're changing 
@@ -51,7 +45,7 @@ svg {
 <a href="/#simulatePage" style="color:white; font-size: 2.8vmin; border-radius: 1px; border: 1px solid white; padding: 4px; text-decoration: none; font-family: 'Courier New', Courier, monospace;">
     Back to simulators</a> <!--For leaving document--> 
 
-<p style="line-height: 1.8; text-align: center;">
+<p>
     In classical mechanics the double pendulum demonstrates the advantage of solving mechanics problems using
     the Euler-Lagrange equations derived from the calculus of variations:
     \[{d \over dt} {\partial L \over \partial \dot{f}} - {\partial L \over \partial f} = 0 \]
@@ -66,16 +60,22 @@ svg {
 </p>
 <img src="{{url_for('static', filename='img/doubleDiagram.png')}}">
 
+<p>
+    The lagrangian of the system is:
+    \[ L = \frac{1}{2}m(l \dot{\theta})^2 + \frac{1}{2}M[ (l \dot{\theta})^2 + 2(l \dot{\theta})(\ell \dot{\phi})
+    \cos{(\phi - \theta) + (\ell \dot{\phi})^2}] - [-mgl \cos{\theta} - Mg(l \cos{\theta} + \ell \cos{\phi} )]
+    \]    
+    Using the Euler-Lagrange equation the equations of motion for the two masses can be found as a system of 2 coupled 
+    linear (unlike the simple pendulum) 2nd order differential equations: 
+</p>
 
- <canvas></canvas>
- <svg id="pendulumApp"></svg>
 
+<div style="position: relative;">
+    <canvas style="position: absolute;"></canvas>
+    <svg id="pendulumApp" style="position: absolute; z-index: 1;"></svg>
+</div>
 
 </body>
-
-
-
-
 
 
 

@@ -78,5 +78,3 @@ var update = function () {
 }
 
 var runApp = setInterval(function () { update(); }, 5);
-
-

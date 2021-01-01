@@ -37,6 +37,10 @@ def essay1():
 def doublePendulum():
     return(render_template("doublePendulum.html"))
 
+@app.route("/Simple-Pendulum")
+def singlePendulum():
+    return(render_template("simplePendulum.html"))
+
 @app.route("/Riemann-Sphere")
 def riemannSphere():
     return(render_template("riemannSphere.html"))
