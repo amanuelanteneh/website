@@ -178,4 +178,4 @@ var runApp = setInterval(function () {
     if (!paused) {
     update();
         } 
-              }, 2);
+              }, 0.5);
