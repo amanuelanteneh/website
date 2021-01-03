@@ -47,7 +47,7 @@ $("#thetaSlider").on("change", function() {
 
 });
 
-$("#lengthSlider").on("input", function() {
+$("#lengthSlider").on("change", function() {
     l = $(this).val();
     thetaInit = theta;
     thetaDot = 0;

@@ -16,7 +16,12 @@ var xBall2 = ell*Math.sin(phi) + xBall1;
 var yBall2 = -ell*Math.cos(phi) + yBall1;
 var t = 0;
 var stepSize = .01;
-var paused = 0;
+var paused = 1;
+
+$("#pauseButton").click(function() {
+    paused = !paused;
+});
+
 
 function uDot(theta, thetaDot, phi, phiDot) { //first ODE
     return(thetaDot);
@@ -173,4 +178,4 @@ var runApp = setInterval(function () {
     if (!paused) {
     update();
         } 
-              }, 5);
+              }, 2);
