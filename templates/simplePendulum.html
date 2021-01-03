@@ -9,10 +9,11 @@
    
     <link rel="icon" href="{{ url_for('static', filename='img/singleIcon.png') }}">
 
-    <script src="https://d3js.org/d3.v6.min.js" defer></script>   
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
-    <script src="{{url_for('static', filename='simplePendulumSmallAngleScript.js')}}" defer></script>
+    <script src="https://d3js.org/d3.v6.min.js"></script>   
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="{{url_for('static', filename='simplePendulumScript.js')}}" defer></script>
 
 </head>
 <style>
@@ -28,6 +29,10 @@ p {
     line-height: 1.8; 
     text-align: center;
 }
+input, output { /* to align slider output values w slider */
+            vertical-align: middle;
+}
+
 
 @media (max-width: 850px) { /* media query's come after the stuff you're changing 
                                 has been given css properties */
@@ -59,13 +64,27 @@ p {
    Which has a solution of the form: \[ \theta = \theta_0 \cos{(\sqrt{ {g \over l} } t}) \]
 </p>
 
+<p>
+    If you want to not use the small angle approximation then the ODE 
+    can be evaluated numerically using the fourth order Runge-Kutta method by
+    first converting the 2nd order ODE into the two 1st order ODE's by 
+    letting \( u = \theta \) and \( v = \dot{\theta}  \):
+    \[ \dot{u} = v  \]
+    \[ \dot{v} = \frac{-g}{l} \sin{u} \]    
+    Below is a simulation of the behavior of the two solutions: <br><br>
+</p>
+
 <div style="position: relative;">
+    <input type = "range" min="0" max="95" value="15" step="1" id="thetaSlider"/>
+    <output id="thetaInfo">Theta: 15</output>
+    <input type = "range" min="0" max="1.3" value="1.2" step=".01" id="lengthSlider"/>
+    <output id="lengthInfo">Length: 1.2 </output>    
     <canvas style="position: absolute;"></canvas>
-    <svg id="pendulumApp" style="position: absolute; z-index: 1;"></svg>
+    <svg id="pendulumSmallAngle" style="position: absolute; z-index: 1;"></svg>
 </div>
 
+
+
 </body>
-
-
 
 </html>
