@@ -1,21 +1,22 @@
 var width = 710, height = 710;
 var margin = {top: -20, right: 30, bottom: 40, left: 40};
 var g = 9.81; //so length is in meters 
-var l = 0.4; //length of pendulum 1 
+var l = 0.5; //length of pendulum 1 
 var ell = 0.5; //ibid pendulum 2
-var m = 5; //mass of pendulum 1
-var M = 5; // ibid pendulum 2
-var theta = 40 * (Math.PI/180);
-var phi = 10 * (Math.PI/180);
+var m = 1; //mass of pendulum 1
+var M = 1; // ibid pendulum 2
+var theta = 90 * (Math.PI/180);
+var phi = 170 * (Math.PI/180);
 var thetaDot = 0;
 var phiDot = 0;
 
 var xBall1 = l*Math.sin(theta);
 var yBall1 = -l*Math.cos(theta);
-var xBall2 = ell*Math.sin(phi);
+var xBall2 = ell*Math.sin(phi) + xBall1;
 var yBall2 = -ell*Math.cos(phi) + yBall1;
 var t = 0;
 var stepSize = .01;
+var paused = 0;
 
 function uDot(theta, thetaDot, phi, phiDot) { //first ODE
     return(thetaDot);
@@ -139,7 +140,7 @@ function update() {
     RK4();
     xBall1 = l*Math.sin(theta);
     yBall1 = -l*Math.cos(theta);
-    xBall2 = ell*Math.sin(phi);
+    xBall2 = ell*Math.sin(phi) + xBall1;
     yBall2 = -ell*Math.cos(phi) + yBall1;
 
     context.lineTo(xAxis(xBall2) + margin.left, yAxis(yBall2) + margin.top);
@@ -168,4 +169,8 @@ function update() {
 
     }
 
-var runApp = setInterval(function () { update(); }, 5);
+var runApp = setInterval(function () { 
+    if (!paused) {
+    update();
+        } 
+              }, 5);
