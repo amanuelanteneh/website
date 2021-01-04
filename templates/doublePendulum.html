@@ -14,6 +14,7 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
     <script src="{{url_for('static', filename='doublePendulumScript.js')}}" defer></script>
+    <script src="{{url_for('static', filename='doublePendulumChaosScript.js')}}" defer></script> 
 
 </head>
 <style>
@@ -27,10 +28,26 @@ img {
 p {
     font-size: 2.7vmin;
     line-height: 1.8; 
-    text-align: center;    
+    text-align: left; 
+    /*color: white;  */
 }
 button {
     display: inline;
+    margin-left: 2rem;
+}
+
+.simBlock {
+    display: flex;
+    flex-direction: column;
+}
+
+svg {
+    position: absolute;
+}
+
+.section {
+    display: inline-flex;
+    padding: 1rem;
 }
 
 @media (max-width: 850px) { /* media query's come after the stuff you're changing 
@@ -44,17 +61,20 @@ button {
         }
 }
 </style>
-<body lang=EN-US link=blue vlink="#954F72" style="background-color: #333333; margin:150;padding:0"> <!-- For Dark mode -->
+
 <font color="white"> <!-- For Dark mode -->
+<body lang=EN-US link=blue vlink="#954F72" style="background-color: #333333; margin:150;padding:0"> <!-- For Dark mode -->
+
 <a href="/#simulatePage" style="color:white; font-size: 2.8vmin; border-radius: 1px; border: 1px solid white; padding: 4px; text-decoration: none; font-family: 'Courier New', Courier, monospace;">
     Back to simulators</a> <!--For leaving document--> 
 
+<div class="simBlock">
 <p>
     In classical mechanics the double pendulum demonstrates the advantage of solving mechanics problems using
     the Euler-Lagrange equations derived from the calculus of variations:
     \[{d \over dt} {\partial L \over \partial \dot{f}} - {\partial L \over \partial f} = 0 \]
     Over Newton's Second Law:
-    \[ -{ \partial U \over  \partial x }  = m {\ddot{x}} \]
+    \[ -{ \partial U \over  \partial f }  = m {\ddot{f}} \]
     The problem consists of a pendulum suspended from a fixed point with another pendulum attached to
     it. The relevant parameters consist of \(l \) and \(\ell \), the length of the top and bottom pendulum 
     respectively, \(m \) and \( M \), the mass of the top and bottom pendulum respectively, as well as
@@ -65,31 +85,63 @@ button {
 <img src="{{url_for('static', filename='img/doubleDiagram.png')}}">
 
 <p>
-    The lagrangian of the system is:
+    Specifying the \(x\) and \(y\) coordinates as follows:
+    \[ x_{m} = l\sin{\theta}, \quad x_{M} = \ell \sin{\phi} + l\sin{\theta}\]
+    \[ y_{m} = l\cos{\theta}, \quad y_{M} = \ell \cos{\phi} + l\cos{\theta} \]
+    And the respective time derivatives as:
+    \[ \dot{x}_{m} = \dot{\theta} l\cos{\theta}, \quad \dot{x}_{M} = \dot{\phi} \ell \cos{\phi} + \dot{\theta} l\cos{\theta}\]    
+    \[ \dot{y}_{m} = -\dot{\theta} l\sin{\theta}, \quad \dot{y}_{M} = -\dot{\phi} \ell \sin{\phi} - \dot{\theta} l\sin{\theta}\]    
+    The kinetic energy's can be written as: 
+    \[ T_{m} = \frac{1}{2}m(\dot{x}_{m}^2 + \dot{y}_{m}^2) \]
+    \[ T_{M} = \frac{1}{2}M(\dot{x}_{M}^2 + \dot{y}_{M}^2) \]
+    And the potential energy's as:
+    \[ U_{m} = mgy_{m} \]
+    \[ U_{M} = Mgy_{M} \]    
+
+    Thus the lagrangian (\( L = T - U \)) of the system can be found:
     \[ L = \frac{1}{2}m(l \dot{\theta})^2 + \frac{1}{2}M[ (l \dot{\theta})^2 + 2(l \dot{\theta})(\ell \dot{\phi})
     \cos{(\phi - \theta) + (\ell \dot{\phi})^2}] - [-mgl \cos{\theta} - Mg(l \cos{\theta} + \ell \cos{\phi} )]
     \]    
     Using the Euler-Lagrange equation the equations of motion for the two masses can be found as a system of two coupled 
-    linear (unlike the simple pendulum) 2nd order differential equations:
-    \[ \ddot{\theta} = \frac{-g(2m+M)\sin{(\theta)} - Mg\sin{(\theta - 2\phi}) - 2\sin{(\theta - \phi)}M(\dot{\phi}^2 \ell + \dot{\theta}^2l\cos{(\theta - \phi))} }{l(2m + M - M\cos{(2\theta - 2\phi)}) }  \] 
+    non-linear 2nd order differential equations:
+    \[ \ddot{\theta} = \frac{-g(2m+M)\sin{\theta} - Mg\sin{(\theta - 2\phi}) - 2\sin{(\theta - \phi)}M(\dot{\phi}^2 \ell + \dot{\theta}^2l\cos{(\theta - \phi))} }{l(2m + M - M\cos{(2\theta - 2\phi)}) }  \] 
     <br>
-    \[ \ddot{\phi} = \frac{2\sin{(\theta - \phi)}(\dot{\theta}^2l(m + M) + g(m+ M)\cos{(\theta)} + \dot{\phi}^2 \ell M\cos{(\theta - \phi)}) }{\ell(2m + M - M\cos{(2\theta - 2\phi)})} \]
+    \[ \ddot{\phi} = \frac{2\sin{(\theta - \phi)}(\dot{\theta}^2l(m + M) + g(m+ M)\cos{\theta} + \dot{\phi}^2 \ell M\cos{(\theta - \phi)}) }{\ell(2m + M - M\cos{(2\theta - 2\phi)})} \]
 
     To numerically evaluate this set of ODE's we'll need to reduce it from a system of two 2nd order ODE's to a system of four 1st order
     ODE's by letting \( u = \theta, v = \dot{\theta}, w = \phi, s = \dot{\phi} \), which gives us the system:
     \[ \dot{u} = v \]
-    \[ \dot{v} = \frac{-g(2m+M)\sin{(u)} - Mg\sin{(u - 2w}) - 2\sin{(u - w)}M(\dot{w}^2 \ell + \dot{u}^2l\cos{(u - w))} }{l(2m + M - M\cos{(2u - 2w)}) } \]      
+    \[ \dot{v} = \frac{-g(2m+M)\sin{u} - Mg\sin{(u - 2w}) - 2\sin{(u - w)}M(\dot{w}^2 \ell + \dot{u}^2l\cos{(u - w))} }{l(2m + M - M\cos{(2u - 2w)}) } \]      
     <br>
     \[ \dot{w} = s \]
-    \[ \dot{s} = \frac{2\sin{(u - w)}(\dot{u}^2l(m + M) + g(m+ M)\cos{(u)} + \dot{w}^2 \ell M\cos{(u - w)}) }{\ell(2m + M - M\cos{(2u - 2w)})} \]
+    \[ \dot{s} = \frac{2\sin{(u - w)}(\dot{u}^2l(m + M) + g(m+ M)\cos{u} + \dot{w}^2 \ell M\cos{(u - w)}) }{\ell(2m + M - M\cos{(2u - 2w)})} \]
     <br>We can now use the 4th order Runge-Kutta method to evaluate the system of ODE's: <br><br>
 </p>
-
-
-<div style="position: relative;">
-    <button type="button" id="pauseButton">Play/Pause</button>
-    <canvas style="position: absolute;"></canvas>
-    <svg id="doublePendulum" style="position: absolute; z-index: 1;"></svg>
+</div>
+<div class="simBlock">
+    <div class="section">
+        <button type="button" id="pauseButton1">Play/Pause</button>
+        <button type="button" id="resetButton1">Reset</button>
+    </div>
+    <div class="section">
+        <canvas id="canvas1"></canvas>
+        <svg id="doublePendulum"></svg>
+    </div>
+    <div class="section">
+        <p>
+            <br>The double pendulum is also considered to be a chaotic system due to 
+            it's extreme sensitivity to initial conditions. The five pendulums below 
+            begin at initial angles that differ by only 0.01&#176; but rapidly diverge in path: <br><br>
+        </p>
+    </div>   
+    <div class="section">
+        <button type="button" id="pauseButton2">Play/Pause</button>
+        <button type="button" id="resetButton2">Reset</button>
+    </div>
+    <div class="section">
+        <canvas id="canvas2"></canvas>
+        <svg id="doublePendulums"></svg>
+    </div>
 </div>
 
 </body>
