@@ -13,8 +13,8 @@
     <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
-    <script src="{{url_for('static', filename='doublePendulumScript.js')}}" defer></script>
-    <script src="{{url_for('static', filename='doublePendulumChaosScript.js')}}" defer></script> 
+    <script src="{{url_for('static', filename='js/doublePendulumScript.js')}}" defer></script>
+    <script src="{{url_for('static', filename='js/doublePendulumChaosScript.js')}}" defer></script> 
 
 </head>
 <style>
@@ -29,7 +29,6 @@ p {
     font-size: 2.7vmin;
     line-height: 1.8; 
     text-align: left; 
-    /*color: white;  */
 }
 button {
     display: inline;
@@ -110,10 +109,10 @@ svg {
 
     To numerically evaluate this set of ODE's we'll need to reduce it from a system of two 2nd order ODE's to a system of four 1st order
     ODE's by letting \( u = \theta, v = \dot{\theta}, w = \phi, s = \dot{\phi} \), which gives us the system:
-    \[ \dot{u} = v \]
+    \[ \dot{u} = v \] <br>
     \[ \dot{v} = \frac{-g(2m+M)\sin{u} - Mg\sin{(u - 2w}) - 2\sin{(u - w)}M(\dot{w}^2 \ell + \dot{u}^2l\cos{(u - w))} }{l(2m + M - M\cos{(2u - 2w)}) } \]      
     <br>
-    \[ \dot{w} = s \]
+    \[ \dot{w} = s \] <br>
     \[ \dot{s} = \frac{2\sin{(u - w)}(\dot{u}^2l(m + M) + g(m+ M)\cos{u} + \dot{w}^2 \ell M\cos{(u - w)}) }{\ell(2m + M - M\cos{(2u - 2w)})} \]
     <br>We can now use the 4th order Runge-Kutta method to evaluate the system of ODE's: <br><br>
 </p>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+    <title>Annealing Traveling Salesman</title>
+   
+    <link rel="icon" href="{{ url_for('static', filename='img/annealingIcon.png') }}">
+
+    <script src="https://d3js.org/d3.v4.js"></script>   <!-- Using v4 instead of v6 bc map wouldn't show otherwise-->
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+    <script src="{{url_for('static', filename='js/annealingScript.js')}}" defer></script>  
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+
+</head>
+
+<style>
+
+.simBlock {
+    display: flex;
+    flex-direction: column;
+}
+
+p {
+    font-size: 2.7vmin;
+    line-height: 1.8; 
+    text-align: left; 
+}
+svg {
+    position: absolute;
+}
+
+.section {
+    display: inline-flex;
+    padding: 1rem;
+}
+
+</style>
+
+
+<font color="white"> <!-- For Dark mode -->
+<body lang=EN-US link=blue vlink="#954F72" style="background-color: #333333; margin:150;padding:0"> <!-- For Dark mode -->
+
+<a href="/#simulatePage" style="color:white; font-size: 2.8vmin; border-radius: 1px; border: 1px solid white; padding: 4px; text-decoration: none; font-family: 'Courier New', Courier, monospace;">
+    Back to simulators</a> <!--For leaving document--> 
+    </body>
+<div class="simBlock">
+    <div class="section">
+        <p>
+            In computation simulated annealing is
+        </p>
+   </div>        
+   <div class="section">
+   <canvas id="canvas1"></canvas>
+   <svg id="simulatedAnnealing"></svg>
+    </div>
+</div>
+
+</html>

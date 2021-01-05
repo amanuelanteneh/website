@@ -1,4 +1,4 @@
-var width = 710, height = 710;
+var width = 710, height = 710; //width and height of canvas hardcoded
 var margin = {top: -20, right: 30, bottom: 40, left: 40};
 var g = 9.81; //so length is in meters 
 var l = 0.5; //length of pendulum 1 
@@ -18,10 +18,13 @@ var t = 0;
 var stepSize = .006;
 var paused = 1;
 
-$("#pauseButton1").click(function() {
+$("#pauseButton1").click(function() { //to pause on click
     paused = !paused;
 });
-$("#resetButton1").click(function() {
+
+$("#resetButton1").click( reset ); // to reset on click
+
+function reset() {
     paused = 1;
     g = 9.81; 
     l = 0.5; 
@@ -58,8 +61,9 @@ $("#resetButton1").click(function() {
         .attr('cx', xAxis(xBall2))
         .attr('cy', yAxis(yBall2));
 
-    context.clearRect(0, 0, width, height); //to clear path lines
-});
+    context.clearRect(0, 0, width, height); //to clear path lines    
+}
+
 
 function uDot(theta, thetaDot, phi, phiDot) { //first ODE
     return (thetaDot);
@@ -72,11 +76,11 @@ function vDot(theta, thetaDot, phi, phiDot) { //second ODE
     return (val);
 }
 
-function wDot(theta, thetaDot, phi, phiDot) {
+function wDot(theta, thetaDot, phi, phiDot) { //third ODE
     return (phiDot);
 }
 
-function sDot(theta, thetaDot, phi, phiDot) {
+function sDot(theta, thetaDot, phi, phiDot) { //fourth ODE
     val = 2 * Math.sin(theta - phi) * (thetaDot * thetaDot * l * (m + M) + g * (m + M) * Math.cos(theta) + phiDot * phiDot * ell * M * Math.cos(theta - phi));
 
     val = val / (ell * (2 * m + M - M * Math.cos(2 * theta - 2 * phi)));
@@ -112,33 +116,35 @@ function RK4() { /* 4th order Runge-Kutta solver for system of 4 equations with 
 
 }
 
+/* Begin setting up canvas and graph */
+
 d3.select("#canvas1").attr("width", width).attr("height", height);
 
-var canvas = d3.select("#canvas1");
+var canvas = d3.select("#canvas1"); //get canvas
 
-var context = canvas.node().getContext("2d");
+var context = canvas.node().getContext("2d"); //get 2D context
 
-var svg = d3.select("#doublePendulum")
+var svg = d3.select("#doublePendulum") 
     .attr("width", width)
     .attr("height", height)
     .append("g")
     .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")");
 
-var xAxis = d3.scaleLinear()
+var xAxis = d3.scaleLinear() //create x axis 
     .domain([-1.5, 1.5])
     .range([0, width]);
 
 svg.append("g")
     .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(xAxis));
+    .call(d3.axisBottom(xAxis)); //set x axis to be bottom axis
 
-var yAxis = d3.scaleLinear()
+var yAxis = d3.scaleLinear() //create y axis
     .domain([-1.5, 1.5])
     .range([height, 0]);
 
 svg.append("g")
-    .call(d3.axisLeft(yAxis));
+    .call(d3.axisLeft(yAxis)); //ibid but for y axis and left axis
 
 
 var rod1 = svg.append('line')  /* put before circle code so it doesn't go over the circle */
@@ -174,22 +180,22 @@ var ball2 = svg.append('circle')
     .style('fill', '#FFFFFF');
 
 function update() {
-    context.beginPath();
-    context.strokeStyle = '#1100ff';
-    context.moveTo(xAxis(xBall2) + margin.left, yAxis(yBall2) + margin.top);
+    context.beginPath(); // start path
+    context.strokeStyle = '#1100ff'; //chose path color
+    context.moveTo(xAxis(xBall2) + margin.left, yAxis(yBall2) + margin.top); //move context to current ball2 position
 
     t += .01;
 
-    RK4();
+    RK4(); //call runge-kutta to update angles and angle dots
     xBall1 = l * Math.sin(theta);
     yBall1 = -l * Math.cos(theta);
     xBall2 = ell * Math.sin(phi) + xBall1;
     yBall2 = -ell * Math.cos(phi) + yBall1;
 
-    context.lineTo(xAxis(xBall2) + margin.left, yAxis(yBall2) + margin.top);
-    context.stroke();
+    context.lineTo(xAxis(xBall2) + margin.left, yAxis(yBall2) + margin.top); //draw line to new ball2 position
+    context.stroke(); //actually draw line?
 
-
+    //update pendulum positions
     d3.select('#rod1')
         .attr('y2', yAxis(0))
         .attr('x2', xAxis(0))
@@ -212,7 +218,7 @@ function update() {
 
 }
 
-var runApp = setInterval(function () {
+var runApp = setInterval(function () { //call update if not paused
     if (!paused) {
         update();
     }

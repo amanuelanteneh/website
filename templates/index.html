@@ -4,8 +4,8 @@
 {% block title %}Amanuel Anteneh{% endblock %}
 {% block content %}
 <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src="{{url_for('static', filename='appBubbleScript.js')}}"></script>
-<script src="{{url_for('static', filename='quoteChange.js')}}"></script>
+<script src="{{url_for('static', filename='js/appBubbleScript.js')}}"></script>
+<script src="{{url_for('static', filename='js/quoteChange.js')}}"></script>
 
 <!-- Page 1 -->
 <div id="homePage">
@@ -38,17 +38,17 @@
                     </a>
                 </li>
                 <li>
+                    <a href="/Simple-Pendulum">
+                        <img src="{{url_for('static', filename='img/singleIcon.png')}}" alt="double" width="30" height="30">
+                        Simple Pendulum
+                    </a>
+                </li>
+                <li>
                     <a href="/Double-Pendulum">
                         <img src="{{url_for('static', filename='img/doubleIcon.png')}}" alt="double" width="30" height="30">
                         Double Pendulum
                     </a>
                 </li>
-                <li>
-                    <a href="/Simple-Pendulum">
-                        <img src="{{url_for('static', filename='img/singleIcon.png')}}" alt="double" width="30" height="30">
-                        Simple Pendulum
-                    </a>
-                </li>                
                 <li>
                     <a href="#">
                         <img src="{{url_for('static', filename='img/psiIcon.png')}}" alt="particle" width="30"
@@ -57,7 +57,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/Annealing">
                         <img src="{{url_for('static', filename='img/annealingIcon.png')}}" alt="particle" width="30"
                             height="30">
                         Simulated Annealing

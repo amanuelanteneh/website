@@ -1,3 +1,4 @@
+/* Variable names have a C after them for chaos lol */
 var widthC = 710, heightC = 710;
 var marginC = {top: -20, right: 30, bottom: 40, left: 40};
 
@@ -20,6 +21,7 @@ var coordsOld = [lC*Math.sin(initialConditions[0]), -lC*Math.cos(initialConditio
               lC*Math.sin(initialConditions[12]), -lC*Math.cos(initialConditions[12]), ellC*Math.sin(initialConditions[13]) + lC*Math.sin(initialConditions[12]), -ellC*Math.cos(initialConditions[13]) - lC*Math.cos(initialConditions[12]),
               lC*Math.sin(initialConditions[16]), -lC*Math.cos(initialConditions[16]), ellC*Math.sin(initialConditions[17]) + lC*Math.sin(initialConditions[16]), -ellC*Math.cos(initialConditions[17]) - lC*Math.cos(initialConditions[16])
 ];
+// old and new distinction for drawing paths on canvas
 var coordsNew = [lC*Math.sin(initialConditions[0]), -lC*Math.cos(initialConditions[0]), ellC*Math.sin(initialConditions[1]) + lC*Math.sin(initialConditions[0]), -ellC*Math.cos(initialConditions[1]) - lC*Math.cos(initialConditions[0]),
               lC*Math.sin(initialConditions[4]), -lC*Math.cos(initialConditions[4]), ellC*Math.sin(initialConditions[5]) + lC*Math.sin(initialConditions[4]), -ellC*Math.cos(initialConditions[5]) - lC*Math.cos(initialConditions[4]),
               lC*Math.sin(initialConditions[8]), -lC*Math.cos(initialConditions[8]), ellC*Math.sin(initialConditions[9]) + lC*Math.sin(initialConditions[8]), -ellC*Math.cos(initialConditions[9]) - lC*Math.cos(initialConditions[8]),
@@ -40,7 +42,10 @@ $("#pauseButton2").click(function() {
     pausedC = !pausedC;
 });
 
-$("#resetButton2").click(function() {
+$("#resetButton2").click( reset );
+
+
+function reset() {
 
 pausedC = 1;
 
@@ -90,7 +95,8 @@ coordsNew = [lC*Math.sin(initialConditions[0]), -lC*Math.cos(initialConditions[0
     }
     contextC.clearRect(0, 0, widthC, heightC); //to clear path lines
 
-});
+
+}
 
 
 function uDotC(thetaC, thetaDotC, phiC, phiDotC) { //first ODE
@@ -104,11 +110,11 @@ function vDotC(thetaC, thetaDotC, phiC, phiDotC) { //second ODE
     return (val);
 }
 
-function wDotC(thetaC, thetaDotC, phiC, phiDotC) {
+function wDotC(thetaC, thetaDotC, phiC, phiDotC) { //third ODE
     return (phiDotC);
 }
 
-function sDotC(thetaC, thetaDotC, phiC, phiDotC) {
+function sDotC(thetaC, thetaDotC, phiC, phiDotC) { //fourth ODE
     val = 2 * Math.sin(thetaC - phiC) * (thetaDotC * thetaDotC * lC * (mC + MC) + gC * (mC + MC) * Math.cos(thetaC) + phiDotC * phiDotC * ellC * MC * Math.cos(thetaC - phiC));
 
     val = val / (ellC * (2 * mC + MC - MC * Math.cos(2 * thetaC - 2 * phiC)));
@@ -138,13 +144,12 @@ function RK4C(thetaC, phiC, thetaDotC, phiDotC, i) { /* 4th order Runge-Kutta so
     q3 = stepSizeC * wDotC(thetaC + k2, thetaDotC + l2, phiC + q2, phiDotC + p2);
     p3 = stepSizeC * sDotC(thetaC + k2, thetaDotC + l2, phiC + q2, phiDotC + p2);
 
-    initialConditions[i] = initialConditions[i] + ((1 / 6) * (k0 + 2 * k1 + 2 * k2 + k3)); //integrate theta
-    initialConditions[i + 1] = initialConditions[i + 1] + ((1 / 6) * (q0 + 2 * q1 + 2 * q2 + q3)); //integrate phi
-    initialConditions[i + 2] = initialConditions[i + 2] + ((1 / 6) * (l0 + 2 * l1 + 2 * l2 + l3)); //integrate thetaDot
-    initialConditions[i + 3] = initialConditions[i + 3] + ((1 / 6) * (p0 + 2 * p1 + 2 * p2 + p3)); //integrate phiDot
+    initialConditions[i] = initialConditions[i] + ((1 / 6) * (k0 + 2 * k1 + 2 * k2 + k3)); //update theta
+    initialConditions[i + 1] = initialConditions[i + 1] + ((1 / 6) * (q0 + 2 * q1 + 2 * q2 + q3)); //update phi
+    initialConditions[i + 2] = initialConditions[i + 2] + ((1 / 6) * (l0 + 2 * l1 + 2 * l2 + l3)); //update thetaDot
+    initialConditions[i + 3] = initialConditions[i + 3] + ((1 / 6) * (p0 + 2 * p1 + 2 * p2 + p3)); //update phiDot
 
 }
-
 
 
 d3.select("#canvas2").attr("width", widthC).attr("height", heightC);

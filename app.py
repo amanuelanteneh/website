@@ -45,5 +45,9 @@ def singlePendulum():
 def riemannSphere():
     return(render_template("riemannSphere.html"))
 
+@app.route("/Annealing")
+def annealing():
+    return(render_template("annealing.html"))
+
 if __name__ == "__main__":
     app.run(debug=True)

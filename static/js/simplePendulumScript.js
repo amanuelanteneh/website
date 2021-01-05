@@ -17,6 +17,7 @@ $("#thetaSlider").on("change", function() {
     paused = 1;
     theta = $(this).val() * (Math.PI/180);
     thetaInit = theta;
+    $("#thetaInfo").html("&#952; = " + $(this).val());
     thetaDot = 0;
     xBallSmallAngle = l*Math.sin(thetaInit);
     yBallSmallAngle = -l*Math.cos(thetaInit);
@@ -205,4 +206,4 @@ var update = function () {
 var runApp = setInterval(function () { 
     if (!paused) {
     update(); } 
-                }, 2);
+                }, 15);
