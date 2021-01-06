@@ -129,10 +129,10 @@ svg.append("g")
     .call(d3.axisLeft(yAxis));
 
 /*Create legend*/
-svg.append("circle").attr("cx",xAxis(-1.2)).attr("cy",yAxis(1.2)).attr("r", 6).style("fill", "#FFFFFF")
-svg.append("circle").attr("cx",xAxis(-1.2)).attr("cy",yAxis(1)).attr("r", 6).style("fill", "#000000")
-svg.append("text").attr("x", xAxis(-1.15)).attr("y", yAxis(1.2)).text("Small Angle Approximation").style("font-size", "19px").style("fill", "white").attr("alignment-baseline","middle")
-svg.append("text").attr("x", xAxis(-1.15)).attr("y", yAxis(1)).text("Exact Solution").style("font-size", "19px").style("fill", "white").attr("alignment-baseline","middle")
+svg.append("circle").attr("cx",xAxis(-1.2)).attr("cy",yAxis(1.2)).attr("r", 6).style("fill", "#FFFFFF");
+svg.append("circle").attr("cx",xAxis(-1.2)).attr("cy",yAxis(1)).attr("r", 6).style("fill", "#000000");
+svg.append("text").attr("x", xAxis(-1.15)).attr("y", yAxis(1.2)).text("Small Angle Approximation").style("font-size", "19px").style("fill", "white").attr("alignment-baseline","middle");
+svg.append("text").attr("x", xAxis(-1.15)).attr("y", yAxis(1)).text("Exact Solution").style("font-size", "19px").style("fill", "white").attr("alignment-baseline","middle");
 
 
 var rodSmallAngle = svg.append('line')  /* put before circle code so it doesn't go over the circle */

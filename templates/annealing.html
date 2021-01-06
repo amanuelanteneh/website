@@ -12,6 +12,7 @@
     <script src="https://d3js.org/d3.v4.js"></script>   <!-- Using v4 instead of v6 bc map wouldn't show otherwise-->
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+    <script src="https://unpkg.com/topojson@3"></script>
     <script src="{{url_for('static', filename='js/annealingScript.js')}}" defer></script>  
     <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
@@ -24,6 +25,11 @@
 .simBlock {
     display: flex;
     flex-direction: column;
+}
+
+button {
+    display: inline;
+    margin-left: 2rem;
 }
 
 p {
@@ -40,24 +46,59 @@ svg {
     padding: 1rem;
 }
 
+output { /* to align slider output values w slider */
+            vertical-align: middle;
+            margin-left: 1rem;
+            display: flex;
+            flex-direction: column;
+}
+
+
 </style>
 
 
 <font color="white"> <!-- For Dark mode -->
 <body lang=EN-US link=blue vlink="#954F72" style="background-color: #333333; margin:150;padding:0"> <!-- For Dark mode -->
 
-<a href="/#simulatePage" style="color:white; font-size: 2.8vmin; border-radius: 1px; border: 1px solid white; padding: 4px; text-decoration: none; font-family: 'Courier New', Courier, monospace;">
-    Back to simulators</a> <!--For leaving document--> 
-    </body>
+<a href="/#simulatePage"
+    style="color:white; font-size: 2.8vmin; border-radius: 1px; border: 1px solid white; padding: 4px; text-decoration: none; font-family: 'Courier New', Courier, monospace;">
+    Back to simulators</a>
+<!--For leaving document-->
+</body>
 <div class="simBlock">
     <div class="section">
         <p>
-            In computation simulated annealing is
+            In computation simulated annealing is a method of approximating global minima of a given problem.
+            The method is applied below to the traveling salesman problem. The traveling salesman problem is an example of
+            a problem in computer science that is NP-complete, which means the problem
+            is both \( \in \) NP and NP-hard. It also means that there is no known algorithm to solve the problem
+            that has a complexity that is \( \in O(n^p) \). Where \( n \) is the size of the input and \( p \) is 
+            any positive real number. In other words no solution has been found that runs within polynomial time
+            using a model of computation that is equivalent to a deterministic Turing machine. The problem is: given
+            a list of \(n\) cities, what is the shortest path that visits each and returns to the original starting city?
+            The simplest approach of 
+            trying every possible configuration of cities has a complexity \( \in O(n!) \). So for example if you 
+            have a list of \(25\) cities there are \(25!\) or \( 1.55 \times 10^{25}\) possible configurations. Assuming you
+            do a <i>billion</i> calculations a second you would need approximately \( 1.55 \times 10^{16}\) seconds
+            or \(491,501,775\) years to do the calculation. However using simulated annealing you can get
+            an <i>approximate</i> optimal solution:
         </p>
-   </div>        
-   <div class="section">
-   <canvas id="canvas1"></canvas>
-   <svg id="simulatedAnnealing"></svg>
+    </div>
+    <div class="section">
+        <button type="button" id="pauseButton1">Play/Pause</button>
+        <button type="button" id="resetButton1">Reset</button>
+        <output id="TInfo"></output>
+        <output id="currentDistInfo"></output>
+        <output id="startDistInfo"></output>
+        <output id="improvementInfo"></output>       
+        <output id="cityNumInfo"></output>
+        
+    </div>
+
+
+    <div class="section">
+        <canvas id="canvas1"></canvas>
+        <svg id="simulatedAnnealing"></svg>
     </div>
 </div>
 
