@@ -234,6 +234,11 @@ function generateGeography() {
 
 }
 
+d3.select("#canvas1").attr("width", width).attr("height", height);
+
+var canvas = d3.select("#canvas1"); //get canvas
+
+var context = canvas.node().getContext("2d"); //get 2D context
 
 var svg = d3.select("#simulatedAnnealing1")
     .attr("width", width)

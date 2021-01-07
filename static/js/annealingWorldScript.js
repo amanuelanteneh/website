@@ -233,6 +233,12 @@ function generateGeographyW() {
 
 }
 
+d3.select("#canvas2").attr("width", widthW).attr("height", heightW);
+
+var canvasW = d3.select("#canvas2"); //get canvas
+
+var contextW = canvasW.node().getContext("2d"); //get 2D context
+
 
 var svgW = d3.select("#simulatedAnnealing2")
     .attr("width", widthW)
