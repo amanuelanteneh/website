@@ -13,15 +13,23 @@
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
     <script src="https://unpkg.com/topojson@3"></script>
-    <script src="{{url_for('static', filename='js/annealingScript.js')}}" defer></script>  
-    <script src="{{url_for('static', filename='js/annealingWorldScript.js')}}" defer></script>
     <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+    <script src="{{url_for('static', filename='js/annealingScript.js')}}" defer></script>  
+    <script src="{{url_for('static', filename='js/annealingWorldScript.js')}}" defer></script>
 
 </head>
 
 <style>
+
+img {
+    width: 40%; 
+    margin-left: auto; 
+    margin-right: auto; 
+    display:block; 
+    height:auto;
+}
 
 .simBlock {
     display: flex;
@@ -34,13 +42,13 @@ button {
 }
 
 p {
-    font-size: 2.7vmin;
+    font-size: 3vmin;
     line-height: 1.8; 
     text-align: left; 
 }
-svg {
+/*svg {
     position: absolute;
-}
+} caused overlap of svgs... */
 
 .section {
     display: inline-flex;
@@ -54,16 +62,26 @@ output {
           
 }
 
+@media (max-width: 850px) { /* media query's come after the stuff you're changing 
+                                has been given css properties */
+    img {
+        width: 100%; 
+        margin-left: auto; 
+        margin-right: auto; 
+        display:block; 
+        height:auto;
+        }
+}
+
 
 </style>
 
 
 <font color="white"> <!-- For Dark mode -->
 <body lang=EN-US link=blue vlink="#954F72" style="background-color: #333333; margin:150;padding:0"> <!-- For Dark mode -->
-<a href="/#simulatePage"
-    style="color:white; font-size: 2.8vmin; border-radius: 1px; border: 1px solid white; padding: 4px; text-decoration: none; font-family: 'Courier New', Courier, monospace;">
-    Back to simulators</a>
-<!--For leaving document-->
+<a href="/#simulatePage" style="color:white; font-size: 3vmin; border-radius: 1px; border: 1px solid white; padding: 4px; text-decoration: none; font-family: 'Courier New', Courier, monospace;">
+    Back to simulators</a> <!--For leaving document-->
+
 <div class="simBlock">
 
     <p>
@@ -80,8 +98,19 @@ output {
         have a list of \(25\) cities there are \(25!\) or \( 1.55 \times 10^{25}\) possible configurations. Assuming you
         do a <i>billion</i> calculations a second you would need approximately \( 1.55 \times 10^{16}\) seconds
         or \(491.5 \times 10^{6}\) years to do the calculation. However using simulated annealing you can get
-        an <i>approximate</i> optimal solution in much less time. Below is the algorithm applied to a
-        random set of U.S. cities:
+        an <i>approximate</i> optimal solution in much less time. The algorithm utilizes randomness to find global 
+        minima of cost functions that are trying to be minimized (or maximized). The algorithm essentially configures
+        the list of cities in some way, in this example by flipping the order of a random sub-array of cities, and checks to 
+        see if the new configuration is better or worse than the old one. If it's better than the configuration is accepted
+        but if it's worse the configuration is accepted according to some probability function, in this example the function is:
+        \[ e^{\frac{-\Delta E}{T} } \] 
+        The reason for this is so that the algorithm can avoid being trapped in a local minima when finding the optimal
+        solution as shown:
+    </p>
+    <img src="{{url_for('static', filename='img/annealingDiagram.png')}}">
+
+    <p>
+       Below is the algorithm applied to a random set of U.S. cities:
     </p>
 
 </div>
@@ -100,7 +129,8 @@ output {
     <div class="section">
         <svg id="simulatedAnnealing1"></svg>
     </div>
-
+    </div>
+    <div class="simBlock">
     <div class="section">
         <p>
             <br>The algorithm applied to a random set of cities from the whole world:
@@ -115,12 +145,12 @@ output {
         <output id="TInfo2"></output>
         <output id="cityNumInfo2"></output>
         <output id="currentDistInfo2"></output>
-    </div>
+    </div> 
 
     <div class="section">
         <svg id="simulatedAnnealing2"></svg>
+    </div> 
     </div>
-</div>
 </body>
 
 </html>

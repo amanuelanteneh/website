@@ -1,4 +1,4 @@
-var width = 980, height = 550; //width and height of canvas hardcoded
+var width = 900, height = 550; //width and height of canvas hardcoded w=980 h=550
 var margin = {top: -20, right: 30, bottom: 40, left: 40};
 var cities = [];
 var routes = []; 
@@ -43,7 +43,7 @@ function calcDistance(citiesParam) {
         let deltaLong = citiesParam[citiesParam.length-1][1][0] - citiesParam[0][1][0];
         deltaLong *= (Math.PI/180.0);
         deltaLat *= (Math.PI/180.0);
-        let a = Math.sin(deltaLat/2)*Math.sin(deltaLat/2) + Math.cos(citiesParam[0][1][1]*(Math.PI/180))*Math.cos(citiesParam[cities.length-1][1][1]*(Math.PI/180))
+        let a = Math.sin(deltaLat/2)*Math.sin(deltaLat/2) + Math.cos(citiesParam[0][1][1]*(Math.PI/180))*Math.cos(citiesParam[citiesParam.length-1][1][1]*(Math.PI/180))
                 *Math.sin(deltaLong/2)*Math.sin(deltaLong/2);
         let c = 2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
@@ -96,7 +96,7 @@ function sweep(T) {
     let newDist = calcDistance(cities);
     let oldDist = calcDistance(oldCities);
     let dL = newDist - oldDist;
-    console.log("dL = " + dL);
+
     if (dL > 0) { //if dL > 0 then the new config of cities is worse
         if (Math.random() < Math.exp(-dL / T)) { //if prob condition is satisfied then keep the config 
             for (let i = 0; i < (cities.length - 1); i++) {
@@ -108,7 +108,7 @@ function sweep(T) {
             routes[cities.length - 1].attr("x1", cities[0][0].attr("cx"))
                 .attr("y1", cities[0][0].attr("cy"));
 
-            $("#TInfo").html("T: " + Math.trunc(T));
+            $("#TInfo").html("T: " + T.toFixed(1));
             $("#currentDistInfo").html("Current Distance: " + Math.trunc(newDist));
             return;
         }
@@ -118,7 +118,7 @@ function sweep(T) {
                 cities[i] = oldCities[i];
                 routes[i] = oldRoutes[i];
             }
-            $("#TInfo").html("T: " + Math.trunc(T));
+            $("#TInfo").html("T: " + T.toFixed(1));
             $("#currentDistInfo").html("Current Distance: " + Math.trunc(oldDist));
             return;
         }
@@ -133,7 +133,7 @@ function sweep(T) {
         routes[cities.length - 1].attr("x1", cities[0][0].attr("cx"))
             .attr("y1", cities[0][0].attr("cy"));
 
-        $("#TInfo").html("T: " + Math.trunc(T));
+        $("#TInfo").html("T: " + T.toFixed(1));
         $("#currentDistInfo").html("Current Distance: " + Math.trunc(newDist));
 
         return;
@@ -149,18 +149,20 @@ function anneal() {
     }
 
     else { //special case for T = 0.1
-        sweep(0.1);
+        T = 0.1;
+        sweep(T);
         runs++;
         if (runs == maxRuns) {
             paused = 1;
-            $("#pauseButton1").html("Play")
+            $("#pauseButton1").html("Play");
+            $("#TInfo").html("T: " + 0);
         }
     }
 }
 
 function generateGeography() {
 
-    var projection = d3.geoAlbers().center([0, 60]).scale(450);
+    var projection = d3.geoAlbers().center([0, 55]).scale(450);
 
     svg.selectAll("g").remove();
     svg.selectAll("line").remove();
@@ -168,7 +170,7 @@ function generateGeography() {
     cities = [];
     routes = [];
 
-    //Draw USA
+    //Draw USA and canada 
     d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson", function (data) {
 
         //filter out geo data for everything but Canada & USA    
@@ -179,7 +181,7 @@ function generateGeography() {
             .selectAll("path")
             .data(data.features)
             .enter().append("path")
-            .attr("fill", "#2a9c0b")   //#69b3a2
+            .attr("fill", "#017318")   //#69b3a2
             .attr("d", d3.geoPath()
                 .projection(projection)
             )
@@ -202,7 +204,7 @@ function generateGeography() {
             initialDistance = T;
             maxRuns = cities.length*30;
             runs = 0;
-            $("#TInfo").html("T = " + Math.trunc(T));
+            $("#TInfo").html("T = " + T.toFixed(1));
             $("#distInfo").html("Current Distance = " + Math.trunc(calcDistance(cities)));
             $("#cityNumInfo").html("Number of cities: " + Math.trunc(cities.length));
             $("#startDistInfo").html("Starting distance: " + Math.trunc(initialDistance));
@@ -242,7 +244,7 @@ var svg = d3.select("#simulatedAnnealing1")
 svg.append("rect") //add blue rect for ocean
     .attr("width", "100%")
     .attr("height", "100%")
-    .attr("fill", "blue");
+    .attr("fill", "#0373fc");
 
 
 svg.append("rect") //create border
@@ -261,4 +263,4 @@ var runApp = setInterval(function () {
     if (!paused) {
         anneal();
     }
-}, 25);
+}, 10);

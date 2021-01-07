@@ -1,4 +1,4 @@
-var widthW = 980, heightW = 550; //width and height of canvas hardcoded
+var widthW = 900, heightW = 550; //width and height of canvas hardcoded w=900, h=550
 var marginW = {top: -20, right: 30, bottom: 40, left: 40}
 var citiesW = [];
 var routesW = []; 
@@ -43,7 +43,7 @@ function calcDistanceW(citiesParam) {
         let deltaLong = citiesParam[citiesParam.length-1][1][0] - citiesParam[0][1][0];
         deltaLong *= (Math.PI/180.0);
         deltaLat *= (Math.PI/180.0);
-        let a = Math.sin(deltaLat/2)*Math.sin(deltaLat/2) + Math.cos(citiesParam[0][1][1]*(Math.PI/180))*Math.cos(citiesParam[cities.length-1][1][1]*(Math.PI/180))
+        let a = Math.sin(deltaLat/2)*Math.sin(deltaLat/2) + Math.cos(citiesParam[0][1][1]*(Math.PI/180))*Math.cos(citiesParam[citiesParam.length-1][1][1]*(Math.PI/180))
                 *Math.sin(deltaLong/2)*Math.sin(deltaLong/2);
         let c = 2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
@@ -96,7 +96,7 @@ function sweepW(T) {
     let newDist = calcDistance(citiesW);
     let oldDist = calcDistance(oldCities);
     let dL = newDist - oldDist;
-    console.log("dL = " + dL);
+    
     if (dL > 0) { //if dL > 0 then the new config of cities is worse
         if (Math.random() < Math.exp(-dL / TW)) { //if prob condition is satisfied then keep the config 
             for (let i = 0; i < (citiesW.length - 1); i++) {
@@ -108,8 +108,8 @@ function sweepW(T) {
             routesW[citiesW.length - 1].attr("x1", citiesW[0][0].attr("cx"))
                 .attr("y1", citiesW[0][0].attr("cy"));
 
-            $("#TInfo").html("T: " + Math.trunc(TW));
-            $("#currentDistInfo").html("Current Distance: " + Math.trunc(newDist));
+            $("#TInfo2").html("T: " + TW.toFixed(1));
+            $("#currentDistInfo2").html("Current Distance: " + Math.trunc(newDist));
             return;
         }
         else { // else go back to old config
@@ -118,8 +118,8 @@ function sweepW(T) {
                 citiesW[i] = oldCities[i];
                 routesW[i] = oldRoutes[i];
             }
-            $("#TInfo").html("T: " + Math.trunc(TW));
-            $("#currentDistInfo").html("Current Distance: " + Math.trunc(oldDist));
+            $("#TInfo2").html("T: " + TW.toFixed(1));
+            $("#currentDistInfo2").html("Current Distance: " + Math.trunc(oldDist));
             return;
         }
     }
@@ -133,8 +133,8 @@ function sweepW(T) {
         routesW[citiesW.length - 1].attr("x1", citiesW[0][0].attr("cx"))
             .attr("y1", citiesW[0][0].attr("cy"));
 
-        $("#TInfo").html("T: " + Math.trunc(TW));
-        $("#currentDistInfo").html("Current Distance: " + Math.trunc(newDist));
+        $("#TInfo2").html("T: " + TW.toFixed(1));
+        $("#currentDistInfo2").html("Current Distance: " + Math.trunc(newDist));
 
         return;
 
@@ -144,23 +144,25 @@ function sweepW(T) {
 
 function annealW() {
     if (TW > 0.1) {
-        sweep(TW);
+        sweepW(TW);
         TW *= 0.85;
     }
 
     else { //special case for T = 0.1
-        sweep(0.1);
+        T = 0.1;
+        sweepW(T);
         runsW++;
         if (runsW == maxRunsW) {
             pausedW = 1;
-            $("#pauseButton2").html("Play")
+            $("#pauseButton2").html("Play");
+            $("#TInfo2").html("T: " + 0);
         }
     }
 }
 
 function generateGeographyW() {
 
-    var projectionW = d3.geoMercator().center([0, 60]).scale(100);
+    var projectionW = d3.geoMercator().center([10, 50]).scale(130);
 
     svgW.selectAll("g").remove();
     svgW.selectAll("line").remove();
@@ -168,15 +170,17 @@ function generateGeographyW() {
     citiesW = [];
     routesW = [];
 
-    //Draw USA
+    //Draw world
     d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson", function (data) {
+    // get everything but antarctica
+    data.features = data.features.filter(function (d) { return (d.properties.name != "Antarctica") });
 
         // Draw the map
         svgW.append("g")
             .selectAll("path")
             .data(data.features)
             .enter().append("path")
-            .attr("fill", "#2a9c0b")   //#69b3a2
+            .attr("fill", "#017318")   //#69b3a2
             .attr("d", d3.geoPath()
                 .projection(projectionW)
             )
@@ -186,8 +190,8 @@ function generateGeographyW() {
             /*IMPORTANT - format of cities arrays is an array of arrays, the second array in each entry is an array of the lat and long of the
              of the city being added. This is because you will need this to calculate the distance between cities later*/
             for (let i = 0; i < data.length; i++) {
-                if (Math.floor(Math.random() * 70) < 2) {
-                    citiesW.push([svg.append("circle")
+                if (Math.floor(Math.random() * 90) < 2) {
+                    citiesW.push([svgW.append("circle")
                         .attr("cx", projectionW([data[i].lon, data[i].lat])[0])
                         .attr("cy", projectionW([data[i].lon, data[i].lat])[1])
                         .attr("r", 2)
@@ -199,11 +203,11 @@ function generateGeographyW() {
             initialDistanceW = TW;
             maxRunsW = citiesW.length*30;
             runsW = 0;
-            $("#TInfo").html("T = " + Math.trunc(TW));
-            $("#distInfo").html("Current Distance = " + Math.trunc(calcDistance(citiesW)));
-            $("#cityNumInfo").html("Number of cities: " + Math.trunc(citiesW.length));
-            $("#startDistInfo").html("Starting distance: " + Math.trunc(initialDistanceW));
-            $("#currentDistInfo").html("Current Distance: &#8734;");
+            $("#TInfo2").html("T = " + TW.toFixed(1));
+            $("#distInfo2").html("Current Distance = " + Math.trunc(calcDistance(citiesW)));
+            $("#cityNumInfo2").html("Number of cities: " + Math.trunc(citiesW.length));
+            $("#startDistInfo2").html("Starting distance: " + Math.trunc(initialDistanceW));
+            $("#currentDistInfo2").html("Current Distance: &#8734;"); 
 
             for (let i = 0; i < (citiesW.length - 1); i++) {
                 routesW.push(svgW.append('line')
@@ -215,7 +219,7 @@ function generateGeographyW() {
                     .attr('stroke-width', '1px'));
             }
 
-            routes.push(svgW.append('line') //connect last city to first city since thats part of the problem
+            routesW.push(svgW.append('line') //connect last city to first city since thats part of the problem
                 .attr('x2', citiesW[citiesW.length - 1][0].attr("cx"))
                 .attr('y2', citiesW[citiesW.length - 1][0].attr("cy"))
                 .attr('x1', citiesW[0][0].attr("cx"))
@@ -239,7 +243,7 @@ var svgW = d3.select("#simulatedAnnealing2")
 svgW.append("rect") //add blue rect for ocean
     .attr("width", "100%")
     .attr("height", "100%")
-    .attr("fill", "blue");
+    .attr("fill", "#0373fc");
 
 
 svgW.append("rect") //create border
@@ -258,4 +262,4 @@ var runWorldApp = setInterval(function () {
     if (!pausedW) {
         annealW();
     }
-}, 25);
+}, 10);
