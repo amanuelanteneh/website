@@ -9,9 +9,12 @@
 
     <link rel="icon" href="{{ url_for('static', filename='img/sphereIcon.png') }}">
 
-    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://unpkg.com/d3-3d/build/d3-3d.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="{{url_for('static', filename='js/riemannSphereScript.js')}}" defer></script>
 
 </head>
 
@@ -25,6 +28,26 @@ img {
 }
 p {
     font-size: 3vmin;
+    line-height: 1.8; 
+    text-align: left; 
+}
+button {
+    display: inline;
+    margin-left: 2rem;
+}
+
+.simBlock {
+    display: flex;
+    flex-direction: column;
+}
+
+svg {
+    position: absolute;
+}
+
+.section {
+    display: inline-flex;
+    padding: 1rem;
 }
 @media (max-width: 850px) { /* media query's come after the stuff you're changing 
                                 has been given css properties */
@@ -41,20 +64,28 @@ p {
 <body lang=EN-US link=blue vlink="#954F72" style="background-color: #333333; margin:150;padding:0"> <!--For Dark mode-->
 <font color="white"> <!--For Dark mode-->
 <a href="/#simulatePage" style="color:white; font-size: 2.8vmin; border-radius: 1px; border: 1px solid white; padding: 4px; text-decoration: none; font-family: 'Courier New', Courier, monospace;">Back to simulators</a> <!--for leaving document-->    
-
+<div class="simBlock">
 <p style="line-height: 1.8; text-align: center;">
     In complex analysis the Riemann Sphere is a model of the extended complex plane. The extended
     complex plane being the union of the complex plane and infinity \( \mathbb{C} \cup \{ \infty \} \)
 </p>
 <img src="{{url_for('static', filename='img/riemannDiagram.png')}}">
+</div>
+<div class="simBlock">
+    <div class="section">
+    <p>
+        <br>Below is a simulator that demonstrates the relationship between functions
+        and their projections on the Riemann Sphere:<br><br>
+    </p>
+    </div>
+    <div class="section">
+        <canvas id="canvas"></canvas>
+        <svg id="riemannSphere" width="960" height="500"></svg>
+    </div>
 
+</div>
 
 </body>
-
-
-
-
-
 
 
 </html>
