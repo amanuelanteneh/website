@@ -27,7 +27,7 @@ var slider2Info = document.getElementById("slider2Info");
 $("#slider1").on("change", function() { 
     switch (funcNumber) {
     case 0: m = Number($(this).val());
-            slider1Info.HTML = "m: " + m;
+            slider1Info.innerHTML = "m: " + m;
             break;
     case 1: r = Number($(this).val());
             slider1Info.innerHTML = "r: " + r;
