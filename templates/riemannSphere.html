@@ -9,10 +9,9 @@
 
     <link rel="icon" href="{{ url_for('static', filename='img/sphereIcon.png') }}">
 
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-    <script src="https://unpkg.com/d3-3d/build/d3-3d.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="{{url_for('static', filename='js/riemannSphereScript.js')}}" defer></script>
 
@@ -41,6 +40,11 @@ button {
     flex-direction: column;
 }
 
+input, output { /* to align slider output values w slider */
+        display: inline-block;
+        vertical-align: middle; 
+}
+
 svg {
     position: absolute;
 }
@@ -67,20 +71,35 @@ svg {
 <div class="simBlock">
 <p style="line-height: 1.8; text-align: center;">
     In complex analysis the Riemann Sphere is a model of the extended complex plane. The extended
-    complex plane being the union of the complex plane and infinity \( \mathbb{C} \cup \{ \infty \} \)
+    complex plane being the union of the complex plane and infinity \( \mathbb{C} \cup \{ \infty \} \).
+    The Riemann sphere is represented as the unit sphere sliced in half by the complex plane as shown below.
 </p>
 <img src="{{url_for('static', filename='img/riemannDiagram.png')}}">
 </div>
 <div class="simBlock">
     <div class="section">
     <p>
-        <br>Below is a simulator that demonstrates the relationship between functions
+        <br>Every point on the complex plane (\(z = x + iy\)) can be mapped to a point on the sphere, this point is called
+        the stereographic projection of \(z\). The projection of the point can be found by drawing a line from the point
+        on the plane to the point on the North pole of the sphere (the point at \( \infty \)) with the coordinates
+        \((0,0,1)\). The projection on the sphere is where the line touches the sphere. It's possible to find exact equations for
+        the coordinates \( (x_1,x_2,x_3) \) of the projection for any point \( (x,y,0) \) on the complex plane as:
+        \[ x_1 = Re(z) \frac{2}{|z|^2 +1 },\quad x_2 = Im(z) \frac{2}{|z|^2 + 1}, \quad x_3 = \frac{|z|^2 - 1}{|z|^2 + 1} \]
+        
+        Below is a simulator that demonstrates the relationship between functions
         and their projections on the Riemann Sphere:<br><br>
     </p>
     </div>
     <div class="section">
-        <canvas id="canvas"></canvas>
-        <svg id="riemannSphere" width="960" height="500"></svg>
+        <input type = "range" min="0" max="2" value="1" step="0.2" id="slopeSlider"/>
+        <output id="slopeInfo">Slope = 1</output>
+    </div>
+    <div class="section">
+        <input type = "range" min="0" max="2" value="0" step="0.2" id="interceptSlider"/>
+        <output id="interceptInfo">Y-intercept = 0</output>    
+    </div>
+    <div class="section">
+        <div id="riemannSphere"></div> 
     </div>
 
 </div>
