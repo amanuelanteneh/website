@@ -11,7 +11,7 @@
 
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js" defer></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="{{url_for('static', filename='js/riemannSphereScript.js')}}" defer></script>
 
@@ -40,9 +40,15 @@ button {
     flex-direction: column;
 }
 
-input, output { /* to align slider output values w slider */
+input { /* to align slider output values w slider */
         display: inline-block;
-        vertical-align: middle; 
+        vertical-align: middle;
+        margin-left: 13rem; 
+}
+
+output {
+        display: inline-block;
+        vertical-align: middle;   
 }
 
 svg {
@@ -91,12 +97,23 @@ svg {
     </p>
     </div>
     <div class="section">
-        <input type = "range" min="-2" max="2" value="1" step="0.2" id="slopeSlider"/>
-        <output id="slopeInfo">Slope = 1</output>
+        <select id="funcs">
+            <option value="0">Line (mx + b)</option>
+            <option value="1">Circle</option>
+            <option value="2">Parabola (ax^2 + b)</option>
+            <option value="3">Sine</option>
+            <option value="4">Tangent</option>
+            <option value="5">Absolute Value</option>           
+            <option value="6">Secant</option>
+        </select>
     </div>
     <div class="section">
-        <input type = "range" min="-2" max="2" value="0" step="0.2" id="interceptSlider"/>
-        <output id="interceptInfo">Y-intercept = 0</output>    
+        <input type = "range" min="-2" max="2" value="1" step="0.2" id="slider1"/>
+        <output id="slider1Info">m: 1</output>
+    </div>
+    <div class="section">
+        <input type = "range" min="-2" max="2" value="0" step="0.2" id="slider2"/>
+        <output id="slider2Info">b: 0</output>    
     </div>
     <div class="section">
         <div id="riemannSphere"></div> 
