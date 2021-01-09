@@ -28,32 +28,32 @@
             </a>
             <div class="navButtons">
             <ul class="button-list"> <!--Naming this ul so the css for it doesn't overlap with the css for the dropdown menu ul-->
-                <li id="home"><a href="#homePage">
+                <li class="navBar-li" id="home"><a href="#homePage"> <!--Setting class of these li's to differentiate them from the li on the simulate page in the js file and setting the id for a similar reason -->
                     <img src="{{url_for('static', filename='img/homeIcon.png')}}" alt="home" width="25" height="25">
                     Home
                     </a>
                 </li>
-                <li id="about"><a href="#aboutPage">
+                <li class="navBar-li" id="about"><a href="#aboutPage">
                     <img src="{{url_for('static', filename='img/meIcon.png')}}" alt="about" width="25" height="25">
                     About
                     </a>
                 </li>
-                <li id="simulate"><a href="#simulatePage">
+                <li class="navBar-li" id="simulate"><a href="#simulatePage">
                     <img src="{{url_for('static', filename='img/jsIcon.png')}}" alt="simulators" width="25" height="25"> 
                     Simulators
                     </a>
                 </li>                
-                <li id="github" onclick="window.open('https://github.com/amanuelanteneh')"><a>
+                <li class="navBar-li" id="github" onclick="window.open('https://github.com/amanuelanteneh')"><a>
                     <img src="{{url_for('static', filename='img/githubIcon.png')}}" alt="github" width="25" height="25">
                     Github
                     </a>
                 </li>
-                <li id="resume" onclick="window.open('{{url_for('static', filename='Resume.pdf')}}')"><a>
+                <li class="navBar-li" id="resume" onclick="window.open('{{url_for('static', filename='Resume.pdf')}}')"><a>
                     <img src="{{url_for('static', filename='img/CVIcon.png')}}" alt="CV" width="25" height="25">
                     Resume
                     </a>
                 </li>
-                <li id="personal"><a href="#">
+                <li class="navBar-li" id="personal"><a href="#">
                     <img src="{{url_for('static', filename='img/arrowDownIcon.png')}}" alt="other" width="15" height="15"> 
                     Personal
                 </a>

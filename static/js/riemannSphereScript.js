@@ -24,8 +24,8 @@ var slider2 = document.getElementById("slider2");
 var slider1Info = document.getElementById("slider1Info"); 
 var slider2Info = document.getElementById("slider2Info");
 
-//do on input instead of on change so that it updates as the slider is moved not just when its released
-$("#slider1").on("input", function() { 
+//do on change instead of input bc it's a bit laggy otherwise
+$("#slider1").on("change", function() { 
     switch (funcNumber) {
     case 0: m = Number($(this).val());
             slider1Info.innerHTML = "m: " + m;
@@ -41,7 +41,7 @@ $("#slider1").on("input", function() {
     update();
 });
 
-$("#slider2").on("input", function() { 
+$("#slider2").on("change", function() { 
     switch (funcNumber) {
     case 0: b = Number($(this).val());
             slider2Info.innerHTML = "b: " + b;
@@ -55,7 +55,7 @@ $("#slider2").on("input", function() {
     update();
 });
 
-$("#funcs").on("change", function() {
+$("#funcs").on("input", function() {
     funcNumber = Number($(this).val());
     if (funcNumber == 1) {
         r = 1;
