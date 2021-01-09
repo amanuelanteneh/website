@@ -197,7 +197,7 @@ function generateGeographyW() {
             $("#distInfo2").html("Current Distance = " + Math.trunc(calcDistance(citiesW)));
             $("#cityNumInfo2").html("Number of cities: " + Math.trunc(citiesW.length));
             $("#startDistInfo2").html("Starting distance: " + Math.trunc(initialDistanceW));
-            $("#currentDistInfo2").html("Current Distance: &#8734;"); 
+            $("#currentDistInfo2").html("Current Distance: " + Math.trunc(initialDistanceW)); 
 
             for (let i = 0; i < (citiesW.length - 1); i++) {
                 routesW.push(svgW.append('line')
