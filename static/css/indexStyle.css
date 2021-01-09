@@ -262,9 +262,6 @@ padding: 1rem;
 
 @media (max-width: 940px) { /* media query's come after the stuff you're changing 
                                 has been given css properties */
-    header {
-      position: absolute;
-    }
     #homePage {
       background-image: url("/static/img/image18.png");
     }
