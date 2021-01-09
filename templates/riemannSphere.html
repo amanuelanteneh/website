@@ -48,7 +48,9 @@ input { /* to align slider output values w slider */
 
 output {
         display: inline-block;
-        vertical-align: middle;   
+        vertical-align: middle; 
+        font-family: 'Courier New', Courier, monospace;  
+        margin-left: 1rem;
 }
 
 svg {
@@ -59,6 +61,41 @@ svg {
     display: inline-flex;
     padding: 1rem;
 }
+/* begin slider style */
+.slider {
+  -webkit-appearance: none;
+  height: 5px;
+  background: black;
+  outline: white; 
+  /*opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;*/
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  outline: white;
+  background: white;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  outline: white;
+  background: white;
+  cursor: pointer;
+}
+/* End slider style */
+#funcs {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #333333;
+    color: white;
+}
+
 @media (max-width: 850px) { /* media query's come after the stuff you're changing 
                                 has been given css properties */
     img {
@@ -77,7 +114,7 @@ svg {
 <div class="simBlock">
 <p style="line-height: 1.8; text-align: center;">
     In complex analysis the Riemann Sphere is a model of the extended complex plane. The extended
-    complex plane being the union of the complex plane and infinity \( \mathbb{C} \cup \{ \infty \} \).
+    complex plane being the union of the complex plane and infinity denoted as \( \mathbb{C} \cup \{ \infty \} \).
     The Riemann sphere is represented as the unit sphere sliced in half by the complex plane as shown below.
 </p>
 <img src="{{url_for('static', filename='img/riemannDiagram.png')}}">
@@ -101,18 +138,20 @@ svg {
             <option value="0">Line (mx + b)</option>
             <option value="1">Circle</option>
             <option value="2">Parabola (ax^2 + b)</option>
-            <option value="3">Sine</option>
-            <option value="4">Tangent</option>
-            <option value="5">Absolute Value</option>           
-            <option value="6">Secant</option>
+            <option value="3">Sine (sin(x))</option>
+            <option value="4">Tangent (tan(x))</option>
+            <option value="5">Absolute Value (|x|)</option>           
+            <option value="6">Secant (sec(x))</option>
+            <option value="7">Exponential (e^x)</option>
+            <option value="8">Floor</option>            
         </select>
     </div>
     <div class="section">
-        <input type = "range" min="-2" max="2" value="1" step="0.2" id="slider1"/>
+        <input type = "range" min="-2" max="2" value="1" step="0.2" id="slider1" class="slider"/>
         <output id="slider1Info">m: 1</output>
     </div>
     <div class="section">
-        <input type = "range" min="-2" max="2" value="0" step="0.2" id="slider2"/>
+        <input type = "range" min="-2" max="2" value="0" step="0.2" id="slider2" class="slider"/>
         <output id="slider2Info">b: 0</output>    
     </div>
     <div class="section">

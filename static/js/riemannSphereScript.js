@@ -1,4 +1,4 @@
-var xSphere = [];
+var xSphere = []; //arrays to hold coordinate values
 var ySphere = [];
 var zSphere = [];
 var xFunc = [];
@@ -11,7 +11,7 @@ var dataFunc;
 var dataProj;
 var phiArr = [];
 var thetaArr = [];
-var funcNumber = 0;
+var funcNumber = 0; //this is to determine what function is being graphed
 var m = 1; //slope
 var b = 0; // y-intercept
 var r = 1; //rad of circle
@@ -24,7 +24,8 @@ var slider2 = document.getElementById("slider2");
 var slider1Info = document.getElementById("slider1Info"); 
 var slider2Info = document.getElementById("slider2Info");
 
-$("#slider1").on("change", function() { 
+//do on input instead of on change so that it updates as the slider is moved not just when its released
+$("#slider1").on("input", function() { 
     switch (funcNumber) {
     case 0: m = Number($(this).val());
             slider1Info.innerHTML = "m: " + m;
@@ -40,7 +41,7 @@ $("#slider1").on("change", function() {
     update();
 });
 
-$("#slider2").on("change", function() { 
+$("#slider2").on("input", function() { 
     switch (funcNumber) {
     case 0: b = Number($(this).val());
             slider2Info.innerHTML = "b: " + b;
@@ -114,6 +115,8 @@ function theFunction(x) {
         case 4: return (Math.tan(x));
         case 5: return (Math.abs(x));
         case 6: return (1 / Math.cos(x));
+        case 7: return (Math.exp(x));
+        case 8: return (Math.floor(x));
         default: return (NaN);
     }
 }
@@ -132,14 +135,14 @@ function update() {
             xFunc.push(x);
         }
     }
-    else { // if making a circle generate points using polar coordinates cuz it's easier
+    else { // if making a circle generate points using polar coordinates cuz it's easier and less buggy
         for (i=0; i<thetaArr.length; i++){
             zFunc.push(0);
             yFunc.push(r*Math.sin(thetaArr[i]));      
             xFunc.push(r*Math.cos(thetaArr[i]));
         } 
     }
-    if (funcNumber == 1 || funcNumber == 4 || funcNumber == 6) {
+    if (funcNumber == 1 || funcNumber == 4 || funcNumber == 6) { //shorter interval for these funcs makes projection smoother without having to change number of steps in getProj function
         start = -10;
         end = 10;
     }
@@ -178,7 +181,7 @@ function update() {
     Plotly.addTraces('riemannSphere', dataProj);
 
 }
-
+//just makes an array from start to stop with numPoints in it
 function makeInterval(startValue, stopValue, numPoints) {
     var arr = [];
     var step = (stopValue - startValue) / (numPoints - 1);
@@ -187,7 +190,7 @@ function makeInterval(startValue, stopValue, numPoints) {
     }
     return arr;
 }
-
+// calculates projection of current func based on funcNumber
 function getProjection(a, b) {
     xProj = [];
     yProj = [];
@@ -201,6 +204,7 @@ function getProjection(a, b) {
             zProj.push(((x * x + y * y) - 1) / ((x * x + y * y) + 1));
         }
     }
+    //for circle just use the actual arrays since the function doesn't go on to infinity 
     else {
         for (i = 0; i < xFunc.length; i++) {
             xProj.push(xFunc[i] * (2 / ((xFunc[i] * xFunc[i] + yFunc[i] * yFunc[i]) + 1)));
