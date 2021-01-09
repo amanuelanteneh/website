@@ -7,7 +7,7 @@ var theta = 50 * (Math.PI/180);
 var thetaDot = 0;
 var xBallSmallAngle = l*Math.sin(thetaInit);
 var yBallSmallAngle = -l*Math.cos(thetaInit);
-var xBallExact = l*Math.sin(thetaInit);
+var xBallExact = l*Math.sin(thetaInit); 
 var yBallExact = -l*Math.cos(thetaInit);
 var t = 0;
 var stepSize = 0.01;
@@ -17,7 +17,7 @@ $("#thetaSlider").on("change", function() {
     paused = 1;
     theta = $(this).val() * (Math.PI/180);
     thetaInit = theta;
-    $("#thetaInfo").html("&#952; = " + $(this).val());
+    $("#thetaInfo").html("&#952;: " + $(this).val());
     thetaDot = 0;
     xBallSmallAngle = l*Math.sin(thetaInit);
     yBallSmallAngle = -l*Math.cos(thetaInit);
@@ -48,9 +48,9 @@ $("#thetaSlider").on("change", function() {
 
 });
 
-$("#lengthSlider").on("change", function() {
+$("#lengthSlider").on("input", function() {
     l = $(this).val();
-    thetaInit = theta;
+    /*thetaInit = theta;
     thetaDot = 0;
     xBallSmallAngle = l*Math.sin(thetaInit);
     yBallSmallAngle = -l*Math.cos(thetaInit);
@@ -75,7 +75,7 @@ $("#lengthSlider").on("change", function() {
     d3.select('#ballSmallAngle')
         .attr('cx', xAxis(xBallSmallAngle))
         .attr('cy', yAxis(yBallSmallAngle));
-  
+  */
     $("#lengthInfo").html("Length: " + $(this).val());
 });
 

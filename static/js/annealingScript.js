@@ -170,13 +170,13 @@ function generateGeography() {
             .selectAll("path")
             .data(data.features)
             .enter().append("path")
-            .attr("fill", "#017318")   //#69b3a2
+            .attr("fill", "#017318") 
             .attr("d", d3.geoPath()
                 .projection(projection)
             )
             .style("stroke", "black");
 
-        d3.csv("static/citiesUSA.csv", function (data) { //read csv file
+        d3.csv("static/data/citiesUSA.csv", function (data) { //read csv file
             /* IMPORTANT - format of cities arrays is an array of arrays, the second array in each entry is an array of the lat and long of the
              of the city being added. This is because you will need this to calculate the distance between cities later */
             for (let i = 0; i < data.length; i++) {
@@ -239,7 +239,6 @@ svg.append("rect") //add blue rect for ocean
     .attr("width", "100%")
     .attr("height", "100%")
     .attr("fill", "#0373fc");
-
 
 svg.append("rect") //create border
     .attr("x", 0)

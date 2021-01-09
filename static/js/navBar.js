@@ -4,6 +4,7 @@ hamMenu.addEventListener('click', () => {
     navButtons.classList.toggle('active');
 });
 
+//to make menu collapse once an option is picked after its been expanded on mobile
 $("li").on("click", function() {
     console.log("html =" + $(this).attr("id") );
     if ($(this).attr("id") != "personal") {
