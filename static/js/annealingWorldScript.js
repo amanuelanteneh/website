@@ -51,20 +51,11 @@ function calcDistanceW(citiesParam) {
         return(totalDistance);
 }
 
-function calcTMaxW() {
-    T = calcDistanceW(citiesW);
-    for (let i=0; i<2000; i++) {
-        let randIndex1 = Math.floor(Math.random() * citiesW.length); //get random int from 0 to cities.length-1     
-        let randIndex2 = Math.floor(Math.random() * citiesW.length);       
-        //don't need to touch routes arr bc it gets created after this func is called
-        [citiesW[randIndex1], citiesW[randIndex2]] = [citiesW[randIndex2], citiesW[randIndex1]]; 
-
-        let TMax = calcDistance(citiesW);
-        if ( TMax > TW) {
-            TW = TMax;
-        }
+function shuffleW(a) {
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
     }
-    TW *= (10*citiesW.length);
 }
 
 function reverseSubarrayW(citiesParam, routesParam) {
@@ -108,7 +99,7 @@ function sweepW(T) {
             routesW[citiesW.length - 1].attr("x1", citiesW[0][0].attr("cx"))
                 .attr("y1", citiesW[0][0].attr("cy"));
 
-            $("#TInfo2").html("T: " + TW.toFixed(1));
+            $("#TInfo2").html("T: " + TW.toFixed(5));
             $("#currentDistInfo2").html("Current Distance: " + Math.trunc(newDist));
             return;
         }
@@ -118,7 +109,7 @@ function sweepW(T) {
                 citiesW[i] = oldCities[i];
                 routesW[i] = oldRoutes[i];
             }
-            $("#TInfo2").html("T: " + TW.toFixed(1));
+            $("#TInfo2").html("T: " + TW.toFixed(5));
             $("#currentDistInfo2").html("Current Distance: " + Math.trunc(oldDist));
             return;
         }
@@ -133,7 +124,7 @@ function sweepW(T) {
         routesW[citiesW.length - 1].attr("x1", citiesW[0][0].attr("cx"))
             .attr("y1", citiesW[0][0].attr("cy"));
 
-        $("#TInfo2").html("T: " + TW.toFixed(1));
+        $("#TInfo2").html("T: " + TW.toFixed(5));
         $("#currentDistInfo2").html("Current Distance: " + Math.trunc(newDist));
 
         return;
@@ -145,20 +136,19 @@ function sweepW(T) {
 function annealW() {
     if (TW > 0.1) {
         sweepW(TW);
-        TW *= 0.85;
+        if (runsW > maxRunsW) {
+            TW *= 0.90;
+            runsW = 0;
+            }
+            runsW++;
     }
 
-    else { //special case for T = 0.1
-        T = 0.1;
-        sweepW(T);
-        runsW++;
-        if (runsW == maxRunsW) {
-            pausedW = 1;
+    else {
             $("#pauseButton2").html("Play");
             $("#TInfo2").html("T: " + 0);
-        }
     }
-}
+  }
+
 
 function generateGeographyW() {
 
@@ -198,11 +188,11 @@ function generateGeographyW() {
                         .style("fill", "#FFFFFF"), [data[i].lon, data[i].lat]]);
                 }
             }
-            TW = 0;
-            calcTMaxW(citiesW);
-            initialDistanceW = TW;
-            maxRunsW = citiesW.length*30;
+            TW = 0.900000;
+            shuffleW(citiesW);
+            maxRunsW = 2*citiesW.length;
             runsW = 0;
+            initialDistanceW = calcDistance(citiesW);
             $("#TInfo2").html("T = " + TW.toFixed(1));
             $("#distInfo2").html("Current Distance = " + Math.trunc(calcDistance(citiesW)));
             $("#cityNumInfo2").html("Number of cities: " + Math.trunc(citiesW.length));
@@ -268,4 +258,4 @@ var runWorldApp = setInterval(function () {
     if (!pausedW) {
         annealW();
     }
-}, 10);
+}, 5);

@@ -104,7 +104,7 @@ $("#funcs").on("change", function() {
     update();
 });
 
-
+/* return y-vale based on funNumber */
 function theFunction(x) {
     switch (funcNumber) {
         case 0: return (m * x + b);
@@ -142,6 +142,10 @@ function update() {
     if (funcNumber == 1 || funcNumber == 4 || funcNumber == 6) {
         start = -10;
         end = 10;
+    }
+    else {
+        start = -30;
+        end = 30;
     }
     getProjection(start, end);
     dataFunc = [{
@@ -208,6 +212,7 @@ function getProjection(a, b) {
     }
 
 }
+
 /* Start making sphere */
 phiArr = makeInterval(0, Math.PI / 2, 35); //make array of values from [0, Pi/2] with 25 values
 thetaArr = makeInterval(0, 2 * Math.PI, 35); //ibid
@@ -293,6 +298,7 @@ var pointAtInf = [{
 Plotly.addTraces('riemannSphere', pointAtInf);
 /*End point at infinity*/
 
+/* Make initial function and projection */
 for (x = -1; x < 1; x += 0.01) {
     zFunc.push(0);
     yFunc.push(theFunction(x));

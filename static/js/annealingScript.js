@@ -51,20 +51,11 @@ function calcDistance(citiesParam) {
         return(totalDistance);
 }
 
-function calcTMax() {
-    T = calcDistance(cities);
-    for (let i=0; i<2000; i++) {
-        let randIndex1 = Math.floor(Math.random() * cities.length); //get random int from 0 to cities.length-1     
-        let randIndex2 = Math.floor(Math.random() * cities.length);       
-        //don't need to touch routes arr bc it gets created after this func is called
-        [cities[randIndex1], cities[randIndex2]] = [cities[randIndex2], cities[randIndex1]]; 
-
-        let TMax = calcDistance(cities);
-        if ( TMax > T) {
-            T = TMax;
-        }
+function shuffle(a) {
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
     }
-    T *= (10*cities.length);
 }
 
 function reverseSubarray(citiesParam, routesParam) {
@@ -108,7 +99,7 @@ function sweep(T) {
             routes[cities.length - 1].attr("x1", cities[0][0].attr("cx"))
                 .attr("y1", cities[0][0].attr("cy"));
 
-            $("#TInfo").html("T: " + T.toFixed(1));
+            $("#TInfo").html("T: " + T.toFixed(5));
             $("#currentDistInfo").html("Current Distance: " + Math.trunc(newDist));
             return;
         }
@@ -118,7 +109,7 @@ function sweep(T) {
                 cities[i] = oldCities[i];
                 routes[i] = oldRoutes[i];
             }
-            $("#TInfo").html("T: " + T.toFixed(1));
+            $("#TInfo").html("T: " + T.toFixed(5));
             $("#currentDistInfo").html("Current Distance: " + Math.trunc(oldDist));
             return;
         }
@@ -133,7 +124,7 @@ function sweep(T) {
         routes[cities.length - 1].attr("x1", cities[0][0].attr("cx"))
             .attr("y1", cities[0][0].attr("cy"));
 
-        $("#TInfo").html("T: " + T.toFixed(1));
+        $("#TInfo").html("T: " + T.toFixed(5));
         $("#currentDistInfo").html("Current Distance: " + Math.trunc(newDist));
 
         return;
@@ -143,20 +134,18 @@ function sweep(T) {
 }
 
 function anneal() {
-    if (T > 0.1) {
+    if (T > 0.001) {
         sweep(T);
-        T *= 0.85;
-    }
-
-    else { //special case for T = 0.1
-        T = 0.1;
-        sweep(T);
-        runs++;
-        if (runs == maxRuns) {
-            paused = 1;
-            $("#pauseButton1").html("Play");
-            $("#TInfo").html("T: " + 0);
+        if (runs > maxRuns) {
+        T *= 0.90;
+        runs = 0;
         }
+        runs++;
+    }
+    else {
+            $("#pauseButton1").html("Play");
+            $("#TInfo1").html("T: " + 0);
+
     }
 }
 
@@ -188,8 +177,8 @@ function generateGeography() {
             .style("stroke", "black");
 
         d3.csv("static/citiesUSA.csv", function (data) { //read csv file
-            /*IMPORTANT - format of cities arrays is an array of arrays, the second array in each entry is an array of the lat and long of the
-             of the city being added. This is because you will need this to calculate the distance between cities later*/
+            /* IMPORTANT - format of cities arrays is an array of arrays, the second array in each entry is an array of the lat and long of the
+             of the city being added. This is because you will need this to calculate the distance between cities later */
             for (let i = 0; i < data.length; i++) {
                 if (Math.floor(Math.random() * 70) < 2) {
                     cities.push([svg.append("circle")
@@ -199,12 +188,12 @@ function generateGeography() {
                         .style("fill", "#FFFFFF"), [data[i].lon, data[i].lat]]);
                 }
             }
-            T = 0;
-            calcTMax(cities);
-            initialDistance = T;
-            maxRuns = cities.length*30;
+            T = 0.90000;
+            shuffle(cities);
+            maxRuns = 2*cities.length;
             runs = 0;
-            $("#TInfo").html("T = " + T.toFixed(1));
+            initialDistance = calcDistance(cities);
+            $("#TInfo").html("T = " + T.toFixed(5));
             $("#distInfo").html("Current Distance = " + Math.trunc(calcDistance(cities)));
             $("#cityNumInfo").html("Number of cities: " + Math.trunc(cities.length));
             $("#startDistInfo").html("Starting distance: " + Math.trunc(initialDistance));
@@ -268,4 +257,4 @@ var runApp = setInterval(function () {
     if (!paused) {
         anneal();
     }
-}, 10);
+}, 5);
