@@ -117,6 +117,8 @@ function theFunction(x) {
         case 6: return (1 / Math.cos(x));
         case 7: return (Math.exp(x));
         case 8: return (Math.floor(x));
+        case 9: return (Math.ceil(x));
+        case 10: return(Math.log(x+1));
         default: return (NaN);
     }
 }
@@ -218,8 +220,8 @@ function getProjection(a, b) {
 }
 
 /* Start making sphere */
-phiArr = makeInterval(0, Math.PI / 2, 35); //make array of values from [0, Pi/2] with 25 values
-thetaArr = makeInterval(0, 2 * Math.PI, 35); //ibid
+phiArr = makeInterval(0, Math.PI / 2, 30); //make array of values from [0, Pi/2] with 25 values
+thetaArr = makeInterval(0, 2 * Math.PI, 30); //ibid
 
 for (i = 0; i < thetaArr.length; i++) {
     for (j = 0; j < phiArr.length; j++) {
@@ -272,7 +274,7 @@ var layout = {
     },
     font: {
         family: 'Courier New, monospace',
-        size: 12,
+        size: 14,
         color: '#FFFFFF'
     },
     showlegend: true,

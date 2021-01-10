@@ -40,6 +40,13 @@ var pausedC = 1;
 
 $("#pauseButton2").click(function() {
     pausedC = !pausedC;
+    if (pausedC) {
+        $("#pauseButton2").html("Play");
+    }
+    else {
+        $("#pauseButton2").html("Pause");       
+    }
+
 });
 
 $("#resetButton2").click( reset );
@@ -47,6 +54,8 @@ $("#resetButton2").click( reset );
 
 function reset() {
 
+$("#pauseButton2").html("Play");
+    
 pausedC = 1;
 
 initialConditions = [90 * (Math.PI/180), 170 * (Math.PI/180), 0, 0,

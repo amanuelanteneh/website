@@ -137,23 +137,22 @@ function anneal() {
     if (T > 0.001) {
         sweep(T);
         if (runs > maxRuns) {
-        T *= 0.90;
-        runs = 0;
+            T *= 0.90;
+            runs = 0;
         }
         runs++;
     }
     else {
-            $("#pauseButton1").html("Play");
-            $("#TInfo1").html("T: " + 0);
-
+        $("#pauseButton1").html("Done");
+        $("#TInfo1").html("T: " + 0);
     }
 }
 
 function generateGeography() {
-
+    //using geoAlbers projection
     var projection = d3.geoAlbers().center([0, 55]).scale(450);
 
-    svg.selectAll("g").remove();
+    svg.selectAll("g").remove(); //to get rid of old map if there is one
     svg.selectAll("line").remove();
     svg.selectAll("circle").remove();
     cities = [];
@@ -170,15 +169,16 @@ function generateGeography() {
             .selectAll("path")
             .data(data.features)
             .enter().append("path")
-            .attr("fill", "#017318") 
+            .attr("fill", "#017318")
             .attr("d", d3.geoPath()
                 .projection(projection)
             )
             .style("stroke", "black");
 
-        d3.csv("static/data/citiesUSA.csv", function (data) { //read csv file
+        d3.csv("static/data/citiesUSA.csv", function (data) { //read csv file, must read in func that makes map or else map will overlay onto the circles for some reason
             /* IMPORTANT - format of cities arrays is an array of arrays, the second array in each entry is an array of the lat and long of the
-             of the city being added. This is because you will need this to calculate the distance between cities later */
+             of the city being added. This is because you will need this to calculate the distance between cities later and we can't use the position of the
+             circle on the map bc that's scaled */
             for (let i = 0; i < data.length; i++) {
                 if (Math.floor(Math.random() * 70) < 2) {
                     cities.push([svg.append("circle")
@@ -190,7 +190,7 @@ function generateGeography() {
             }
             T = 0.90000;
             shuffle(cities);
-            maxRuns = 2*cities.length;
+            maxRuns = 2 * cities.length;
             runs = 0;
             initialDistance = calcDistance(cities);
             $("#TInfo").html("T = " + T.toFixed(5));
@@ -232,7 +232,7 @@ var context = canvas.node().getContext("2d"); //get 2D context
 var svg = d3.select("#simulatedAnnealing1")
     .attr("width", width)
     .attr("height", height)
-    .append("g")    
+    .append("g")
     .attr("border", 1);
 
 svg.append("rect") //add blue rect for ocean
@@ -256,4 +256,4 @@ var runApp = setInterval(function () {
     if (!paused) {
         anneal();
     }
-}, 5);
+}, 2);

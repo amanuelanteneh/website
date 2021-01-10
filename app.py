@@ -49,5 +49,9 @@ def riemannSphere():
 def annealing():
     return(render_template("annealing.html"))
 
+@app.route("/Particle-in-a-Box")
+def particleInBox():
+    return(render_template("particleInBox.html"))
+
 if __name__ == "__main__":
     app.run(debug=True)

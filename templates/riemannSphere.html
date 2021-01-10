@@ -65,11 +65,10 @@ svg {
 .slider {
   -webkit-appearance: none;
   height: 5px;
-  background: black;
+  width: 340px; /* so its easier to use slider on phone */
+  margin-left: 0%;
+  background: #b9b7b7;
   outline: white; 
-  /*opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;*/
 }
 
 .slider::-webkit-slider-thumb {
@@ -77,8 +76,8 @@ svg {
   appearance: none;
   outline: white;
   background: white;
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   cursor: pointer;
 }
 
@@ -94,7 +93,9 @@ svg {
     font-family: 'Courier New', Courier, monospace;
     background-color: #333333;
     color: white;
+    font-size: 2vmin;
 }
+
 a {
     text-decoration: underline;
     color: white;
@@ -140,15 +141,17 @@ a {
     </div>
     <div class="section">
         <select id="funcs">
-            <option value="0">Line (mx + b)</option>
-            <option value="1">Circle</option>
-            <option value="2">Parabola (ax^2 + c)</option>
-            <option value="3">Sine (sin(x))</option>
-            <option value="4">Tangent (tan(x))</option>
-            <option value="5">Absolute Value (|x|)</option>           
-            <option value="6">Secant (sec(x))</option>
-            <option value="7">Exponential (e^x)</option>
-            <option value="8">Floor</option>            
+            <option value="0">Line: mx + b</option>
+            <option value="1">Circle: &#177;&#8730;(r^2 - x^2)</option>
+            <option value="2">Parabola: ax^2 + c</option>
+            <option value="3">Sine: sin(x)</option>
+            <option value="4">Tangent: tan(x)</option>
+            <option value="5">Absolute Value: |x|</option>           
+            <option value="6">Secant: sec(x)</option>
+            <option value="10">Natural Log: ln(x+1)</option>
+            <option value="7">Exponential: e^x</option>
+            <option value="9">Ceiling: &#8968;x&#8969;</option>
+            <option value="8">Floor: &#8970;x&#8971;</option>           
         </select>
     </div>
     <div class="section">

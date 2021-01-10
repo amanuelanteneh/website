@@ -144,7 +144,7 @@ function annealW() {
     }
 
     else {
-            $("#pauseButton2").html("Play");
+            $("#pauseButton2").html("Done");
             $("#TInfo2").html("T: " + 0);
     }
   }
@@ -258,4 +258,4 @@ var runWorldApp = setInterval(function () {
     if (!pausedW) {
         annealW();
     }
-}, 5);
+}, 2);

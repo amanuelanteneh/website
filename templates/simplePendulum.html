@@ -50,17 +50,33 @@ output {
         vertical-align: middle; 
         font-family: 'Courier New', Courier, monospace;  
         margin-left: 1rem;
+        font-size: 2.5vmin;
+}
+
+button {
+    display: inline;
+    margin-left: 2rem;
+    background-color: #333333;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 1px; 
+    font-size: 2.5vmin;
+    border: 1px solid white;
+    padding: 5px;
+}
+
+button:hover {
+    cursor: pointer;
 }
 
 /* begin slider style */
 .slider {
   -webkit-appearance: none;
   height: 5px;
-  background: black;
+  width: 340px; /* so its easier to use slider on phone */
+  margin-left: 0%;
+  background: #b9b7b7;
   outline: white; 
-  /*opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;*/
 }
 
 .slider::-webkit-slider-thumb {
@@ -68,8 +84,8 @@ output {
   appearance: none;
   outline: white;
   background: white;
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   cursor: pointer;
 }
 
@@ -80,7 +96,6 @@ output {
   background: white;
   cursor: pointer;
 }
-/* End slider style */
 
 a {
     text-decoration: underline;
@@ -126,9 +141,13 @@ a {
     Below is a simulation of the behavior of the two solutions: <br><br>
 </p>
 </div>
+<div class="section">
+    <button type="button" id="pauseButton">Play</button>
+</div>
+
 <div class="section" style="position: relative;">
     <input type = "range" min="0" max="95" value="50" step="1" id="thetaSlider" class="slider"/>
-    <output id="thetaInfo">&#952;: 50</output>
+    <output id="thetaInfo"><i>&#952;</i>: 50</output>
     <!--<input type = "range" min="0" max="1.3" value="1.2" step=".01" id="lengthSlider" class="slider"/>
     <output id="lengthInfo">Length: 1.2 </output> This is a bit buggy-->
 </div>

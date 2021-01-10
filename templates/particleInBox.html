@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>Particle In A Box</title>
+
+    <link rel="icon" href="{{ url_for('static', filename='img/psiIcon.png') }}">
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js" defer></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="{{url_for('static', filename='js/particleInBoxScript.js')}}" defer></script>
+
+</head>
+
+<style>
+img {
+    width: 60%; 
+    margin-left: auto; 
+    margin-right: auto; 
+    display:block; 
+    height:auto;    
+}
+p {
+    font-size: 3vmin;
+    line-height: 1.8; 
+    text-align: left; 
+}
+button {
+    display: inline;
+    margin-left: 2rem;
+}
+
+.simBlock {
+    display: flex;
+    flex-direction: column;
+}
+
+input { /* to align slider output values w slider */
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 13rem; 
+}
+
+output {
+        display: inline-block;
+        vertical-align: middle; 
+        font-family: 'Courier New', Courier, monospace;  
+        margin-left: 1rem;
+}
+
+svg {
+    position: absolute;
+}
+
+.section {
+    display: inline-flex;
+    padding: 1rem;
+}
+/* begin slider style */
+.slider {
+  -webkit-appearance: none;
+  height: 5px;
+  background: black;
+  outline: white; 
+  /*opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;*/
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  outline: white;
+  background: white;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  outline: white;
+  background: white;
+  cursor: pointer;
+}
+/* End slider style */
+#funcs {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #333333;
+    color: white;
+}
+a {
+    text-decoration: underline;
+    color: white;
+}
+
+
+@media (max-width: 850px) { /* media query's come after the stuff you're changing 
+                                has been given css properties */
+    img {
+        width: 100%; 
+        margin-left: auto; 
+        margin-right: auto; 
+        display:block; 
+        height:auto;
+        }
+}
+</style>
+
+<body lang=EN-US link=blue vlink="#954F72" style="background-color: #333333; margin:150;padding:0"> <!--For Dark mode-->
+<font color="white"> <!--For Dark mode-->
+<a href="/#simulatePage" style="color:white; font-size: 2.8vmin; border-radius: 1px; border: 1px solid white; padding: 4px; text-decoration: none; font-family: 'Courier New', Courier, monospace;">Back to simulators</a> <!--for leaving document-->    
+<div class="simBlock">
+<p style="line-height: 1.8; text-align: center;">
+    In quantum mechanics 
+</p>
+<img src="{{url_for('static', filename='img/particleInBoxDiagram.png')}}">
+</div>
+
+<div class="simblock">
+    <div class="section">
+    <p>
+        <br>The solution
+    </p>
+    </div>
+    <div class="section">
+        <div id="2dWaveFunction"></div> 
+    </div>
+</div>
+</body>
+</html>

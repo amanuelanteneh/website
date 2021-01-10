@@ -33,7 +33,18 @@ p {
 button {
     display: inline;
     margin-left: 2rem;
+    background-color: #333333; 
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 1px; 
+    font-size: 2.5vmin;
+    border: 1px solid white;
+    padding: 5px;
 }
+button:hover {
+    cursor: pointer;
+}
+
 
 .simBlock {
     display: flex;
@@ -124,7 +135,7 @@ a {
 </div>
 <div class="simBlock">
     <div class="section">
-        <button type="button" id="pauseButton1">Play/Pause</button>
+        <button type="button" id="pauseButton1">Play</button>
         <button type="button" id="resetButton1">Reset</button>
     </div>
     <div class="section">
@@ -139,7 +150,7 @@ a {
         </p>
     </div>   
     <div class="section">
-        <button type="button" id="pauseButton2">Play/Pause</button>
+        <button type="button" id="pauseButton2">Play</button>
         <button type="button" id="resetButton2">Reset</button>
     </div>
     <div class="section">

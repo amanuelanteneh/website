@@ -11,13 +11,38 @@ var xBallExact = l*Math.sin(thetaInit);
 var yBallExact = -l*Math.cos(thetaInit);
 var t = 0;
 var stepSize = 0.01;
-var paused = 0;
+var paused = 1;
+
+$("#pauseButton").click(function() {
+    paused = !paused;
+    if (paused) {
+        $("#pauseButton").html("Play");
+    }
+    else {
+        $("#pauseButton").html("Pause");       
+    }
+});
+
 
 $("#thetaSlider").on("change", function() {
     paused = 1;
+    $("#pauseButton").html("Play");
     theta = $(this).val() * (Math.PI/180);
     thetaInit = theta;
-    $("#thetaInfo").html("&#952;: " + $(this).val());
+    theta = $(this).val() * (Math.PI/180);
+    thetaInit = theta;
+    $("#thetaInfo").html("<i>&#952;</i>: " + $(this).val());    
+    reset();
+});
+
+$("#lengthSlider").on("input", function() {
+    l = $(this).val();
+    $("#lengthInfo").html("Length: " + $(this).val());
+});
+
+function reset() {
+
+    paused = 1;
     thetaDot = 0;
     xBallSmallAngle = l*Math.sin(thetaInit);
     yBallSmallAngle = -l*Math.cos(thetaInit);
@@ -44,40 +69,7 @@ $("#thetaSlider").on("change", function() {
         .attr('cy', yAxis(yBallSmallAngle));
   
     t = 0;
-    paused = 0;
-
-});
-
-$("#lengthSlider").on("input", function() {
-    l = $(this).val();
-    /*thetaInit = theta;
-    thetaDot = 0;
-    xBallSmallAngle = l*Math.sin(thetaInit);
-    yBallSmallAngle = -l*Math.cos(thetaInit);
-    xBallExact = l*Math.sin(thetaInit);
-    yBallExact = -l*Math.cos(thetaInit);
-    d3.select('#rodExact')
-        .attr('y2', yAxis(0))
-        .attr('x2', xAxis(0))
-        .attr('y1', yAxis(yBallExact))
-        .attr('x1', xAxis(xBallExact));
-
-    d3.select('#ballExact')
-        .attr('cx', xAxis(xBallExact))
-        .attr('cy', yAxis(yBallExact));
-
-    d3.select('#rodSmallAngle')
-        .attr('y2', yAxis(0))
-        .attr('x2', xAxis(0))
-        .attr('y1', yAxis(yBallSmallAngle))
-        .attr('x1', xAxis(xBallSmallAngle));
-
-    d3.select('#ballSmallAngle')
-        .attr('cx', xAxis(xBallSmallAngle))
-        .attr('cy', yAxis(yBallSmallAngle));
-  */
-    $("#lengthInfo").html("Length: " + $(this).val());
-});
+}
 
 function uDot(t, theta, thetaDot) { //first ODE
     return(thetaDot);

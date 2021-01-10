@@ -20,11 +20,20 @@ var paused = 1;
 
 $("#pauseButton1").click(function() { //to pause on click
     paused = !paused;
-});
+    if (paused) {
+        $("#pauseButton1").html("Play");
+    }
+    else {
+        $("#pauseButton1").html("Pause");       
+    }
+ });
 
 $("#resetButton1").click( reset ); // to reset on click
 
+
+
 function reset() {
+   $("#pauseButton1").html("Play");
     paused = 1;
     g = 9.81; 
     l = 0.5; 
