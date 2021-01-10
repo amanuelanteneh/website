@@ -134,7 +134,7 @@ function sweepW(T) {
 }
 
 function annealW() {
-    if (TW > 0.1) {
+    if (TW > 0.01) {
         sweepW(TW);
         if (runsW > maxRunsW) {
             TW *= 0.90;

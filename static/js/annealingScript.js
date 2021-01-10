@@ -134,7 +134,7 @@ function sweep(T) {
 }
 
 function anneal() {
-    if (T > 0.001) {
+    if (T > 0.01) {
         sweep(T);
         if (runs > maxRuns) {
             T *= 0.90;
