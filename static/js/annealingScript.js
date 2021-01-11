@@ -9,6 +9,7 @@ var maxRuns = 0;
 var runs = 0;
 
 $("#pauseButton1").click(function() {
+    if ($("#pauseButton1").html != "Done") {
     paused = !paused;
     if (paused) {
         $("#pauseButton1").html("Play");
@@ -16,6 +17,7 @@ $("#pauseButton1").click(function() {
     else {
         $("#pauseButton1").html("Pause");       
     }
+}
 });
 
 $("#resetButton1").click(function() {
@@ -190,7 +192,7 @@ function generateGeography() {
             }
             T = 0.90000;
             shuffle(cities);
-            maxRuns = 2 * cities.length;
+            maxRuns = Math.ceil(1.5 * cities.length);
             runs = 0;
             initialDistance = calcDistance(cities);
             $("#TInfo").html("T = " + T.toFixed(5));

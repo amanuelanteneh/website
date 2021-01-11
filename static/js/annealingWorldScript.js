@@ -9,6 +9,7 @@ var maxRunsW = 0;
 var runsW = 0;
 
 $("#pauseButton2").click(function() {
+    if ($("#pauseButton2").html != "Done") {
     pausedW = !pausedW;
     if (pausedW) {
         $("#pauseButton2").html("Play");
@@ -16,6 +17,7 @@ $("#pauseButton2").click(function() {
     else {
         $("#pauseButton2").html("Pause");       
     }
+}
 });
 
 $("#resetButton2").click(function() {
@@ -190,10 +192,10 @@ function generateGeographyW() {
             }
             TW = 0.900000;
             shuffleW(citiesW);
-            maxRunsW = 2*citiesW.length;
+            maxRunsW = Math.ceil(1.5*citiesW.length);
             runsW = 0;
             initialDistanceW = calcDistance(citiesW);
-            $("#TInfo2").html("T = " + TW.toFixed(1));
+            $("#TInfo2").html("T = " + TW.toFixed(5));
             $("#distInfo2").html("Current Distance = " + Math.trunc(calcDistance(citiesW)));
             $("#cityNumInfo2").html("Number of cities: " + Math.trunc(citiesW.length));
             $("#startDistInfo2").html("Starting distance: " + Math.trunc(initialDistanceW));
