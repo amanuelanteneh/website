@@ -9,7 +9,7 @@ var maxRunsW = 0;
 var runsW = 0;
 
 $("#pauseButton2").click(function() {
-    if ($("#pauseButton2").html != "Done") {
+    if ($("#pauseButton2").text() != "Done") {
     pausedW = !pausedW;
     if (pausedW) {
         $("#pauseButton2").html("Play");
