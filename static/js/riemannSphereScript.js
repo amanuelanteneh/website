@@ -125,8 +125,8 @@ function theFunction(x) {
 
 function update() {
 
-    Plotly.deleteTraces('riemannSphere', 3);
-    Plotly.deleteTraces('riemannSphere', 3); //after you delete a trace all of them shift up a spot
+    Plotly.deleteTraces('riemannSphere', 4);
+    Plotly.deleteTraces('riemannSphere', 4); //after you delete a trace all of them shift up a spot
     zFunc = [];
     xFunc = [];
     yFunc = [];
@@ -248,8 +248,8 @@ var dataSphere = [
 ];
 
 var layout = {
-    title: 'The Riemann Sphere',
-    autosize: true,
+    title: 'The Riemann Sphere & Extended Complex Plane',
+    autosize: false,
     plot_bgcolor: "#FFFFFF",
     paper_bgcolor: "#333333",
     scene: {
@@ -258,27 +258,30 @@ var layout = {
             "backgroundcolor": "white",
             "gridcolor": "white",
             "zerolinecolor": "white",
+            "tickfont": {"size":13}
         },
         xaxis: {
             "tickcolor": "white",
             "gridcolor": "white",
             "backgroundcolor": "white",
             "zerolinecolor": "white",
+            "tickfont": {"size":13}
         },
         zaxis: {
             "tickcolor": "white",
             "gridcolor": "white",
             "backgroundcolor": "white",
             "zerolinecolor": "white",
+            "tickfont": {"size":13}
         },
     },
     font: {
         family: 'Courier New, monospace',
-        size: 14,
+        size: 17,
         color: '#FFFFFF'
     },
     showlegend: true,
-    width: 600,
+    width: 700,
     height: 600,
     margin: {
         l: 65,
@@ -289,6 +292,33 @@ var layout = {
 };
 Plotly.newPlot('riemannSphere', dataSphere, layout);
 /* End sphere */
+
+
+xGrid = [];
+yGrid = [];
+zGrid = [];
+
+for (x=-1; x<1; x+=0.1) {
+    for (y=-1; y<1; y+=0.1) {
+        xGrid.push(x);
+        yGrid.push(y);
+        zGrid.push(0);
+    }
+
+}
+
+var dataGrid = [{
+    name: "Extended Complex Plane",
+    opacity: 0.25,
+    color: 'black',
+    type: 'mesh3d',
+    z: zGrid,
+    y: yGrid,
+    x: xGrid
+}];
+
+Plotly.addTraces('riemannSphere', dataGrid);
+
 
 /* The point at infinity */
 var pointAtInf = [{

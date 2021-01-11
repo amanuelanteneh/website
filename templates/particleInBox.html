@@ -116,7 +116,7 @@ a {
 <a href="/#simulatePage" style="color:white; font-size: 2.8vmin; border-radius: 1px; border: 1px solid white; padding: 4px; text-decoration: none; font-family: 'Courier New', Courier, monospace;">Back to simulators</a> <!--for leaving document-->    
 <div class="simBlock">
 <p style="line-height: 1.8; text-align: center;">
-    Under construction...
+    In quantum mechanics a particle in a box, i.e. a particle trapped in an infinite potential well, 
 </p>
 <img src="{{url_for('static', filename='img/particleIn2DBoxDiagram.png')}}">
 </div>
@@ -124,19 +124,36 @@ a {
 <div class="simblock">
     <div class="section">
     <p>
-        The solution: 
+        The wave function \( \psi(x,y,t) \) of a particle describes its quantum state. 
+        To get the <i><u>probability</u></i> that the particle is at a certain position \( (x,y) \)
+        at a certain time \( t \) one has to take the modulus of the wave function and square it. Thus the probability
+        density function is defined as:
+        \[ \rho(x,y,t) = |\psi(x,y,t)|^2 \]
+        The modulus is taken because the wave function can be complex valued but probabilities 
+        cannot be.
+        <br><br>The solution for the corresponding values of \( n_x , n_y , a, b\) are shown below: 
     </p>
     </div>
     <div class="section">
-        <input type = "range" min="0.5" max="5" value="2.5" step="0.5" id="slider1" class="slider"/>
-        <output id="slider1Info">a: 0.5</output>
+        <input type = "range" min="0.1" max="6" value="5" step="0.1" id="slider1" class="slider"/>
+        <output id="slider1Info">a: 5</output>
     </div>
     <div class="section">
-        <input type = "range" min="0.5" max="5" value="2.5" step="0.5" id="slider2" class="slider"/>
-        <output id="slider2Info">b: 0.5</output>    
+        <input type = "range" min="0.1" max="6" value="5" step="0.1" id="slider2" class="slider"/>
+        <output id="slider2Info">b: 5</output>    
     </div>
+    <div class="section">
+        <input type = "range" min="1" max="5" value="1" step="1" id="slider3" class="slider"/>
+        <output id="slider3Info">n<sub>x</sub>: 1</output>
+    </div>
+    <div class="section">
+        <input type = "range" min="1" max="5" value="1" step="1" id="slider4" class="slider"/>
+        <output id="slider4Info">n<sub>y</sub>: 1</output>
+    </div>
+
     <div class="section">
         <div id="2dWaveFunction"></div> 
+        <div id="2dProbDensityFunction"></div>        
     </div>
 </div>
 </body>
