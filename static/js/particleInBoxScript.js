@@ -4,7 +4,7 @@ var yPts = [];
 
 for(x=0; x<1; x+=0.01) {
   for (y=0; y<1; y+=0.01) {
-  zPts.push( Array(2).fill().map(() => Math.sin(x*x)) );
+  zPts.push( Array(10).fill().map(() => Math.sin(x)) );
   yPts.push(y);
   xPts.push(x);
   }
@@ -12,8 +12,8 @@ for(x=0; x<1; x+=0.01) {
 
 var data = [{
     z: zPts,
-    x: xPts,
-    y: yPts,
+   /* x: xPts,
+    y: yPts,*/
     type: 'surface',
    /* contours: {
       z: {
@@ -26,8 +26,37 @@ var data = [{
   }];
 
   var layout = {
-    title: 'Wave function of particle in 2D Infinite Potential Well',
+    title: 'Wave function - 2D Infinite Potential Well',
     autosize: false,
+    plot_bgcolor: "#FFFFFF",
+    paper_bgcolor: "#333333",
+    scene: {
+        yaxis: {
+            "tickcolor": "white",
+            "backgroundcolor": "white",
+            "gridcolor": "white",
+            "zerolinecolor": "white",
+        },
+        xaxis: {
+            "tickcolor": "white",
+            "gridcolor": "white",
+            "backgroundcolor": "white",
+            "zerolinecolor": "white",
+        },
+        zaxis: {
+            "tickcolor": "white",
+            "gridcolor": "white",
+            "backgroundcolor": "white",
+            "zerolinecolor": "white",
+        },
+    },
+    font: {
+        family: 'Courier New, monospace',
+        size: 12,
+        color: '#FFFFFF'
+    },
+    showlegend: true,
+    
     width: 500,
     height: 500,
     margin: {
