@@ -148,7 +148,7 @@ var layoutWF = {
   },
   showlegend: true,
 
-  width: 700,
+  width: 500,
   height: 500,
   margin: {
     l: 65,
@@ -204,7 +204,7 @@ var layoutPD = {
   },
   showlegend: true,
 
-  width: 700,
+  width: 500,
   height: 500,
   margin: {
     l: 65,
