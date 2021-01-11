@@ -24,7 +24,7 @@ var slider2 = document.getElementById("slider2");
 var slider1Info = document.getElementById("slider1Info"); 
 var slider2Info = document.getElementById("slider2Info");
 
-//do on change instead of input bc it's a bit laggy otherwise
+//could us onInput now bc using Plotly.restlye is a decent bit faster than Plotly.addTraces
 $("#slider1").on("change", function() { 
     switch (funcNumber) {
     case 0: m = Number($(this).val());
@@ -125,8 +125,6 @@ function theFunction(x) {
 
 function update() {
 
-    Plotly.deleteTraces('riemannSphere', 4);
-    Plotly.deleteTraces('riemannSphere', 4); //after you delete a trace all of them shift up a spot
     zFunc = [];
     xFunc = [];
     yFunc = [];
@@ -179,8 +177,36 @@ function update() {
             color: 'blue',
         }
     }];
-    Plotly.addTraces('riemannSphere', dataFunc);
-    Plotly.addTraces('riemannSphere', dataProj);
+    //projection is trace 5 and func is 4
+    Plotly.restyle('riemannSphere',  {"z": [zFunc], "x": [xFunc], "y": [yFunc]} , 4);
+    Plotly.restyle('riemannSphere',  {"z": [zProj], "x": [xProj], "y": [yProj]} , 5);
+    //come back and make animation work once mastered in particle in a box
+    /*      Plotly.animate('riemannSphere', {
+        data: [{y: yFunc, x: xFunc, z: zFunc}],
+        traces: [4]
+      }, {
+        transition: {
+          duration: 500,
+          easing: 'cubic-in-out'
+        },
+          frame: {
+              duration: 500
+          }
+      } 
+        );
+      Plotly.animate('riemannSphere', {
+        data: [{y: yProj, x: xProj, z: zProj}],
+        traces: [5]
+      }, {
+        transition: {
+          duration: 500,
+          easing: 'cubic-in-out'
+        },
+          frame: {
+              duration: 500
+          }
+      } 
+        ); */
 
 }
 //just makes an array from start to stop with numPoints in it
@@ -298,8 +324,8 @@ xGrid = [];
 yGrid = [];
 zGrid = [];
 
-for (x=-1; x<1; x+=0.1) {
-    for (y=-1; y<1; y+=0.1) {
+for (x=-1.7; x<1.7; x+=0.1) {
+    for (y=-1.7; y<1.7; y+=0.1) {
         xGrid.push(x);
         yGrid.push(y);
         zGrid.push(0);
@@ -309,7 +335,7 @@ for (x=-1; x<1; x+=0.1) {
 
 var dataGrid = [{
     name: "Extended Complex Plane",
-    opacity: 0.25,
+    opacity: 0.20,
     color: 'black',
     type: 'mesh3d',
     z: zGrid,

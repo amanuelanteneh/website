@@ -116,7 +116,15 @@ a {
 <a href="/#simulatePage" style="color:white; font-size: 2.8vmin; border-radius: 1px; border: 1px solid white; padding: 4px; text-decoration: none; font-family: 'Courier New', Courier, monospace;">Back to simulators</a> <!--for leaving document-->    
 <div class="simBlock">
 <p style="line-height: 1.8; text-align: center;">
-    In quantum mechanics a particle in a box, i.e. a particle trapped in an infinite potential well, 
+    <b><i><u>Under construction</u></i></b><br> In quantum mechanics the <a href="https://en.wikipedia.org/wiki/Particle_in_a_box" target="_blank">particle in a box</a>, i.e. a particle trapped in an infinite potential well, demonstrates one of the
+    key differences between classical and quantum mechanics. The scenario consists of a particle that is free to move within 
+    a certain region, in this case a two-dimensional one, which is the "box". The potential within the box being \(V=0\) 
+    with the potential outside being \(V=\infty\) which traps the particle within the region with zero potential. Using the either 
+    the time-dependant Schrödinger equation: 
+    \[ i\hbar \frac{\partial \psi}{\partial t} = -\frac{\hbar^{2}}{2m^2} \nabla^{2}\psi + V(x)\psi \]
+    or the time-independent Schrödinger equation: 
+    \[ E\psi = -\frac{\hbar^2}{2m}\nabla^2 \psi + V(x)\psi \]
+    we can find the wave function of the particle. The wave function \( \psi(x,y,t) \) of a particle describes its quantum state.
 </p>
 <img src="{{url_for('static', filename='img/particleIn2DBoxDiagram.png')}}">
 </div>
@@ -124,7 +132,6 @@ a {
 <div class="simblock">
     <div class="section">
     <p>
-        The wave function \( \psi(x,y,t) \) of a particle describes its quantum state. 
         To get the <i><u>probability</u></i> that the particle is at a certain position \( (x,y) \)
         at a certain time \( t \) one has to take the modulus of the wave function and square it. Thus the probability
         density function is defined as:
