@@ -375,7 +375,7 @@ var run = setInterval(function () {
   Plotly.restyle('2dWaveFunctionReal', {"z": [zPtsWFR], "x": [xPtsWFR], "y": [yPtsWFR]} );
   Plotly.restyle('2dWaveFunctionImaginary', {"z": [zPtsWFI], "x": [xPtsWFI], "y": [yPtsWFI]} );  
   Plotly.restyle('2dProbDensityFunction', {"z": [zPtsPD], "x": [xPtsPD], "y": [yPtsPD]} );
-  t += 0.1;
+  t += (0.5/(2*nx+2*ny)); //to scale animation speed with nx and ny values
   }
   else {
     timeButton.innerHTML = "Start Time Evolution: t = "  + t.toFixed(3);
