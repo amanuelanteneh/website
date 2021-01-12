@@ -25,7 +25,7 @@ var slider1Info = document.getElementById("slider1Info");
 var slider2Info = document.getElementById("slider2Info");
 
 //could us onInput now bc using Plotly.restlye is a decent bit faster than Plotly.addTraces
-$("#slider1").on("change", function() { 
+$("#slider1").on("input", function() { 
     switch (funcNumber) {
     case 0: m = Number($(this).val());
             slider1Info.innerHTML = "m: " + m;
@@ -41,7 +41,7 @@ $("#slider1").on("change", function() {
     update();
 });
 
-$("#slider2").on("change", function() { 
+$("#slider2").on("input", function() { 
     switch (funcNumber) {
     case 0: b = Number($(this).val());
             slider2Info.innerHTML = "b: " + b;

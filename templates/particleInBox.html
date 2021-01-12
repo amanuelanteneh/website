@@ -53,6 +53,23 @@ output {
         margin-left: 1rem;
 }
 
+button {
+    display: inline;
+    margin-left: 2rem;
+    background-color: #333333;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 1px; 
+    font-size: 2.5vmin;
+    border: 1px solid white;
+    padding: 5px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+
 svg {
     position: absolute;
 }
@@ -142,25 +159,30 @@ a {
     </p>
     </div>
     <div class="section">
-        <input type = "range" min="0.1" max="6" value="5" step="0.1" id="slider1" class="slider"/>
+        <input type = "range" min="1" max="6" value="5" step="0.1" id="slider1" class="slider"/>
         <output id="slider1Info">a: 5</output>
     </div>
     <div class="section">
-        <input type = "range" min="0.1" max="6" value="5" step="0.1" id="slider2" class="slider"/>
+        <input type = "range" min="1" max="6" value="5" step="0.1" id="slider2" class="slider"/>
         <output id="slider2Info">b: 5</output>    
     </div>
     <div class="section">
-        <input type = "range" min="1" max="5" value="1" step="1" id="slider3" class="slider"/>
-        <output id="slider3Info">n<sub>x</sub>: 1</output>
+        <input type = "range" min="1" max="5" value="2" step="1" id="slider3" class="slider"/>
+        <output id="slider3Info">n<sub>x</sub>: 2</output>
     </div>
     <div class="section">
         <input type = "range" min="1" max="5" value="1" step="1" id="slider4" class="slider"/>
         <output id="slider4Info">n<sub>y</sub>: 1</output>
     </div>
+    <div class="section">
+        <button type="button" id="timeButton">Start Time Evolution: t = 0</button>       
+        <button type="button" id="resetButton">Reset Time</button>
+    </div>
 
     <div class="section">
-        <div id="2dWaveFunction"></div> 
-        <div id="2dProbDensityFunction"></div>        
+        <div id="2dWaveFunctionReal"></div>
+        <div id="2dWaveFunctionImaginary"></div>         
+        <div id="2dProbDensityFunction"></div>
     </div>
 </div>
 </body>
