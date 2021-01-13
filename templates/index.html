@@ -17,8 +17,9 @@
     <div class="bio">
         <u>About Me:</u><br>
         I am a student at the University of Virginia pursuing a B.S. in physics and B.A. in computer science with
-        a minor in mathematics. This website is for hosting things like my resume, javascript simulators 
-        of various physics phenomenon such as the double pendulum and mathematical objects such as
+        a minor in mathematics. This website is for hosting things like my resume, javascript visualizers 
+        of various physics phenomenon such as the double pendulum & a particle in a box
+        and mathematical objects such as
         the Riemann sphere and more. I am mainly interested in: <br>
         •Quantum Information <br>
         •Quantum Computing <br>
@@ -29,7 +30,7 @@
 <div id="simulatePage">
     <div id="appBubble">
         <b>Cool
-            Simulators</b>
+            Visualizers</b>
             <ul>
                 <li>
                     <a href="/Riemann-Sphere">
@@ -38,10 +39,11 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/Simple-Pendulum">
-                        <img src="{{url_for('static', filename='img/singleIcon.png')}}" alt="double" width="30" height="30">
-                        Simple Pendulum
-                    </a>
+                    <a href="/Particle-in-a-Box">
+                        <img src="{{url_for('static', filename='img/psiIcon.png')}}" alt="particle" width="30"
+                            height="30">
+                        Particle in a Box
+                    </a>                    
                 </li>
                 <li>
                     <a href="/Double-Pendulum">
@@ -57,13 +59,12 @@
                     </a>
                     </li>
                 <li>
-                    <a href="/Particle-in-a-Box">
-                        <img src="{{url_for('static', filename='img/psiIcon.png')}}" alt="particle" width="30"
-                            height="30">
-                        Particle in a Box
+                    <a href="/Simple-Pendulum">
+                        <img src="{{url_for('static', filename='img/singleIcon.png')}}" alt="double" width="30" height="30">
+                        Simple Pendulum
                     </a>
                 </li>                    
-                <li>
+               <!-- <li>
                         <a href="#">
                             <img src="{{url_for('static', filename='img/laplaceIcon.png')}}" alt="wave eq" width="30" height="30">
                             Wave Equation
@@ -74,7 +75,7 @@
                             <img src="{{url_for('static', filename='img/kappaIcon.png')}}" alt="heat eq" width="30" height="30">
                             Heat Equation
                         </a>
-                    </li>
+                    </li> -->
                     
 
                     </ul>

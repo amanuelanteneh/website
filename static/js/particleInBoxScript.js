@@ -575,7 +575,7 @@ var layoutPDS = {
     },
     zaxis: {
       title: "|Psi(x,y,t)|<sup>2</sup>",
-      range: [0, 0.6], 
+      range: [0, 0.7], 
       tickcolor: "white",
       gridcolor: "white",
       backgroundcolor: "white",
