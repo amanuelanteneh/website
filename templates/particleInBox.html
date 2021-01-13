@@ -132,58 +132,82 @@ a {
 <font color="white"> <!--For Dark mode-->
 <a href="/#simulatePage" style="color:white; font-size: 2.8vmin; border-radius: 1px; border: 1px solid white; padding: 4px; text-decoration: none; font-family: 'Courier New', Courier, monospace;">Back to simulators</a> <!--for leaving document-->    
 <div class="simBlock">
-<p style="line-height: 1.8; text-align: center;">
-    <b><i><u>Under construction</u></i></b><br> In quantum mechanics the <a href="https://en.wikipedia.org/wiki/Particle_in_a_box" target="_blank">particle in a box</a>, i.e. a particle trapped in an infinite potential well, demonstrates one of the
+<p>
+    <b><i><u>Under construction</u></i></b><br> 
+    In quantum mechanics the <a href="https://en.wikipedia.org/wiki/Particle_in_a_box" target="_blank">particle in a box</a>, i.e. a particle trapped in an infinite potential well, demonstrates one of the
     key differences between classical and quantum mechanics. The scenario consists of a particle that is free to move within 
     a certain region, in this case a two-dimensional one, which is the "box". The potential within the box being \(V=0\) 
-    with the potential outside being \(V=\infty\) which traps the particle within the region with zero potential. Using the either 
-    the time-dependant Schrödinger equation: 
-    \[ i\hbar \frac{\partial \psi}{\partial t} = -\frac{\hbar^{2}}{2m^2} \nabla^{2}\psi + V(x)\psi \]
-    or the time-independent Schrödinger equation: 
-    \[ E\psi = -\frac{\hbar^2}{2m}\nabla^2 \psi + V(x)\psi \]
-    we can find the wave function of the particle. The wave function \( \psi(x,y,t) \) of a particle describes its quantum state.
+    with the potential outside being \(V=\infty\) which traps the particle within the region with zero potential. The dimensions of the box
+    are denoted as \( a \times b \) as shown in te diagram below:
 </p>
 <img src="{{url_for('static', filename='img/particleIn2DBoxDiagram.png')}}">
 </div>
 
 <div class="simblock">
-    <div class="section">
     <p>
+        Using the either the time-dependant Schrödinger equation:
+        \[ i\hbar \frac{\partial \psi}{\partial t} = -\frac{\hbar^{2}}{2m^2} \nabla^{2}\psi + V(x)\psi \]
+        or the time-independent Schrödinger equation:
+        \[ E\psi = -\frac{\hbar^2}{2m}\nabla^2 \psi + V(x)\psi \]
+        we can find the wave function of the particle. The wave function \( \psi(x,y) \) of a particle describes its quantum state.
+        Using the time-independent Schrödinger equation the wave function at \(t=0\) can be found which I'll denote as: 
+        \[ \psi(x,y,0) = \frac{2}{\sqrt{ab}} \sin{(\frac{n_x \pi x}{a})} \sin{(\frac{n_y \pi y}{b})} \]
+        Since this is the equation for a plane wave, since we are considering a free particle, we know 
+        know that the time dependence of a plane wave can be represented as: 
+        \[ \psi(x,y,t) = \psi(x,y,0)e^{-iE\frac{t}{\hbar}} \]
+        And using Euler's identity we can write this as:
+        \[ \psi(x,y,t) =  \frac{2}{\sqrt{ab}} \sin{(\frac{n_x \pi x}{a})} \sin{(\frac{n_y \pi y}{b})} \cos{(E\frac{t}{\hbar})}
+         -  i\frac{2}{\sqrt{ab}} \sin{(\frac{n_x \pi x}{a})} \sin{(\frac{n_y \pi y}{b})} \sin{(E\frac{t}{\hbar})} \]
+        Notice that this function is <u>complex valued</u>.
         To get the <i><u>probability</u></i> that the particle is at a certain position \( (x,y) \)
         at a certain time \( t \) one has to take the modulus of the wave function and square it. Thus the probability
         density function is defined as:
         \[ \rho(x,y,t) = |\psi(x,y,t)|^2 \]
-        The modulus is taken because the wave function can be complex valued but probabilities 
+        The modulus is taken because the wave function can be both negative & complex valued while probabilities
         cannot be.
-        <br><br>The solution for the corresponding values of \( n_x , n_y , a, b\) are shown below: 
+        <br><br>The solution for the corresponding values of \( n_x , n_y , a, b\) are shown below. The real and
+        imaginary part of the wave function are plotted on separate plots:
     </p>
-    </div>
+</div>
+<div class="simblock">
     <div class="section">
-        <input type = "range" min="1" max="6" value="5" step="0.1" id="slider1" class="slider"/>
+        <input type="range" min="4.5" max="6" value="5" step="0.1" id="slider1" class="slider" />
         <output id="slider1Info">a: 5</output>
     </div>
     <div class="section">
-        <input type = "range" min="1" max="6" value="5" step="0.1" id="slider2" class="slider"/>
-        <output id="slider2Info">b: 5</output>    
+        <input type="range" min="4.5" max="6" value="5" step="0.1" id="slider2" class="slider" />
+        <output id="slider2Info">b: 5</output>
     </div>
     <div class="section">
-        <input type = "range" min="1" max="5" value="2" step="1" id="slider3" class="slider"/>
+        <input type="range" min="1" max="4" value="2" step="1" id="slider3" class="slider" />
         <output id="slider3Info">n<sub>x</sub>: 2</output>
     </div>
     <div class="section">
-        <input type = "range" min="1" max="5" value="1" step="1" id="slider4" class="slider"/>
+        <input type="range" min="1" max="4" value="1" step="1" id="slider4" class="slider" />
         <output id="slider4Info">n<sub>y</sub>: 1</output>
     </div>
     <div class="section">
-        <button type="button" id="timeButton">Start Time Evolution: t = 0</button>       
+        <button type="button" id="timeButton">Start Time Evolution: t = 0</button>
         <button type="button" id="resetButton">Reset Time</button>
     </div>
 
     <div class="section">
         <div id="2dWaveFunctionReal"></div>
-        <div id="2dWaveFunctionImaginary"></div>         
+        <div id="2dWaveFunctionImaginary"></div>
         <div id="2dProbDensityFunction"></div>
     </div>
+    <p>
+        As can be seen from the plots of the time evolution the wave function changes as \(t\)
+        does. However the probability density function \(\rho(x,y,t)\) does not change with time.
+
+    </p>
+    <div class="section">
+        <div id="2dWaveFunctionRealSuper"></div>
+        <div id="2dWaveFunctionImaginarySuper"></div>
+        <div id="2dProbDensityFunctionSuper"></div>
+    </div>
+
 </div>
 </body>
+
 </html>

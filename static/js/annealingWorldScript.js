@@ -260,4 +260,4 @@ var runWorldApp = setInterval(function () {
     if (!pausedW) {
         annealW();
     }
-}, 2);
+}, 10);

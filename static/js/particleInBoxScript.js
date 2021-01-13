@@ -1,24 +1,24 @@
-  var zPtsWFR = []; //for real part
-  var xPtsWFR = [];
-  var yPtsWFR = [];
-  var zPtsWFI = []; //for imaginary part
-  var xPtsWFI = [];
-  var yPtsWFI = [];
+var zPtsWFR = []; //for real part
+var xPtsWFR = [];
+var yPtsWFR = [];
+var zPtsWFI = []; //for imaginary part
+var xPtsWFI = [];
+var yPtsWFI = [];
 
-  var zPtsPD = [];
-  var xPtsPD = [];
-  var yPtsPD = [];
+var zPtsPD = [];
+var xPtsPD = [];
+var yPtsPD = [];
 
-  var nx = 2;
-  var ny = 1;
-  var Lx = 5;
-  var Ly = 5;
-  var m = 1;//9.10e-31;
-  var t = 0;
-  const hbar = 1;//6.626e-34;
-  var steps = 100;
+var nx = 2;
+var ny = 1;
+var Lx = 5;
+var Ly = 5;
+var m = 1;//9.10e-31;
+var t = 0;
+const hbar = 1;//6.626e-34;
+var steps = 100;
 
-  var paused = 1;
+var paused = 1;
 
 
 var slider1 = document.getElementById("slider1");
@@ -68,21 +68,6 @@ $("#slider1").on("change", function() {
   Plotly.restyle('2dWaveFunctionReal', {"z": [zPtsWFR], "x": [xPtsWFR], "y": [yPtsWFR]} );
   Plotly.restyle('2dWaveFunctionImaginary', {"z": [zPtsWFI], "x": [xPtsWFI], "y": [yPtsWFI]} );  
   Plotly.restyle('2dProbDensityFunction', {"z": [zPtsPD], "x": [xPtsPD], "y": [yPtsPD]});
-/*
-  Plotly.animate('2dProbDensityFunction', {
-        data: {z: [zPtsPD], x: [xPtsPD], y: [yPtsPD]},
-        traces: [0]
-      }, {
-        transition: {
-          duration: 500,
-          easing: 'cubic-in-out'
-        },
-          frame: {
-              duration: 500
-          }
-      } 
-        ); */  
-
 
 });
 
@@ -107,19 +92,6 @@ $("#slider3").on("change", function() {
   Plotly.restyle('2dWaveFunctionReal', {"z": [zPtsWFR], "x": [xPtsWFR], "y": [yPtsWFR]} );
   Plotly.restyle('2dWaveFunctionImaginary', {"z": [zPtsWFI], "x": [xPtsWFI], "y": [yPtsWFI]} );  
   Plotly.restyle('2dProbDensityFunction', {"z": [zPtsPD], "x": [xPtsPD], "y": [yPtsPD]});
-
-  /*Plotly.animate('2dProbDensityFunction', {
-        data: {z: [zPtsPD], x: [xPtsPD], y: [yPtsPD]},
-        traces: [0]
-      }, {
-        transition: {
-          duration: 500,
-          easing: 'cubic-in-out'
-        },
-          frame: {
-              duration: 500
-          }
-      }); */
 
 });
 
@@ -181,7 +153,7 @@ function generateData() {
 
 generateData();
 
-var dataWaveFuncRe = [{
+var dataWaveFuncRe = [{  //data for Re(Psi)
   z: zPtsWFR,
   x: xPtsWFR,
   y: yPtsWFR,
@@ -196,7 +168,7 @@ var dataWaveFuncRe = [{
   } 
 }];
 
-var dataWaveFuncIm = [{
+var dataWaveFuncIm = [{ //data for Im(Psi)
   z: zPtsWFI,
   x: xPtsWFI,
   y: yPtsWFI,
@@ -212,9 +184,26 @@ var dataWaveFuncIm = [{
   } 
 }];
 
-var layoutWFR = {
+var dataProbDensity = [{ //data for |Psi|^2
+  z: zPtsPD,
+  x: xPtsPD,
+  y: yPtsPD,
+  type: 'surface',
+  colorscale: "Greys",  
+  contours: {
+    z: {
+      show: true,
+      usecolormap: true,
+      highlightcolor: "#42f462",
+      project: { z: true }
+    }
+  }
+}];
+
+
+var layoutWFR = { //layout for plot of Re(Psi)
   title: 'Wave Function: Re[&#968;<sub>n<sub>x</sub></sub><sub>,n<sub>y</sub></sub>(x,y,t)]',
-  autosize: true,
+  autosize: false,
   plot_bgcolor: "#FFFFFF",
   paper_bgcolor: "#333333",
   scene: {
@@ -232,7 +221,7 @@ var layoutWFR = {
     },
     zaxis: {
       title: "Re(Psi(x,y,t))",
-      range: [-0.7, 0.7],
+      range: [-1, 1],
       tickcolor: "white",
       gridcolor: "white",
       backgroundcolor: "white",
@@ -258,7 +247,7 @@ var layoutWFR = {
 
 var layoutWFI = {
   title: 'Wave Function: Im[&#968;<sub>n<sub>x</sub></sub><sub>,n<sub>y</sub></sub>(x,y,t)]',
-  autosize: true,
+  autosize: false,
   plot_bgcolor: "#FFFFFF",
   paper_bgcolor: "#333333",
   scene: {
@@ -276,7 +265,7 @@ var layoutWFI = {
     },
     zaxis: {
       title: "Im(Psi(x,y,t))",
-      range: [-0.7, 0.7],
+      range: [-1, 1],
       tickcolor: "white",
       gridcolor: "white",
       backgroundcolor: "white",
@@ -301,29 +290,13 @@ var layoutWFI = {
 };
 
 
-var dataProbDensity = [{
-  z: zPtsPD,
-  x: xPtsPD,
-  y: yPtsPD,
-  type: 'surface',
-  colorscale: "Greys",
-  contours: {
-    z: {
-      show: true,
-      usecolormap: true,
-      highlightcolor: "#42f462",
-      project: { z: true }
-    }
-  }
-}];
-
 var layoutPD = {
   title: 'Probability Density: |&#968;<sub>n<sub>x</sub></sub><sub>,n<sub>y</sub></sub>(x,y,t)|<sup>2</sup>',
-  autosize: true,
+  autosize: false,
   plot_bgcolor: "#FFFFFF",
   paper_bgcolor: "#333333",
   scene: {
-    yaxis: {
+    yaxis: { 
       tickcolor: "white",
       backgroundcolor: "white",
       gridcolor: "white",
@@ -337,6 +310,7 @@ var layoutPD = {
     },
     zaxis: {
       title: "|Psi(x,y,t)|<sup>2</sup>",
+      range: [0, 0.3], 
       tickcolor: "white",
       gridcolor: "white",
       backgroundcolor: "white",
@@ -375,11 +349,9 @@ var run = setInterval(function () {
   Plotly.restyle('2dWaveFunctionReal', {"z": [zPtsWFR], "x": [xPtsWFR], "y": [yPtsWFR]} );
   Plotly.restyle('2dWaveFunctionImaginary', {"z": [zPtsWFI], "x": [xPtsWFI], "y": [yPtsWFI]} );  
   Plotly.restyle('2dProbDensityFunction', {"z": [zPtsPD], "x": [xPtsPD], "y": [yPtsPD]} );
-  t += (0.5/(2*nx+2*ny)); //to scale animation speed with nx and ny values
+  t += (0.40/(nx+ny)); //to scale animation speed with nx and ny values
   }
   else {
     timeButton.innerHTML = "Start Time Evolution: t = "  + t.toFixed(3);
   }
-
-
-              }, 10) 
+              }, 1) 

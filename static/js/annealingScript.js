@@ -258,4 +258,4 @@ var runApp = setInterval(function () {
     if (!paused) {
         anneal();
     }
-}, 2);
+}, 10);

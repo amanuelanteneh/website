@@ -118,15 +118,13 @@ a {
 <font color="white"> <!--For Dark mode-->
 <a href="/#simulatePage" style="color:white; font-size: 2.8vmin; border-radius: 1px; border: 1px solid white; padding: 4px; text-decoration: none; font-family: 'Courier New', Courier, monospace;">Back to simulators</a> <!--for leaving document-->    
 <div class="simBlock">
-<p style="line-height: 1.8; text-align: center;">
+<p>
     In complex analysis the <a href="https://en.wikipedia.org/wiki/Riemann_sphere" target="_blank">Riemann Sphere</a> is a model of the extended complex plane. The extended
     complex plane being the union of the complex plane and infinity denoted as \( \mathbb{C} \cup \{ \infty \} \).
     The Riemann sphere is represented as the unit sphere sliced in half by the complex plane as shown below.
 </p>
 <img src="{{url_for('static', filename='img/riemannDiagram.png')}}">
-</div>
-<div class="simBlock">
-    <div class="section">
+
     <p>
         <br>Every point on the complex plane (\(z = x + iy\)) can be mapped to a point on the sphere, this point is called
         the stereographic projection of \(z\). The projection of the point can be found by drawing a line from the point
@@ -138,7 +136,8 @@ a {
         Below is a simulator that demonstrates the relationship between functions
         and their projections on the Riemann Sphere:<br><br>
     </p>
-    </div>
+</div>
+<div class="simBlock">
     <div class="section">
         <select id="funcs">
             <option value="0">Line: mx + b</option>
