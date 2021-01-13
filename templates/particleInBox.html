@@ -151,18 +151,18 @@ a {
         \[ E\psi = -\frac{\hbar^2}{2m}\nabla^2 \psi + V(x)\psi \]
         we can find the wave function of the particle. The wave function \( \psi(x,y) \) of a particle describes its quantum state.
         Using the time-independent Schrödinger equation the wave function at \(t=0\) can be found which I'll denote as: 
-        \[ \psi(x,y,0) = \frac{2}{\sqrt{ab}} \sin{(\frac{n_x \pi x}{a})} \sin{(\frac{n_y \pi y}{b})} \]
+        \[ \psi_{n_x,n_y}(x,y,0) = \frac{2}{\sqrt{ab}} \sin{(\frac{n_x \pi x}{a})} \sin{(\frac{n_y \pi y}{b})} \]
         Since this is the equation for a plane wave, since we are considering a free particle, we know 
         know that the time dependence of a plane wave can be represented as: 
-        \[ \psi(x,y,t) = \psi(x,y,0)e^{-iE\frac{t}{\hbar}} \]
+        \[ \psi_{n_x,n_y}(x,y,t) = \psi(x,y,0)e^{-iE\frac{t}{\hbar}} \]
         And using Euler's identity we can write this as:
-        \[ \psi(x,y,t) =  \frac{2}{\sqrt{ab}} \sin{(\frac{n_x \pi x}{a})} \sin{(\frac{n_y \pi y}{b})} \cos{(E\frac{t}{\hbar})}
+        \[ \psi_{n_x,n_y}(x,y,t) =  \frac{2}{\sqrt{ab}} \sin{(\frac{n_x \pi x}{a})} \sin{(\frac{n_y \pi y}{b})} \cos{(E\frac{t}{\hbar})}
          -  i\frac{2}{\sqrt{ab}} \sin{(\frac{n_x \pi x}{a})} \sin{(\frac{n_y \pi y}{b})} \sin{(E\frac{t}{\hbar})} \]
         Notice that this function is <u>complex valued</u>.
         To get the <i><u>probability</u></i> that the particle is at a certain position \( (x,y) \)
         at a certain time \( t \) one has to take the modulus of the wave function and square it. Thus the probability
         density function is defined as:
-        \[ \rho(x,y,t) = |\psi(x,y,t)|^2 \]
+        \[ \rho(x,y,t) = |\psi_{n_x,n_y}(x,y,t)|^2 \]
         The modulus is taken because the wave function can be both negative & complex valued while probabilities
         cannot be.
         <br><br>The solution for the corresponding values of \( n_x , n_y , a, b\) are shown below. The real and
@@ -198,7 +198,20 @@ a {
     </div>
     <p>
         As can be seen from the plots of the time evolution the wave function changes as \(t\)
-        does. However the probability density function \(\rho(x,y,t)\) does not change with time.
+        does. However the probability density function \(\rho(x,y,t)\) does not change with time. This
+        makes sense mathematically if we remember that \( |z_1 z_2| = |z_1||z_2|\) so we have:
+        \[|\psi_{n_x,n_y}(x,y,t)|^2 = |\psi_{n_x,n_y}(x,y,0)e^{-iE\frac{t}{\hbar}}|^2 = |\psi_{n_x,n_y}(x,y,0)|^2 |e^{-iE\frac{t}{\hbar}}|^2  \]
+        Since \(|e^{ix}| = 1 \) this reduces to: 
+        \[ |\psi_{n_x,n_y}(x,y,t)|^2 = |\psi_{n_x,n_y}(x,y,0)|^2 \] 
+        Which has no time dependence. This is a consequence of the fact that the wave function of 
+        the particle is not a superposition of two or more exact energy state solutions. 
+        However if the particle begins in a superposition of two or more exact energy state solutions 
+        such as \( E_{1,2} \) and \( E_{1,3} \) then the initial wave function becomes:
+        \[  \psi_{1,2}(x,y,0) + \psi_{1,3}(x,y,0) \] and the time-dependant wave function is: 
+        \[ \psi_{1,2}(x,y,0)e^{-iE_{1,2}\frac{t}{\hbar}} + \psi_{1,3}(x,y,0)e^{-iE_{1,3}\frac{t}{\hbar}} \]
+        And the probability density function becomes: 
+        \[ |\psi_{1,2}(x,y,0)e^{-iE_{1,2}\frac{t}{\hbar}} + \psi_{1,3}(x,y,0)e^{-iE_{1,3}\frac{t}{\hbar}}|^2 \]
+        Which can be simplified through algebra to be:
 
     </p>
     <div class="section">
