@@ -159,6 +159,8 @@ a {
         \[ \psi_{n_x,n_y}(x,y,t) =  \frac{2}{\sqrt{ab}} \sin{(\frac{n_x \pi x}{a})} \sin{(\frac{n_y \pi y}{b})} \cos{(E\frac{t}{\hbar})}
          -  i\frac{2}{\sqrt{ab}} \sin{(\frac{n_x \pi x}{a})} \sin{(\frac{n_y \pi y}{b})} \sin{(E\frac{t}{\hbar})} \]
         Notice that this function is <u>complex valued</u>.
+        The formula for the allowed discrete energies is: 
+        \[ E_{n_x,n_y} = \frac{\hbar^2 \pi^2}{2m}(\frac{n_x^2}{a^2} +  \frac{n_y^2}{b^2})\]
         To get the <i><u>probability</u></i> that the particle is at a certain position \( (x,y) \)
         at a certain time \( t \) one has to take the modulus of the wave function and square it. Thus the probability
         density function is defined as:
@@ -207,18 +209,58 @@ a {
         the particle is not a superposition of two or more exact energy state solutions. 
         However if the particle begins in a superposition of two or more exact energy state solutions 
         such as \( E_{1,2} \) and \( E_{1,3} \) then the initial wave function becomes:
-        \[  \psi_{1,2}(x,y,0) + \psi_{1,3}(x,y,0) \] and the time-dependant wave function is: 
-        \[ \psi_{1,2}(x,y,0)e^{-iE_{1,2}\frac{t}{\hbar}} + \psi_{1,3}(x,y,0)e^{-iE_{1,3}\frac{t}{\hbar}} \]
+        \[ \psi(x,y,0) = \psi_{1,2}(x,y,0) + \psi_{1,3}(x,y,0) \] and the time-dependant wave function is: 
+        \[ \psi(x,y,t) = \psi_{1,2}(x,y,0)e^{-iE_{1,2}\frac{t}{\hbar}} + \psi_{1,3}(x,y,0)e^{-iE_{1,3}\frac{t}{\hbar}} \]
         And the probability density function becomes: 
-        \[ |\psi_{1,2}(x,y,0)e^{-iE_{1,2}\frac{t}{\hbar}} + \psi_{1,3}(x,y,0)e^{-iE_{1,3}\frac{t}{\hbar}}|^2 \]
+        \[ |\psi(x,y,t)|^2 = |\psi_{1,2}(x,y,0)e^{-iE_{1,2}\frac{t}{\hbar}} + \psi_{1,3}(x,y,0)e^{-iE_{1,3}\frac{t}{\hbar}}|^2 \]
         Which can be simplified through algebra to be:
-
+        \[ \rho(x,y,t) = \psi_{1,2}(x,y,0)^2 + \psi_{1,3}(x,y,0)^2 + 2\psi_{1,2}(x,y,0)\psi_{1,3}(x,y,0)\cos{(E_{1,2}\frac{t}{\hbar} - E_{1,3}\frac{t}{\hbar})} \]
+        Below is the simulator that shows the new behavior: 
     </p>
+    <div class="section">
+        <input type="range" min="4.5" max="6" value="5" step="0.1" id="slider5" class="slider" />
+        <output id="slider5Info">a: 5</output>
+    </div>
+    <div class="section">
+        <input type="range" min="4.5" max="6" value="5" step="0.1" id="slider6" class="slider" />
+        <output id="slider6Info">b: 5</output>
+    </div>
+    <div class="section">
+        <input type="range" min="1" max="4" value="1" step="1" id="slider7" class="slider" />
+        <output id="slider7Info">n<sub>x<sub>1</sub></sub>: 1</output>
+    </div>
+    <div class="section">
+        <input type="range" min="1" max="4" value="2" step="1" id="slider8" class="slider" />
+        <output id="slider8Info">n<sub>y<sub>1</sub></sub>: 2</output>
+    </div>
+    <div class="section">
+        <input type="range" min="1" max="4" value="1" step="1" id="slider9" class="slider" />
+        <output id="slider9Info">n<sub>x<sub>2</sub></sub>: 1</output>
+    </div>
+    <div class="section">
+        <input type="range" min="1" max="4" value="3" step="1" id="slider10" class="slider" />
+        <output id="slider10Info">n<sub>y<sub>2</sub></sub>: 3</output>
+    </div>
+
+
+    <div class="section">
+        <button type="button" id="timeButtonS">Start Time Evolution: t = 0</button>
+        <button type="button" id="resetButtonS">Reset Time</button>
+    </div>    
+
     <div class="section">
         <div id="2dWaveFunctionRealSuper"></div>
         <div id="2dWaveFunctionImaginarySuper"></div>
         <div id="2dProbDensityFunctionSuper"></div>
     </div>
+
+    <p>
+        Notice that when the particles wave function is a 
+        superposition of two exact energy solutions the probability distribution changes with time and thus 
+        we have the physics of motion in quantum mechanics. However since the wave function is a superposition
+        of two exact energy states there is now some uncertainty \( \Delta E\) in the energy of the particle even for 
+        macroscopic objects like a ball. However this uncertainty is negligible at that scale. 
+    </p>
 
 </div>
 </body>

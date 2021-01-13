@@ -15,11 +15,32 @@ var Lx = 5;
 var Ly = 5;
 var m = 1;//9.10e-31;
 var t = 0;
+var tS = 0;
 const hbar = 1;//6.626e-34;
 var steps = 100;
 
-var paused = 1;
+var zPtsWFRS = []; //for real part
+var xPtsWFRS = [];
+var yPtsWFRS = [];
+var zPtsWFIS = []; //for imaginary part
+var xPtsWFIS = [];
+var yPtsWFIS = [];
 
+var zPtsPDS = [];
+var xPtsPDS = [];
+var yPtsPDS = [];
+
+
+var nx1 = 1;
+var ny1 = 2;
+var nx2 = 1;
+var ny2 = 3;
+var LxS = 5; //S stands for superposition
+var LyS = 5;
+
+
+var paused = 1;
+var pausedS = 1;
 
 var slider1 = document.getElementById("slider1");
 var slider2 = document.getElementById("slider2");
@@ -32,10 +53,25 @@ var slider4Info = document.getElementById("slider4Info");
 var timeButton = document.getElementById("timeButton");
 var resetButton = document.getElementById("resetButton");
 
+var slider5 = document.getElementById("slider5");
+var slider6 = document.getElementById("slider6");
+var slider5Info = document.getElementById("slider5Info"); 
+var slider6Info = document.getElementById("slider6Info");
+var slider7 = document.getElementById("slider7");
+var slider8 = document.getElementById("slider8");
+var slider7Info = document.getElementById("slider7Info"); 
+var slider8Info = document.getElementById("slider8Info");
+var slider9 = document.getElementById("slider9");
+var slider10 = document.getElementById("slider10");
+var slider9Info = document.getElementById("slider9Info"); 
+var slider10Info = document.getElementById("slider10Info");
+var timeButtonS = document.getElementById("timeButtonS");
+var resetButtonS = document.getElementById("resetButtonS");
 
 $("#timeButton").on("click", function() {
 
   paused = !paused;
+  pausedS = 1;
   if (paused) {
     timeButton.innerHTML = "Start Time Evolution: t = "  + t.toFixed(3);
   }
@@ -55,7 +91,28 @@ $("#resetButton").on("click", function() {
 
 });
 
+$("#timeButtonS").on("click", function() {
 
+  pausedS = !pausedS;
+  paused = 1;
+  if (pausedS) {
+    timeButtonS.innerHTML = "Start Time Evolution: t = "  + tS.toFixed(3);
+  }
+  else {
+     timeButtonS.innerHTML = "Stop Time Evolution: t = "  + tS.toFixed(3);
+  }
+});
+
+$("#resetButtonS").on("click", function() {
+  pausedS = 1;
+  tS = 0;
+  timeButtonS.innerHTML = "Start Time Evolution: t = 0";
+  generateDataS();
+  Plotly.restyle('2dWaveFunctionRealSuper', {"z": [zPtsWFRS], "x": [xPtsWFRS], "y": [yPtsWFRS]} );
+  Plotly.restyle('2dWaveFunctionImaginarySuper', {"z": [zPtsWFIS], "x": [xPtsWFIS], "y": [yPtsWFIS]} );  
+  Plotly.restyle('2dProbDensityFunctionSuper', {"z": [zPtsPDS], "x": [xPtsPDS], "y": [yPtsPDS]} );
+
+});
 
 $("#slider1").on("change", function() { 
 
@@ -107,6 +164,72 @@ $("#slider4").on("change", function() {
 
 });
 
+$("#slider5").on("change", function() { 
+
+  a = Number($(this).val());
+  slider5Info.innerHTML = "a: " + a;
+  generateDataS();
+
+  Plotly.restyle('2dWaveFunctionRealSuper', {"z": [zPtsWFRS], "x": [xPtsWFRS], "y": [yPtsWFRS]} );
+  Plotly.restyle('2dWaveFunctionImaginarySuper', {"z": [zPtsWFIS], "x": [xPtsWFIS], "y": [yPtsWFIS]} );  
+  Plotly.restyle('2dProbDensityFunctionSuper', {"z": [zPtsPDS], "x": [xPtsPDS], "y": [yPtsPDS]});
+});
+
+$("#slider6").on("change", function() { 
+
+  b = Number($(this).val());
+  slider6Info.innerHTML = "b: " + b;
+  generateDataS();
+
+  Plotly.restyle('2dWaveFunctionRealSuper', {"z": [zPtsWFRS], "x": [xPtsWFRS], "y": [yPtsWFRS]} );
+  Plotly.restyle('2dWaveFunctionImaginarySuper', {"z": [zPtsWFIS], "x": [xPtsWFIS], "y": [yPtsWFIS]} );  
+  Plotly.restyle('2dProbDensityFunctionSuper', {"z": [zPtsPDS], "x": [xPtsPDS], "y": [yPtsPDS]});
+});
+
+$("#slider7").on("change", function() { 
+
+  nx1 = Number($(this).val());
+  slider7Info.innerHTML = "n<sub>x<sub>1</sub></sub>: " + nx1;
+  generateDataS();
+
+  Plotly.restyle('2dWaveFunctionRealSuper', {"z": [zPtsWFRS], "x": [xPtsWFRS], "y": [yPtsWFRS]} );
+  Plotly.restyle('2dWaveFunctionImaginarySuper', {"z": [zPtsWFIS], "x": [xPtsWFIS], "y": [yPtsWFIS]} );  
+  Plotly.restyle('2dProbDensityFunctionSuper', {"z": [zPtsPDS], "x": [xPtsPDS], "y": [yPtsPDS]});
+});
+
+$("#slider8").on("change", function() { 
+
+  ny1 = Number($(this).val());
+  slider8Info.innerHTML = "n<sub>y<sub>1</sub></sub>: " + ny1;
+  generateDataS();
+
+  Plotly.restyle('2dWaveFunctionRealSuper', {"z": [zPtsWFRS], "x": [xPtsWFRS], "y": [yPtsWFRS]} );
+  Plotly.restyle('2dWaveFunctionImaginarySuper', {"z": [zPtsWFIS], "x": [xPtsWFIS], "y": [yPtsWFIS]} );  
+  Plotly.restyle('2dProbDensityFunctionSuper', {"z": [zPtsPDS], "x": [xPtsPDS], "y": [yPtsPDS]});
+});
+
+$("#slider9").on("change", function() { 
+
+  nx2 = Number($(this).val());
+  slider9Info.innerHTML = "n<sub>x<sub>2</sub></sub>: " + nx2;
+  generateDataS();
+
+  Plotly.restyle('2dWaveFunctionRealSuper', {"z": [zPtsWFRS], "x": [xPtsWFRS], "y": [yPtsWFRS]} );
+  Plotly.restyle('2dWaveFunctionImaginarySuper', {"z": [zPtsWFIS], "x": [xPtsWFIS], "y": [yPtsWFIS]} );  
+  Plotly.restyle('2dProbDensityFunctionSuper', {"z": [zPtsPDS], "x": [xPtsPDS], "y": [yPtsPDS]});
+});
+
+$("#slider10").on("change", function() { 
+
+  ny2 = Number($(this).val());
+  slider10Info.innerHTML = "n<sub>y<sub>2</sub></sub>: " + ny2;
+  generateDataS();
+
+  Plotly.restyle('2dWaveFunctionRealSuper', {"z": [zPtsWFRS], "x": [xPtsWFRS], "y": [yPtsWFRS]} );
+  Plotly.restyle('2dWaveFunctionImaginarySuper', {"z": [zPtsWFIS], "x": [xPtsWFIS], "y": [yPtsWFIS]} );  
+  Plotly.restyle('2dProbDensityFunctionSuper', {"z": [zPtsPDS], "x": [xPtsPDS], "y": [yPtsPDS]});
+});
+
 
 function waveFuncReal(x, y, t) {
   let val = (2 / Math.sqrt(Lx * Ly)) * Math.sin(nx * Math.PI * x / Lx) * Math.sin(ny * Math.PI * y / Ly);
@@ -121,6 +244,31 @@ function waveFuncImaginary(x, y, t) {
 
   return (-val*Math.sin(E*t/hbar));
 }
+
+function waveFuncRealS(x, y, t) {
+  let val1 = (2 / Math.sqrt(LxS * LyS)) * Math.sin(nx1 * Math.PI * x / LxS) * Math.sin(ny1 * Math.PI * y / LyS);
+  let E1 = (hbar*hbar*Math.PI*Math.PI)/(2*m)*((nx1/LxS)*(nx1/LxS) + (ny1/LyS)*(ny1/LyS));
+  val1 *= Math.cos(E1*t/hbar);
+
+  let val2 = (2 / Math.sqrt(LxS * LyS)) * Math.sin(nx2 * Math.PI * x / LxS) * Math.sin(ny2 * Math.PI * y / LyS);
+  let E2 = (hbar*hbar*Math.PI*Math.PI)/(2*m)*((nx2/LxS)*(nx2/LxS) + (ny2/LyS)*(ny2/LyS));
+  val2 *= Math.cos(E2*t/hbar);
+  
+  return (val1 + val2);
+}
+
+function waveFuncImaginaryS(x, y, t) {
+  let val1 = (2 / Math.sqrt(LxS * LyS)) * Math.sin(nx1 * Math.PI * x / LxS) * Math.sin(ny1 * Math.PI * y / LyS);
+  let E1 = (hbar*hbar*Math.PI*Math.PI)/(2*m)*((nx1/LxS)*(nx1/LxS) + (ny1/LyS)*(ny1/LyS));
+  val1 *= -Math.sin(E1*t/hbar);
+
+  let val2 = (2 / Math.sqrt(LxS * LyS)) * Math.sin(nx2 * Math.PI * x / LxS) * Math.sin(ny2 * Math.PI * y / LyS);
+  let E2 = (hbar*hbar*Math.PI*Math.PI)/(2*m)*((nx2/LxS)*(nx2/LxS) + (ny2/LyS)*(ny2/LyS));
+  val2 *= -Math.sin(E2*t/hbar);
+  
+  return (val1 + val2);
+}
+
 
 
 function generateData() {
@@ -150,8 +298,36 @@ function generateData() {
   }
 }
 
+function generateDataS() {
+  zPtsWFRS = []; xPtsWFRS = []; yPtsWFRS = [];
+  zPtsWFIS = []; xPtsWFIS = []; yPtsWFIS = [];
+  zPtsPDS = []; xPtsPDS = []; yPtsPDS = [];
+  let xStep = Lx/steps;
+  let yStep = Ly/steps;  
+  for (x = 0; x < LxS; x += xStep) {
+    let zTempWFR = []; let xTempWFR = []; let yTempWFR = [];
+    let zTempWFI = []; let xTempWFI = []; let yTempWFI = [];    
+    let zTempPD = []; let xTempPD = []; let yTempPD = [];
+  
+    for (y = 0; y < LyS; y += yStep) {
+      let valReal = waveFuncRealS(x, y, tS);
+      let valImaginary = waveFuncImaginaryS(x, y, tS);
+      zTempWFR.push(valReal); yTempWFR.push(y); xTempWFR.push(x);
+      zTempWFI.push(valImaginary); yTempWFI.push(y); xTempWFI.push(x);
+
+      zTempPD.push( (valReal*valReal) + (valImaginary*valImaginary) );
+      yTempPD.push(y);
+      xTempPD.push(x);
+    }
+    zPtsWFRS.push(zTempWFR); yPtsWFRS.push(yTempWFR); xPtsWFRS.push(xTempWFR);
+    zPtsWFIS.push(zTempWFI); yPtsWFIS.push(yTempWFI); xPtsWFIS.push(xTempWFI);    
+    zPtsPDS.push(zTempPD); yPtsPDS.push(yTempPD); xPtsPDS.push(xTempPD);
+  }
+}
 
 generateData();
+
+generateDataS();
 
 var dataWaveFuncRe = [{  //data for Re(Psi)
   z: zPtsWFR,
@@ -200,6 +376,52 @@ var dataProbDensity = [{ //data for |Psi|^2
   }
 }];
 
+var dataWaveFuncReS = [{  //data for Re(Psi)
+  z: zPtsWFRS,
+  x: xPtsWFRS,
+  y: yPtsWFRS,
+  type: 'surface',
+  contours: {
+    z: {
+      show: true,
+      usecolormap: true,
+      highlightcolor: "#42f462",
+      project: { z: true }
+    }
+  } 
+}];
+
+var dataWaveFuncImS = [{ //data for Im(Psi)
+  z: zPtsWFIS,
+  x: xPtsWFIS,
+  y: yPtsWFIS,
+  type: 'surface',
+  colorscale: "Viridis",
+  contours: {
+    z: {
+      show: true,
+      usecolormap: true,
+      highlightcolor: "#42f462",
+      project: { z: true }
+    }
+  } 
+}];
+
+var dataProbDensityS = [{ //data for |Psi|^2
+  z: zPtsPDS,
+  x: xPtsPDS,
+  y: yPtsPDS,
+  type: 'surface',
+  colorscale: "Greys",  
+  contours: {
+    z: {
+      show: true,
+      usecolormap: true,
+      highlightcolor: "#42f462",
+      project: { z: true }
+    }
+  }
+}];
 
 var layoutWFR = { //layout for plot of Re(Psi)
   title: 'Wave Function: Re[&#968;<sub>n<sub>x</sub></sub><sub>,n<sub>y</sub></sub>(x,y,t)]',
@@ -289,7 +511,6 @@ var layoutWFI = {
   }
 };
 
-
 var layoutPD = {
   title: 'Probability Density: |&#968;<sub>n<sub>x</sub></sub><sub>,n<sub>y</sub></sub>(x,y,t)|<sup>2</sup>',
   autosize: false,
@@ -334,14 +555,65 @@ var layoutPD = {
   }
 };
 
+var layoutPDS = {
+  title: 'Probability Density: |&#968;<sub>n<sub>x</sub></sub><sub>,n<sub>y</sub></sub>(x,y,t)|<sup>2</sup>',
+  autosize: false,
+  plot_bgcolor: "#FFFFFF",
+  paper_bgcolor: "#333333",
+  scene: {
+    yaxis: { 
+      tickcolor: "white",
+      backgroundcolor: "white",
+      gridcolor: "white",
+      zerolinecolor: "white",
+    },
+    xaxis: {
+      tickcolor: "white",
+      gridcolor: "white",
+      backgroundcolor: "white",
+      zerolinecolor: "white",
+    },
+    zaxis: {
+      title: "|Psi(x,y,t)|<sup>2</sup>",
+      range: [0, 0.6], 
+      tickcolor: "white",
+      gridcolor: "white",
+      backgroundcolor: "white",
+      zerolinecolor: "white",
+    },
+  },
+  font: {
+    family: 'Courier New, monospace',
+    size: 12,
+    color: '#FFFFFF'
+  },
+  showlegend: true,
+
+  width: 400,
+  height: 400,
+  margin: {
+    l: 65,
+    r: 50,
+    b: 65,
+    t: 90,
+  }
+};
+
+
 Plotly.newPlot('2dWaveFunctionReal', dataWaveFuncRe, layoutWFR);
 Plotly.newPlot('2dWaveFunctionImaginary', dataWaveFuncIm, layoutWFI);
 Plotly.newPlot('2dProbDensityFunction', dataProbDensity, layoutPD);
 
 
+Plotly.newPlot('2dWaveFunctionRealSuper', dataWaveFuncReS, layoutWFR);
+Plotly.newPlot('2dWaveFunctionImaginarySuper', dataWaveFuncImS, layoutWFI);
+Plotly.newPlot('2dProbDensityFunctionSuper', dataProbDensityS, layoutPDS);
+
+
+
 var run = setInterval(function () { 
   if (!paused) {
-  if (t > 10) {
+  if (t > 20) {
      t = 0;
   }  
   timeButton.innerHTML = "Stop Time Evolution: t = "  + t.toFixed(3);
@@ -354,4 +626,21 @@ var run = setInterval(function () {
   else {
     timeButton.innerHTML = "Start Time Evolution: t = "  + t.toFixed(3);
   }
-              }, 1) 
+              }, 1);
+             
+var runSuper = setInterval(function () { 
+  if (!pausedS) {
+  if (tS > 20) {
+     tS = 0;
+  }  
+  timeButtonS.innerHTML = "Stop Time Evolution: t = "  + tS.toFixed(3);
+  generateDataS();
+  Plotly.restyle('2dWaveFunctionRealSuper', {"z": [zPtsWFRS], "x": [xPtsWFRS], "y": [yPtsWFRS]} );
+  Plotly.restyle('2dWaveFunctionImaginarySuper', {"z": [zPtsWFIS], "x": [xPtsWFIS], "y": [yPtsWFIS]} );  
+  Plotly.restyle('2dProbDensityFunctionSuper', {"z": [zPtsPDS], "x": [xPtsPDS], "y": [yPtsPDS]} );
+  tS += (0.40/(nx1+ny1)); //to scale animation speed with nx and ny values
+  }
+  else {
+    timeButtonS.innerHTML = "Start Time Evolution: t = "  + tS.toFixed(3);
+  }
+              }, 1);
