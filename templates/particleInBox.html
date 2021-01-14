@@ -30,15 +30,6 @@ p {
     line-height: 1.8; 
     text-align: left; 
 }
-button {
-    display: inline;
-    margin-left: 2rem;
-}
-
-.simBlock {
-    display: flex;
-    flex-direction: column;
-}
 
 input { /* to align slider output values w slider */
         display: inline-block;
@@ -69,15 +60,20 @@ button:hover {
     cursor: pointer;
 }
 
-
 svg {
     position: absolute;
 }
 
-.section {
+.block { /* block class hold sections */
+    display: flex;
+    flex-direction: column;
+}
+
+.section { /* section class goes within block class divs */
     display: inline-flex;
     padding: 1rem;
 }
+
 /* begin slider style */
 .slider {
   -webkit-appearance: none;
@@ -115,7 +111,6 @@ a {
     color: white;
 }
 
-
 @media (max-width: 850px) { /* media query's come after the stuff you're changing 
                                 has been given css properties */
     img {
@@ -131,7 +126,7 @@ a {
 <body lang=EN-US link=blue vlink="#954F72" style="background-color: #333333; margin:150;padding:0"> <!--For Dark mode-->
 <font color="white"> <!--For Dark mode-->
 <a href="/#simulatePage" style="color:white; font-size: 2.8vmin; border-radius: 1px; border: 1px solid white; padding: 4px; text-decoration: none; font-family: 'Courier New', Courier, monospace;">Back to visualizers</a> <!--for leaving document-->    
-<div class="simBlock">
+<div class="block">
 <p> 
     In quantum mechanics the <a href="https://en.wikipedia.org/wiki/Particle_in_a_box" target="_blank">particle in a box</a>, i.e. a particle trapped in an infinite potential well, demonstrates one of the
     key differences between classical and quantum mechanics. The scenario consists of a particle that is free to move within 
@@ -142,35 +137,35 @@ a {
 <img src="{{url_for('static', filename='img/particleIn2DBoxDiagram.png')}}">
 </div>
 
-<div class="simblock">
+<div class="block">
     <p>
-        Using the either the time-dependant Schrödinger equation:
-        \[ i\hbar \frac{\partial \psi}{\partial t} = -\frac{\hbar^{2}}{2m^2} \nabla^{2}\psi + V(x)\psi \]
-        or the time-independent Schrödinger equation:
-        \[ E\psi = -\frac{\hbar^2}{2m}\nabla^2 \psi + V(x)\psi \]
+        Using either the time-dependent Schrödinger equation,
+        \[ i\hbar \frac{\partial \psi}{\partial t} = -\frac{\hbar^{2}}{2m^2} \nabla^{2}\psi + V(x)\psi, \]
+        or the time-independent Schrödinger equation,
+        \[ E\psi = -\frac{\hbar^2}{2m}\nabla^2 \psi + V(x)\psi ,\]
         we can find the wave function of the particle. The wave function \( \psi(x,y) \) of a particle describes its quantum state.
-        Using the time-independent Schrödinger equation the wave function at \(t=0\) can be found which I'll denote as: 
-        \[ \psi_{n_x,n_y}(x,y,0) = \frac{2}{\sqrt{ab}} \sin{(\frac{n_x \pi x}{a})} \sin{(\frac{n_y \pi y}{b})} \]
+        Using the time-independent Schrödinger equation the wave function at \(t=0\) can be found which I'll denote as 
+        \[ \psi_{n_x,n_y}(x,y,0) = \frac{2}{\sqrt{ab}} \sin{(\frac{n_x \pi x}{a})} \sin{(\frac{n_y \pi y}{b})} .\]
         Since this is the equation for a plane wave, since we are considering a free particle, we 
-        know that the time dependence of a plane wave can be represented as: 
-        \[ \psi_{n_x,n_y}(x,y,t) = \psi(x,y,0)e^{-iE\frac{t}{\hbar}} \]
-        And using Euler's identity we can write this as:
+        know that the time dependence of a plane wave can be represented as, 
+        \[ \psi_{n_x,n_y}(x,y,t) = \psi(x,y,0)e^{-iE\frac{t}{\hbar}} ,\]
+        and using Euler's identity we can write this as
         \[ \psi_{n_x,n_y}(x,y,t) =  \frac{2}{\sqrt{ab}} \sin{(\frac{n_x \pi x}{a})} \sin{(\frac{n_y \pi y}{b})} \cos{(E\frac{t}{\hbar})}
-         -  i\frac{2}{\sqrt{ab}} \sin{(\frac{n_x \pi x}{a})} \sin{(\frac{n_y \pi y}{b})} \sin{(E\frac{t}{\hbar})} \]
+         -  i\frac{2}{\sqrt{ab}} \sin{(\frac{n_x \pi x}{a})} \sin{(\frac{n_y \pi y}{b})} \sin{(E\frac{t}{\hbar})} .\]
         Notice that this function is <u>complex valued</u>.
-        The formula for the allowed discrete energies is: 
-        \[ E_{n_x,n_y} = \frac{\hbar^2 \pi^2}{2m}(\frac{n_x^2}{a^2} +  \frac{n_y^2}{b^2})\]
+        The formula for the allowed discrete energies is 
+        \[ E_{n_x,n_y} = \frac{\hbar^2 \pi^2}{2m}(\frac{n_x^2}{a^2} +  \frac{n_y^2}{b^2}) .\]
         To get the <i><u>probability</u></i> that the particle is at a certain position \( (x,y) \)
         at a certain time \( t \) one has to take the modulus of the wave function and square it. Thus the probability
-        density function is defined as:
-        \[ \rho(x,y,t) = |\psi_{n_x,n_y}(x,y,t)|^2 \]
+        density function is defined as
+        \[ \rho(x,y,t) = |\psi_{n_x,n_y}(x,y,t)|^2 .\]
         The modulus is taken because the wave function can be both negative & complex valued while probabilities
         cannot be.
         <br><br>The solution for the corresponding values of \( n_x , n_y , a, b\) are shown below. The real and
         imaginary part of the wave function are plotted on separate plots:
     </p>
 </div>
-<div class="simblock">
+<div class="block">
     <div class="section">
         <input type="range" min="4.5" max="6" value="5" step="0.1" id="slider1" class="slider" />
         <output id="slider1Info">a: 5</output>
@@ -200,20 +195,20 @@ a {
     <p>
         As can be seen from the plots of the time evolution the wave function changes as \(t\)
         does. However the probability density function \(\rho(x,y,t)\) does not change with time. This
-        makes sense mathematically if we remember that \( |z_1 z_2| = |z_1||z_2|\) so we have:
-        \[|\psi_{n_x,n_y}(x,y,t)|^2 = |\psi_{n_x,n_y}(x,y,0)e^{-iE\frac{t}{\hbar}}|^2 = |\psi_{n_x,n_y}(x,y,0)|^2 |e^{-iE\frac{t}{\hbar}}|^2  \]
-        Since \(|e^{ix}| = 1 \) this reduces to: 
-        \[ |\psi_{n_x,n_y}(x,y,t)|^2 = |\psi_{n_x,n_y}(x,y,0)|^2 \] 
+        makes sense mathematically if we remember that \( |z_1 z_2| = |z_1||z_2|\) so we have
+        \[|\psi_{n_x,n_y}(x,y,t)|^2 = |\psi_{n_x,n_y}(x,y,0)e^{-iE\frac{t}{\hbar}}|^2 = |\psi_{n_x,n_y}(x,y,0)|^2 |e^{-iE\frac{t}{\hbar}}|^2 . \]
+        Since \(|e^{ix}| = 1 \) this reduces to 
+        \[ |\psi_{n_x,n_y}(x,y,t)|^2 = |\psi_{n_x,n_y}(x,y,0)|^2 .\] 
         Which has no time dependence. This is a consequence of the fact that the wave function of 
         the particle is not a superposition of two or more exact energy state solutions. 
         However if the particle begins in a superposition of two or more <u>different</u> exact energy state solutions 
-        such as \( E_{1,2} \) and \( E_{1,3} \) then the initial wave function becomes:
-        \[ \psi(x,y,0) = \psi_{1,2}(x,y,0) + \psi_{1,3}(x,y,0) \] and the time-dependant wave function is: 
-        \[ \psi(x,y,t) = \psi_{1,2}(x,y,0)e^{-iE_{1,2}\frac{t}{\hbar}} + \psi_{1,3}(x,y,0)e^{-iE_{1,3}\frac{t}{\hbar}} \]
-        And the probability density function becomes: 
-        \[ |\psi(x,y,t)|^2 = |\psi_{1,2}(x,y,0)e^{-iE_{1,2}\frac{t}{\hbar}} + \psi_{1,3}(x,y,0)e^{-iE_{1,3}\frac{t}{\hbar}}|^2 \]
-        Which can be simplified through algebra to be:
-        \[ \rho(x,y,t) = \psi_{1,2}(x,y,0)^2 + \psi_{1,3}(x,y,0)^2 + 2\psi_{1,2}(x,y,0)\psi_{1,3}(x,y,0)\cos{(E_{1,2}\frac{t}{\hbar} - E_{1,3}\frac{t}{\hbar})} \]
+        such as \( E_{1,2} \) and \( E_{1,3} \) then the initial wave function becomes,
+        \[ \psi(x,y,0) = \psi_{1,2}(x,y,0) + \psi_{1,3}(x,y,0) ,\] and the time-dependent wave function is 
+        \[ \psi(x,y,t) = \psi_{1,2}(x,y,0)e^{-iE_{1,2}\frac{t}{\hbar}} + \psi_{1,3}(x,y,0)e^{-iE_{1,3}\frac{t}{\hbar}} .\]
+        And the probability density function becomes,
+        \[ |\psi(x,y,t)|^2 = |\psi_{1,2}(x,y,0)e^{-iE_{1,2}\frac{t}{\hbar}} + \psi_{1,3}(x,y,0)e^{-iE_{1,3}\frac{t}{\hbar}}|^2 ,\]
+        which can be simplified through algebra to be
+        \[ \rho(x,y,t) = \psi_{1,2}(x,y,0)^2 + \psi_{1,3}(x,y,0)^2 + 2\psi_{1,2}(x,y,0)\psi_{1,3}(x,y,0)\cos{(E_{1,2}\frac{t}{\hbar} - E_{1,3}\frac{t}{\hbar})} .\]
         Below is the simulator that shows the new behavior: 
     </p>
     <div class="section">
@@ -241,7 +236,6 @@ a {
         <output id="slider10Info">n<sub>y<sub>2</sub></sub>: 3</output>
     </div>
 
-
     <div class="section">
         <button type="button" id="timeButtonS">Start Time Evolution: t = 0</button>
         <button type="button" id="resetButtonS">Reset Time</button>
@@ -258,7 +252,11 @@ a {
         superposition of two <u>different</u> exact energy solutions the probability distribution changes with time and thus 
         we have the physics of motion in quantum mechanics. However since the wave function is a superposition
         of two exact energy states there is now some uncertainty \( \Delta E\) in the energy of the particle even for 
-        macroscopic objects like a ball. However this uncertainty is negligible at that scale. 
+        macroscopic objects like a ball. However this uncertainty is negligible at that scale. You may also notice that 
+        sometimes when you have 2 sets of different quantum numbers \( (n_{x_1}, n_{y_1}) \) and \( (n_{x_2}, n_{y_2}) \) 
+        the probability distribution is static. This is because of something called degeneracy which occurs when 
+        2 sets of combinatorially different quantum number have the same energy \(E\), and example being 
+        \( (n_{x_1}=1, n_{y_1}=3) \) and \( (n_{x_2}=3, n_{y_2}=1) \). 
     </p>
 
 </div>

@@ -35,9 +35,14 @@ button {
     margin-left: 2rem;
 }
 
-.simBlock {
+.block { /* block class hold sections */
     display: flex;
     flex-direction: column;
+}
+
+.section { /* section class goes within block class divs */
+    display: inline-flex;
+    padding: 1rem;
 }
 
 input { /* to align slider output values w slider */
@@ -57,10 +62,6 @@ svg {
     position: absolute;
 }
 
-.section {
-    display: inline-flex;
-    padding: 1rem;
-}
 /* begin slider style */
 .slider {
   -webkit-appearance: none;
@@ -117,7 +118,8 @@ a {
 <body lang=EN-US link=blue vlink="#954F72" style="background-color: #333333; margin:150;padding:0"> <!--For Dark mode-->
 <font color="white"> <!--For Dark mode-->
 <a href="/#simulatePage" style="color:white; font-size: 2.8vmin; border-radius: 1px; border: 1px solid white; padding: 4px; text-decoration: none; font-family: 'Courier New', Courier, monospace;">Back to visualizers</a> <!--for leaving document-->    
-<div class="simBlock">
+
+<div class="block">
 <p>
     In complex analysis the <a href="https://en.wikipedia.org/wiki/Riemann_sphere" target="_blank">Riemann Sphere</a> is a model of the extended complex plane. The extended
     complex plane being the union of the complex plane and infinity denoted as \( \mathbb{C} \cup \{ \infty \} \).
@@ -130,14 +132,15 @@ a {
         the stereographic projection of \(z\). The projection of the point can be found by drawing a line from the point
         on the plane to the point on the North pole of the sphere (the point at \( \infty \)) with the coordinates
         \((0,0,1)\). The projection on the sphere is where the line touches the sphere. It's possible to find exact equations for
-        the coordinates \( (x_1,x_2,x_3) \) of the projection for any point \( (x,y,0) \) on the complex plane as:
-        \[ x_1 = Re(z) \frac{2}{|z|^2 +1 },\quad x_2 = Im(z) \frac{2}{|z|^2 + 1}, \quad x_3 = \frac{|z|^2 - 1}{|z|^2 + 1} \]
+        the coordinates \( (x_1,x_2,x_3) \) of the projection for any point \( (x,y,0) \) on the complex plane as
+        \[ x_1 = Re(z) \frac{2}{|z|^2 +1 },\quad x_2 = Im(z) \frac{2}{|z|^2 + 1}, \quad x_3 = \frac{|z|^2 - 1}{|z|^2 + 1} .\]
         
         Below is a simulator that demonstrates the relationship between functions
         and their projections on the Riemann Sphere:<br><br>
     </p>
 </div>
-<div class="simBlock">
+
+<div class="block">
     <div class="section">
         <select id="funcs">
             <option value="0">Line: mx + b</option>

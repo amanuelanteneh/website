@@ -46,18 +46,18 @@ button:hover {
 }
 
 
-.simBlock {
+.block { /* block class hold sections */
     display: flex;
     flex-direction: column;
 }
 
-svg {
-    position: absolute;
-}
-
-.section {
+.section { /* section class goes within block class divs */
     display: inline-flex;
     padding: 1rem;
+}
+
+svg {
+    position: absolute;
 }
 
 a {
@@ -83,13 +83,13 @@ a {
 <a href="/#simulatePage" style="color:white; font-size: 2.8vmin; border-radius: 1px; border: 1px solid white; padding: 4px; text-decoration: none; font-family: 'Courier New', Courier, monospace;">
     Back to visualizers</a> <!--For leaving document--> 
 
-<div class="simBlock">
+<div class="block">
 <p>
     In classical mechanics the <a href="https://en.wikipedia.org/wiki/Double_pendulum" target="_blank">double pendulum</a> demonstrates the advantage of solving mechanics problems using
-    the Euler-Lagrange equations derived from the calculus of variations:
-    \[{d \over dt} {\partial L \over \partial \dot{f}} - {\partial L \over \partial f} = 0 \]
-    Over Newton's Second Law:
-    \[ -{ \partial U \over  \partial f }  = m {\ddot{f}} \]
+    the Euler-Lagrange equations derived from the calculus of variations,
+    \[{d \over dt} {\partial L \over \partial \dot{f}} - {\partial L \over \partial f} = 0 ,\]
+    over Newton's Second Law,
+    \[ -{ \partial U \over  \partial f }  = m {\ddot{f}} .\]
     The problem consists of a pendulum suspended from a fixed point with another pendulum attached to
     it. The relevant parameters consist of \(l \) and \(\ell \), the length of the top and bottom pendulum 
     respectively, \(m \) and \( M \), the mass of the top and bottom pendulum respectively, as well as
@@ -100,40 +100,40 @@ a {
 <img src="{{url_for('static', filename='img/doubleDiagram.png')}}">
 
 <p>
-    Specifying the \(x\) and \(y\) coordinates as follows:
+    Specifying the \(x\) and \(y\) coordinates as follows,
     \[ x_{m} = l\sin{\theta}, \quad x_{M} = \ell \sin{\phi} + l\sin{\theta}\]
-    \[ y_{m} = l\cos{\theta}, \quad y_{M} = \ell \cos{\phi} + l\cos{\theta} \]
-    And the respective time derivatives as:
+    \[ y_{m} = l\cos{\theta}, \quad y_{M} = \ell \cos{\phi} + l\cos{\theta} ,\]
+    and the respective time derivatives as
     \[ \dot{x}_{m} = \dot{\theta} l\cos{\theta}, \quad \dot{x}_{M} = \dot{\phi} \ell \cos{\phi} + \dot{\theta} l\cos{\theta}\]    
-    \[ \dot{y}_{m} = -\dot{\theta} l\sin{\theta}, \quad \dot{y}_{M} = -\dot{\phi} \ell \sin{\phi} - \dot{\theta} l\sin{\theta}\]    
-    The kinetic energy's can be written as: 
+    \[ \dot{y}_{m} = -\dot{\theta} l\sin{\theta}, \quad \dot{y}_{M} = -\dot{\phi} \ell \sin{\phi} - \dot{\theta} l\sin{\theta} .\]    
+    The kinetic energy's can be written as,
     \[ T_{m} = \frac{1}{2}m(\dot{x}_{m}^2 + \dot{y}_{m}^2) \]
-    \[ T_{M} = \frac{1}{2}M(\dot{x}_{M}^2 + \dot{y}_{M}^2) \]
-    And the potential energy's as:
+    \[ T_{M} = \frac{1}{2}M(\dot{x}_{M}^2 + \dot{y}_{M}^2) ,\]
+    and the potential energy's as,
     \[ U_{m} = mgy_{m} \]
-    \[ U_{M} = Mgy_{M} \]    
+    \[ U_{M} = Mgy_{M} .\]    
 
-    Thus the lagrangian (\( L = T - U \)) of the system can be found:
+    Thus the lagrangian (\( L = T - U \)) of the system can be found
     \[ L = \frac{1}{2}m(l \dot{\theta})^2 + \frac{1}{2}M[ (l \dot{\theta})^2 + 2(l \dot{\theta})(\ell \dot{\phi})
-    \cos{(\phi - \theta) + (\ell \dot{\phi})^2}] - [-mgl \cos{\theta} - Mg(l \cos{\theta} + \ell \cos{\phi} )]
+    \cos{(\phi - \theta) + (\ell \dot{\phi})^2}] - [-mgl \cos{\theta} - Mg(l \cos{\theta} + \ell \cos{\phi} )].
     \]    
     Using the Euler-Lagrange equation the equations of motion for the two masses can be found as a system of two coupled 
-    non-linear 2nd order differential equations:
+    non-linear 2nd order differential equations
     \[ \ddot{\theta} = \frac{-g(2m+M)\sin{\theta} - Mg\sin{(\theta - 2\phi}) - 2\sin{(\theta - \phi)}M(\dot{\phi}^2 \ell + \dot{\theta}^2l\cos{(\theta - \phi))} }{l(2m + M - M\cos{(2\theta - 2\phi)}) }  \] 
     <br>
-    \[ \ddot{\phi} = \frac{2\sin{(\theta - \phi)}(\dot{\theta}^2l(m + M) + g(m+ M)\cos{\theta} + \dot{\phi}^2 \ell M\cos{(\theta - \phi)}) }{\ell(2m + M - M\cos{(2\theta - 2\phi)})} \]
+    \[ \ddot{\phi} = \frac{2\sin{(\theta - \phi)}(\dot{\theta}^2l(m + M) + g(m+ M)\cos{\theta} + \dot{\phi}^2 \ell M\cos{(\theta - \phi)}) }{\ell(2m + M - M\cos{(2\theta - 2\phi)})} .\]
 
     To numerically evaluate this set of ODE's we'll need to reduce it from a system of two 2nd order ODE's to a system of four 1st order
-    ODE's by letting \( u = \theta, v = \dot{\theta}, w = \phi, s = \dot{\phi} \), which gives us the system:
+    ODE's by letting \( u = \theta, v = \dot{\theta}, w = \phi, s = \dot{\phi} \), which gives us the system
     \[ \dot{u} = v \] <br>
     \[ \dot{v} = \frac{-g(2m+M)\sin{u} - Mg\sin{(u - 2w}) - 2\sin{(u - w)}M(\dot{w}^2 \ell + \dot{u}^2l\cos{(u - w))} }{l(2m + M - M\cos{(2u - 2w)}) } \]      
     <br>
     \[ \dot{w} = s \] <br>
-    \[ \dot{s} = \frac{2\sin{(u - w)}(\dot{u}^2l(m + M) + g(m+ M)\cos{u} + \dot{w}^2 \ell M\cos{(u - w)}) }{\ell(2m + M - M\cos{(2u - 2w)})} \]
+    \[ \dot{s} = \frac{2\sin{(u - w)}(\dot{u}^2l(m + M) + g(m+ M)\cos{u} + \dot{w}^2 \ell M\cos{(u - w)}) }{\ell(2m + M - M\cos{(2u - 2w)})} .\]
     <br>We can now use the 4th order Runge-Kutta method to evaluate the system of ODE's: <br><br>
 </p>
 </div>
-<div class="simBlock">
+<div class="block">
     <div class="section">
         <button type="button" id="pauseButton1">Play</button>
         <button type="button" id="resetButton1">Reset</button>
@@ -160,7 +160,5 @@ a {
 </div>
 
 </body>
-
-
 
 </html>

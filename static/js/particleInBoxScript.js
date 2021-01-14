@@ -13,10 +13,10 @@ var nx = 2;
 var ny = 1;
 var Lx = 5;
 var Ly = 5;
-var m = 1;//9.10e-31;
+var m = 1; //9.10e-31;
 var t = 0;
-var tS = 0;
-const hbar = 1;//6.626e-34;
+var tS = 0; //time for superposition model
+const hbar = 1; //6.626e-34; //need to figure out why actual hbar and mass values mess up graphs and prob can be > 1 for different enough Lx and Ly
 var steps = 100;
 
 var zPtsWFRS = []; //for real part
@@ -30,14 +30,12 @@ var zPtsPDS = [];
 var xPtsPDS = [];
 var yPtsPDS = [];
 
-
 var nx1 = 1;
 var ny1 = 2;
 var nx2 = 1;
 var ny2 = 3;
 var LxS = 5; //S stands for superposition
 var LyS = 5;
-
 
 var paused = 1;
 var pausedS = 1;
@@ -70,8 +68,8 @@ var resetButtonS = document.getElementById("resetButtonS");
 
 $("#timeButton").on("click", function() {
 
+  pausedS = 1; //pause other set of graphs to not be updating both sets
   paused = !paused;
-  pausedS = 1;
   if (paused) {
     timeButton.innerHTML = "Start Time Evolution: t = "  + t.toFixed(3);
   }
@@ -85,6 +83,7 @@ $("#resetButton").on("click", function() {
   t = 0;
   timeButton.innerHTML = "Start Time Evolution: t = 0";
   generateData();
+  //restyle is much faster than deleting and adding traces...
   Plotly.restyle('2dWaveFunctionReal', {"z": [zPtsWFR], "x": [xPtsWFR], "y": [yPtsWFR]} );
   Plotly.restyle('2dWaveFunctionImaginary', {"z": [zPtsWFI], "x": [xPtsWFI], "y": [yPtsWFI]} );  
   Plotly.restyle('2dProbDensityFunction', {"z": [zPtsPD], "x": [xPtsPD], "y": [yPtsPD]} );
@@ -93,8 +92,8 @@ $("#resetButton").on("click", function() {
 
 $("#timeButtonS").on("click", function() {
 
-  pausedS = !pausedS;
   paused = 1;
+  pausedS = !pausedS;
   if (pausedS) {
     timeButtonS.innerHTML = "Start Time Evolution: t = "  + tS.toFixed(3);
   }
@@ -119,7 +118,7 @@ $("#slider1").on("change", function() {
   Lx = Number($(this).val());
   slider1Info.innerHTML = "a: " + Lx;
   generateData();
-  //for restyle to work must wrap updated z,x,y arrays in another array? according to:
+  // for restyle to work must wrap updated z,x,y arrays in another array, according to:
   // https://community.plotly.com/t/cant-update-3d-surface-plot-with-restyle/13486
   
   Plotly.restyle('2dWaveFunctionReal', {"z": [zPtsWFR], "x": [xPtsWFR], "y": [yPtsWFR]} );
@@ -166,8 +165,8 @@ $("#slider4").on("change", function() {
 
 $("#slider5").on("change", function() { 
 
-  a = Number($(this).val());
-  slider5Info.innerHTML = "a: " + a;
+  LxS = Number($(this).val());
+  slider5Info.innerHTML = "a: " + LxS;
   generateDataS();
 
   Plotly.restyle('2dWaveFunctionRealSuper', {"z": [zPtsWFRS], "x": [xPtsWFRS], "y": [yPtsWFRS]} );
@@ -177,8 +176,8 @@ $("#slider5").on("change", function() {
 
 $("#slider6").on("change", function() { 
 
-  b = Number($(this).val());
-  slider6Info.innerHTML = "b: " + b;
+  LyS = Number($(this).val());
+  slider6Info.innerHTML = "b: " + LyS;
   generateDataS();
 
   Plotly.restyle('2dWaveFunctionRealSuper', {"z": [zPtsWFRS], "x": [xPtsWFRS], "y": [yPtsWFRS]} );
@@ -245,7 +244,7 @@ function waveFuncImaginary(x, y, t) {
   return (-val*Math.sin(E*t/hbar));
 }
 
-function waveFuncRealS(x, y, t) {
+function waveFuncRealS(x, y, t) { //Re part of super position of wave functions
   let val1 = (2 / Math.sqrt(LxS * LyS)) * Math.sin(nx1 * Math.PI * x / LxS) * Math.sin(ny1 * Math.PI * y / LyS);
   let E1 = (hbar*hbar*Math.PI*Math.PI)/(2*m)*((nx1/LxS)*(nx1/LxS) + (ny1/LyS)*(ny1/LyS));
   val1 *= Math.cos(E1*t/hbar);
@@ -271,7 +270,7 @@ function waveFuncImaginaryS(x, y, t) {
 
 
 
-function generateData() {
+function generateData() { //generate data for non-superposition
   zPtsWFR = []; xPtsWFR = []; yPtsWFR = [];
   zPtsWFI = []; xPtsWFI = []; yPtsWFI = [];
   zPtsPD = []; xPtsPD = []; yPtsPD = [];
@@ -298,18 +297,18 @@ function generateData() {
   }
 }
 
-function generateDataS() {
+function generateDataS() { //generate data for super position of states
   zPtsWFRS = []; xPtsWFRS = []; yPtsWFRS = [];
   zPtsWFIS = []; xPtsWFIS = []; yPtsWFIS = [];
   zPtsPDS = []; xPtsPDS = []; yPtsPDS = [];
-  let xStep = Lx/steps;
-  let yStep = Ly/steps;  
-  for (x = 0; x < LxS; x += xStep) {
+  let xStep = LxS/steps;
+  let yStep = LyS/steps;  
+  for (let x = 0; x < LxS; x += xStep) {
     let zTempWFR = []; let xTempWFR = []; let yTempWFR = [];
     let zTempWFI = []; let xTempWFI = []; let yTempWFI = [];    
     let zTempPD = []; let xTempPD = []; let yTempPD = [];
   
-    for (y = 0; y < LyS; y += yStep) {
+    for (let y = 0; y < LyS; y += yStep) {
       let valReal = waveFuncRealS(x, y, tS);
       let valImaginary = waveFuncImaginaryS(x, y, tS);
       zTempWFR.push(valReal); yTempWFR.push(y); xTempWFR.push(x);
@@ -324,7 +323,7 @@ function generateDataS() {
     zPtsPDS.push(zTempPD); yPtsPDS.push(yTempPD); xPtsPDS.push(xTempPD);
   }
 }
-
+//make initial graphs
 generateData();
 
 generateDataS();
@@ -376,51 +375,51 @@ var dataProbDensity = [{ //data for |Psi|^2
   }
 }];
 
-var dataWaveFuncReS = [{  //data for Re(Psi)
+var dataWaveFuncReS = [{  //data for Re(Psi) superposition
   z: zPtsWFRS,
   x: xPtsWFRS,
   y: yPtsWFRS,
   type: 'surface',
-  contours: {
+ /* contours: { //no contours for superposition graphs to save computation time
     z: {
       show: true,
       usecolormap: true,
       highlightcolor: "#42f462",
       project: { z: true }
     }
-  } 
+  } */
 }];
 
-var dataWaveFuncImS = [{ //data for Im(Psi)
+var dataWaveFuncImS = [{ //data for Im(Psi) superposition
   z: zPtsWFIS,
   x: xPtsWFIS,
   y: yPtsWFIS,
   type: 'surface',
   colorscale: "Viridis",
-  contours: {
+ /* contours: {
     z: {
       show: true,
       usecolormap: true,
       highlightcolor: "#42f462",
       project: { z: true }
     }
-  } 
+  } */
 }];
 
-var dataProbDensityS = [{ //data for |Psi|^2
+var dataProbDensityS = [{ //data for |Psi|^2 superposition
   z: zPtsPDS,
   x: xPtsPDS,
   y: yPtsPDS,
   type: 'surface',
   colorscale: "Greys",  
-  contours: {
+ /* contours: {
     z: {
       show: true,
       usecolormap: true,
       highlightcolor: "#42f462",
       project: { z: true }
     }
-  }
+  }*/
 }];
 
 var layoutWFR = { //layout for plot of Re(Psi)
@@ -467,7 +466,7 @@ var layoutWFR = { //layout for plot of Re(Psi)
   }
 };
 
-var layoutWFI = {
+var layoutWFI = { //layout for plot of Im(Psi)
   title: 'Wave Function: Im[&#968;<sub>n<sub>x</sub></sub><sub>,n<sub>y</sub></sub>(x,y,t)]',
   autosize: false,
   plot_bgcolor: "#FFFFFF",
@@ -511,7 +510,7 @@ var layoutWFI = {
   }
 };
 
-var layoutPD = {
+var layoutPD = { //layout for plot of |Psi|^2
   title: 'Probability Density: |&#968;<sub>n<sub>x</sub></sub><sub>,n<sub>y</sub></sub>(x,y,t)|<sup>2</sup>',
   autosize: false,
   plot_bgcolor: "#FFFFFF",
@@ -555,7 +554,95 @@ var layoutPD = {
   }
 };
 
-var layoutPDS = {
+var layoutWFRS = { //layout for plot of Re(Psi) superposition
+  title: 'Wave Function: Re[&#968;<sub>n<sub>x</sub></sub><sub>,n<sub>y</sub></sub>(x,y,t)]',
+  autosize: false,
+  plot_bgcolor: "#FFFFFF",
+  paper_bgcolor: "#333333",
+  scene: {
+    yaxis: {
+      tickcolor: "white",
+      backgroundcolor: "white",
+      gridcolor: "white",
+      zerolinecolor: "white",
+    },
+    xaxis: {
+      tickcolor: "white",
+      gridcolor: "white",
+      backgroundcolor: "white",
+      zerolinecolor: "white",
+    },
+    zaxis: {
+      title: "Re(Psi(x,y,t))",
+      range: [-1, 1],
+      tickcolor: "white",
+      gridcolor: "white",
+      backgroundcolor: "white",
+      zerolinecolor: "white",
+    },
+  },
+  font: {
+    family: 'Courier New, monospace',
+    size: 12,
+    color: '#FFFFFF'
+  },
+  showlegend: true,
+
+  width: 400,
+  height: 400,
+  margin: {
+    l: 65,
+    r: 50,
+    b: 65,
+    t: 90,
+  }
+};
+
+var layoutWFIS = { //layout for plot of Im(Psi) superposition
+  title: 'Wave Function: Im[&#968;<sub>n<sub>x</sub></sub><sub>,n<sub>y</sub></sub>(x,y,t)]',
+  autosize: false,
+  plot_bgcolor: "#FFFFFF",
+  paper_bgcolor: "#333333",
+  scene: {
+    yaxis: {
+      tickcolor: "white",
+      backgroundcolor: "white",
+      gridcolor: "white",
+      zerolinecolor: "white",
+    },
+    xaxis: {
+      tickcolor: "white",
+      gridcolor: "white",
+      backgroundcolor: "white",
+      zerolinecolor: "white",
+    },
+    zaxis: {
+      title: "Im(Psi(x,y,t))",
+      range: [-1, 1],
+      tickcolor: "white",
+      gridcolor: "white",
+      backgroundcolor: "white",
+      zerolinecolor: "white",
+    },
+  },
+  font: {
+    family: 'Courier New, monospace',
+    size: 12,
+    color: '#FFFFFF'
+  },
+  showlegend: true,
+
+  width: 400,
+  height: 400,
+  margin: {
+    l: 65,
+    r: 50,
+    b: 65,
+    t: 90,
+  }
+};
+
+var layoutPDS = { //layout for plot of |Psi|^2 superposition
   title: 'Probability Density: |&#968;<sub>n<sub>x</sub></sub><sub>,n<sub>y</sub></sub>(x,y,t)|<sup>2</sup>',
   autosize: false,
   plot_bgcolor: "#FFFFFF",
@@ -575,7 +662,7 @@ var layoutPDS = {
     },
     zaxis: {
       title: "|Psi(x,y,t)|<sup>2</sup>",
-      range: [0, 0.7], 
+      range: [0, 0.8], 
       tickcolor: "white",
       gridcolor: "white",
       backgroundcolor: "white",
@@ -605,15 +692,15 @@ Plotly.newPlot('2dWaveFunctionImaginary', dataWaveFuncIm, layoutWFI);
 Plotly.newPlot('2dProbDensityFunction', dataProbDensity, layoutPD);
 
 
-Plotly.newPlot('2dWaveFunctionRealSuper', dataWaveFuncReS, layoutWFR);
-Plotly.newPlot('2dWaveFunctionImaginarySuper', dataWaveFuncImS, layoutWFI);
+Plotly.newPlot('2dWaveFunctionRealSuper', dataWaveFuncReS, layoutWFRS);
+Plotly.newPlot('2dWaveFunctionImaginarySuper', dataWaveFuncImS, layoutWFIS);
 Plotly.newPlot('2dProbDensityFunctionSuper', dataProbDensityS, layoutPDS);
 
 
 
 var run = setInterval(function () { 
   if (!paused) {
-  if (t > 20) {
+  if (t > 50) {
      t = 0;
   }  
   timeButton.innerHTML = "Stop Time Evolution: t = "  + t.toFixed(3);
@@ -630,7 +717,7 @@ var run = setInterval(function () {
              
 var runSuper = setInterval(function () { 
   if (!pausedS) {
-  if (tS > 20) {
+  if (tS > 50) {
      tS = 0;
   }  
   timeButtonS.innerHTML = "Stop Time Evolution: t = "  + tS.toFixed(3);
@@ -638,7 +725,7 @@ var runSuper = setInterval(function () {
   Plotly.restyle('2dWaveFunctionRealSuper', {"z": [zPtsWFRS], "x": [xPtsWFRS], "y": [yPtsWFRS]} );
   Plotly.restyle('2dWaveFunctionImaginarySuper', {"z": [zPtsWFIS], "x": [xPtsWFIS], "y": [yPtsWFIS]} );  
   Plotly.restyle('2dProbDensityFunctionSuper', {"z": [zPtsPDS], "x": [xPtsPDS], "y": [yPtsPDS]} );
-  tS += (0.40/(nx1+ny1)); //to scale animation speed with nx and ny values
+  tS += (0.40/(nx1+ny1+ny2+nx2)); //to scale animation speed with nx and ny values
   }
   else {
     timeButtonS.innerHTML = "Start Time Evolution: t = "  + tS.toFixed(3);

@@ -31,11 +31,6 @@ img {
     height:auto;
 }
 
-.simBlock {
-    display: flex;
-    flex-direction: column;
-}
-
 button {
     display: inline;
     margin-left: 2rem;
@@ -61,7 +56,12 @@ svg {
     position: absolute; /* must be absolute to not cut off on smaller screens */
 } 
 
-.section {
+.block { /* block class hold sections */
+    display: flex;
+    flex-direction: column;
+}
+
+.section { /* section class goes within block class divs */
     display: inline-flex;
     padding: 1rem;
 }
@@ -105,7 +105,7 @@ a {
             Back to visualizers</a>
         <!--For leaving document-->
 
-        <div class="simBlock">
+        <div class="block">
 
             <p>
                 In computational methods <a href="https://en.wikipedia.org/wiki/Simulated_annealing" target="_blank">simulated annealing</a> is a method of approximating global minima of a given problem.
@@ -134,8 +134,8 @@ a {
                 see if the new configuration is better or worse than the old one. If it's better than the configuration
                 is accepted
                 but if it's worse the configuration is accepted according to some probability function, in this example
-                the function is:
-                \[ e^{\frac{-\Delta E}{T} } \]
+                the function is
+                \[ e^{\frac{-\Delta E}{T} } .\]
                 The reason for this is so that the algorithm can avoid being trapped in a local minima when finding the
                 optimal
                 solution as shown:
@@ -147,7 +147,7 @@ a {
             </p>
 
         </div>
-        <div class="simBlock">
+        <div class="block">
             <div class="section">
                 <button type="button" id="pauseButton1">Play</button>
                 <button type="button" id="resetButton1">Reset</button>

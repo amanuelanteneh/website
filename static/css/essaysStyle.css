@@ -28,6 +28,7 @@ b {
 body {
     background-image: url("/static/img/image14.png");
     background-size: cover;
+    background-position: center;
 }
 
 .row {

@@ -264,16 +264,20 @@ padding: 1rem;
                                 has been given css properties */
     #homePage {
       background-image: url("/static/img/image18.png");
+      background-position: right;
     }
     #aboutPage {
       background-image: url("/static/img/image17.png");
+      background-position: center; /* to center image */
     }
     #aboutPage .bio {
       backdrop-filter: blur(23px);
-      -webkit-backdrop-filter: blur(23px);      
+      -webkit-backdrop-filter: blur(23px);     
     }
     #simulatePage {
       background-image: url("/static/img/image16.png");
+      background-position: center;
+
     }  
     .ham-menu {
       display: flex;
