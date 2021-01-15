@@ -232,25 +232,25 @@ $("#slider10").on("change", function() {
 
 function waveFuncReal(x, y, t) {
   let val = (2 / Math.sqrt(Lx * Ly)) * Math.sin(nx * Math.PI * x / Lx) * Math.sin(ny * Math.PI * y / Ly);
-  let E = (hbar*hbar*Math.PI*Math.PI)/(2*m)*((nx/Lx)*(nx/Lx) + (ny/Ly)*(ny/Ly));
+  let E = ((hbar**2)*(Math.PI**2))/(2*m)*((nx/Lx)**2 + (ny/Ly)**2);
 
   return (val*Math.cos(E*t/hbar));
 }
 
 function waveFuncImaginary(x, y, t) {
   let val = (2 / Math.sqrt(Lx * Ly)) * Math.sin(nx * Math.PI * x / Lx) * Math.sin(ny * Math.PI * y / Ly);
-  let E = (hbar*hbar*Math.PI*Math.PI)/(2*m)*((nx/Lx)*(nx/Lx) + (ny/Ly)*(ny/Ly));
+  let E = ((hbar**2)*(Math.PI**2))/(2*m)*((nx/Lx)**2 + (ny/Ly)**2);
 
   return (-val*Math.sin(E*t/hbar));
 }
 
 function waveFuncRealS(x, y, t) { //Re part of super position of wave functions
-  let val1 = (2 / Math.sqrt(LxS * LyS)) * Math.sin(nx1 * Math.PI * x / LxS) * Math.sin(ny1 * Math.PI * y / LyS);
-  let E1 = (hbar*hbar*Math.PI*Math.PI)/(2*m)*((nx1/LxS)*(nx1/LxS) + (ny1/LyS)*(ny1/LyS));
+  let val1 = (2 / Math.sqrt(LxS*LyS)) * Math.sin(nx1 * Math.PI * x / LxS) * Math.sin(ny1 * Math.PI * y / LyS);
+  let E1 = ((hbar**2)*(Math.PI**2))/(2*m)*((nx1/LxS)**2 + (ny1/LyS)**2);
   val1 *= Math.cos(E1*t/hbar);
 
-  let val2 = (2 / Math.sqrt(LxS * LyS)) * Math.sin(nx2 * Math.PI * x / LxS) * Math.sin(ny2 * Math.PI * y / LyS);
-  let E2 = (hbar*hbar*Math.PI*Math.PI)/(2*m)*((nx2/LxS)*(nx2/LxS) + (ny2/LyS)*(ny2/LyS));
+  let val2 = (2 / Math.sqrt(LxS*LyS)) * Math.sin(nx2 * Math.PI * x / LxS) * Math.sin(ny2 * Math.PI * y / LyS);
+  let E2 = ((hbar**2)*(Math.PI**2))/(2*m)*((nx2/LxS)**2 + (ny2/LyS)**2);
   val2 *= Math.cos(E2*t/hbar);
   
   return (val1 + val2);
@@ -258,11 +258,11 @@ function waveFuncRealS(x, y, t) { //Re part of super position of wave functions
 
 function waveFuncImaginaryS(x, y, t) {
   let val1 = (2 / Math.sqrt(LxS * LyS)) * Math.sin(nx1 * Math.PI * x / LxS) * Math.sin(ny1 * Math.PI * y / LyS);
-  let E1 = (hbar*hbar*Math.PI*Math.PI)/(2*m)*((nx1/LxS)*(nx1/LxS) + (ny1/LyS)*(ny1/LyS));
+  let E1 = ((hbar**2)*(Math.PI**2))/(2*m)*((nx1/LxS)**2 + (ny1/LyS)**2);
   val1 *= -Math.sin(E1*t/hbar);
 
   let val2 = (2 / Math.sqrt(LxS * LyS)) * Math.sin(nx2 * Math.PI * x / LxS) * Math.sin(ny2 * Math.PI * y / LyS);
-  let E2 = (hbar*hbar*Math.PI*Math.PI)/(2*m)*((nx2/LxS)*(nx2/LxS) + (ny2/LyS)*(ny2/LyS));
+  let E2 = ((hbar**2)*(Math.PI**2))/(2*m)*((nx2/LxS)**2 + (ny2/LyS)**2);
   val2 *= -Math.sin(E2*t/hbar);
   
   return (val1 + val2);
