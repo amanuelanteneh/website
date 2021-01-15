@@ -1,4 +1,4 @@
-var width = 710, height = 710;
+var width = 550, height = 550;
 var g = 9.81; //so length is in meters 
 var l = 1.2; //length of pendulum
 var margin = {top: -20, right: 30, bottom: 40, left: 40};
@@ -35,10 +35,10 @@ $("#thetaSlider").on("change", function() {
     reset();
 });
 
-$("#lengthSlider").on("input", function() {
+/*$("#lengthSlider").on("input", function() {
     l = $(this).val();
     $("#lengthInfo").html("Length: " + $(this).val());
-});
+}); */ //comment out cuz buggy for now fix later
 
 function reset() {
 

@@ -8,7 +8,26 @@ var ellC = 0.5; //ibid pendulum 2
 var mC = 1; //mass of pendulum 1
 var MC = 1; // ibid pendulum 2
 var tC = 0;
+const numPendulums = 5;
 // initial conditions format [theta, phi, thetaDot, phiDot]
+var initialTheta = 90;
+var initialPhi = 170;
+var initialConditions = [];
+var coordsOld = [];
+var coordsNew = [];
+
+
+
+/* for (let i=0; i<numPendulums; i++) { add later...
+    initialConditions.push((initialTheta + (i/100)) * (Math.PI/180));
+    initialConditions.push((initialPhi + (i/100)) * (Math.PI/180));
+    initialConditions.push(0);
+    initialConditions.push(0);
+
+} */
+
+
+
 var initialConditions = [90 * (Math.PI/180), 170 * (Math.PI/180), 0, 0,
                          90.01 * (Math.PI/180), 170.01 * (Math.PI/180), 0, 0,                                                  
                          90.02 * (Math.PI/180), 170.02 * (Math.PI/180), 0, 0,                                                  
@@ -222,6 +241,7 @@ for (j = 0; j < coordsOld.length; j += 4) {
 }
 
 function updateC() {
+
     for (j = 0; j < initialConditions.length; j += 4) {
         RK4C(initialConditions[j], initialConditions[j + 1], initialConditions[j + 2], initialConditions[j + 3], j);
     }

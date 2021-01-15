@@ -9,7 +9,7 @@
    
     <link rel="icon" href="{{ url_for('static', filename='img/doubleIcon.png') }}">
 
-    <script src="https://d3js.org/d3.v6.min.js" defer></script>   
+    <script src="https://d3js.org/d3.v6.min.js" defer></script>  
     <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
@@ -43,6 +43,14 @@ button {
 }
 button:hover {
     cursor: pointer;
+}
+
+output {
+        display: inline-block;
+        vertical-align: middle; 
+        font-family: 'Courier New', Courier, monospace;  
+        margin-left: 1rem;
+        font-size: 2.5vmin;
 }
 
 
@@ -137,6 +145,8 @@ a {
     <div class="section">
         <button type="button" id="pauseButton1">Play</button>
         <button type="button" id="resetButton1">Reset</button>
+        <output id="thetaInfo"><i>&#952;</i>: 90&#176;</output>
+        <output id="phiInfo"><i>&#966;</i>: 170&#176;</output>
     </div>
     <div class="section">
         <canvas id="canvas1"></canvas>
