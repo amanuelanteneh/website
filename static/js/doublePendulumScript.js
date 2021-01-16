@@ -26,8 +26,8 @@ $("#resetButton1").click( reset ); // to reset on click
 
 
 function updateAngleDisplay() {
-    $("#thetaInfo").html("<i>&#952;</i>: "+ (theta*(180/Math.PI)).toFixed(1) + "&#176;");
-    $("#phiInfo").html("<i>&#966;</i>: "+ (phi*(180/Math.PI)).toFixed(1) + "&#176;");
+    $("#thetaInfo").html("<i>&#952;<sub>0</sub></i>: "+ (theta*(180/Math.PI)).toFixed(1) + "&#176;");
+    $("#phiInfo").html("<i>&#966;<sub>0</sub></i>: "+ (phi*(180/Math.PI)).toFixed(1) + "&#176;");
 }
 
 
@@ -89,7 +89,7 @@ function update() {
 
     t += .01;
     RK4(); //call Runge-Kutta to update angles and angle dots
-    updateAngleDisplay();
+    //updateAngleDisplay();
     //have to add xAxis(0) bc we're using pixel units 
     xBall1 = xAxis(0) + l*Math.sin(theta);
     yBall1 = yAxis(0) + l*Math.cos(theta);
@@ -330,9 +330,6 @@ function reset() {
     context.clearRect(0, 0, width, height); //to clear path lines    
 }
    
-
-
-
 
 var runApp = setInterval(function () { //call update if not paused
     if (!paused) {
