@@ -1,5 +1,5 @@
 /* Variable names have a C after them for chaos lol */
-var widthC = 710, heightC = 710;
+var widthC = 540, heightC = 540;
 var marginC = {top: -20, right: 30, bottom: 40, left: 40};
 
 var gC = 9.81; //so length is in meters 

@@ -1,4 +1,4 @@
-var width = 710, height = 710; //width and height of canvas hardcoded
+var width = 540, height = 540; //width and height of canvas hardcoded
 var margin = {top: -20, right: 30, bottom: 40, left: 40};
 var g; 
 var m = 1; //mass of pendulum 1
