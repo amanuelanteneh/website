@@ -181,6 +181,7 @@ function generateGeography() {
             /* IMPORTANT - format of cities arrays is an array of arrays, the second array in each entry is an array of the lat and long of the
              of the city being added. This is because you will need this to calculate the distance between cities later and we can't use the position of the
              circle on the map bc that's scaled */
+
             for (let i = 0; i < data.length; i++) {
                 if (Math.floor(Math.random() * 70) < 2) {
                     cities.push([svg.append("circle")
