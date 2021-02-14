@@ -43,15 +43,31 @@
                     Visualizers
                     </a>
                 </li>                
-                <li class="navBar-li" id="github" onclick="window.open('https://github.com/amanuelanteneh')"><a>
-                    <img src="{{url_for('static', filename='img/githubIcon.png')}}" alt="github" width="25" height="25">
-                    Github
-                    </a>
-                </li>
-                <li class="navBar-li" id="resume" onclick="window.open('{{url_for('static', filename='Resume.pdf')}}')"><a>
-                    <img src="{{url_for('static', filename='img/CVIcon.png')}}" alt="CV" width="25" height="25">
-                    Resume/CV
-                    </a>
+                <li class="navBar-li" id="cv/github"><a href="#">
+                    <img src="{{url_for('static', filename='img/arrowDownIcon.png')}}" alt="other" width="15" height="15"> 
+                    CV/GitHub
+                </a>
+                     <ul class="dropdown"> <!--Using bootstrap dropdown class-->
+                       <li onclick="window.open('{{url_for('static', filename='Resume.pdf')}}')"><img src="{{url_for('static', filename='img/CVIcon.png')}}" alt="CV" width="25" height="25">
+                          <span class="caption">CV</span>
+                        </li>
+                       <li onclick="window.open('https://github.com/amanuelanteneh')"><img src="{{url_for('static', filename='img/githubIcon.png')}}" alt="essays" width="25" height="25">
+                            <span class="caption">GitHub</span>
+                        </li>
+                    </ul>
+                </li>                
+                <li class="navBar-li" id="useful-links"><a href="#">
+                    <img src="{{url_for('static', filename='img/arrowDownIcon.png')}}" alt="other" width="15" height="15"> 
+                    PDFs
+                </a>
+                     <ul class="dropdown"> <!--Using bootstrap dropdown class-->
+                       <li onclick="window.open('{{url_for('static', filename='Math_Refrence_Sheet.pdf')}}')"><img src="{{url_for('static', filename='img/lineIntegralIcon.png')}}" alt="CV" width="25" height="25">
+                          <span class="caption">Math Reference</span>
+                        </li>
+                       <li onclick="window.open('{{url_for('static', filename='Matlab_Reference_Sheet.pdf')}}')"><img src="{{url_for('static', filename='img/matlabIcon.png')}}" alt="essays" width="25" height="25">
+                            <span class="caption">Matlab Reference</span>
+                        </li>
+                    </ul>
                 </li>
                 <li class="navBar-li" id="personal"><a href="#">
                     <img src="{{url_for('static', filename='img/arrowDownIcon.png')}}" alt="other" width="15" height="15"> 
