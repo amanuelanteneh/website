@@ -14,7 +14,7 @@ hamMenu.addEventListener('click', () => {
 //to make menu collapse once an option is picked after its been expanded on mobile
 $("li").on("click", function() {
 
-    if ($(this).attr("id") != "personal" && $(this).attr("id") != "pdfs" && $(this).attr("id") != "cv/github" && $(this).attr("class") == "navBar-li" ) {
+    if ($(this).attr("id") != "interests" && $(this).attr("id") != "pdfs" && $(this).attr("id") != "cv/github" && $(this).attr("class") == "navBar-li" ) {
         navButtons.classList.toggle('active');
     }
 });
@@ -23,8 +23,8 @@ $(window).on('load', function() { //check width when page loads to see if u shou
     if($(window).width() < 940) {
         document.getElementById("pdfs menu").classList.add('dropdown');
         document.getElementById("pdfs menu").classList.remove('menu');
-        document.getElementById("personal menu").classList.add('dropdown');
-        document.getElementById("personal menu").classList.remove('menu');
+        document.getElementById("interests menu").classList.add('dropdown');
+        document.getElementById("interests menu").classList.remove('menu');
         document.getElementById("cv-github menu").classList.add('dropdown');
         document.getElementById("cv-github menu").classList.remove('menu');        
     }
@@ -34,19 +34,19 @@ $(window).on('resize', function() { //same but for if window is resized
     if($(window).width() < 940) {
         document.getElementById("pdfs menu").classList.add('dropdown');
         document.getElementById("pdfs menu").classList.remove('menu');
-        document.getElementById("personal menu").classList.add('dropdown');
-        document.getElementById("personal menu").classList.remove('menu');
+        document.getElementById("interests menu").classList.add('dropdown');
+        document.getElementById("interests menu").classList.remove('menu');
         document.getElementById("cv-github menu").classList.add('dropdown');
         document.getElementById("cv-github menu").classList.remove('menu');        
     }
 })
 
-$(window).on('resize', function() { //ibid
+$(window).on('resize', function() { //ibid but switch to no bootstrap class for big screens
     if($(window).width() > 940) {
         document.getElementById("pdfs menu").classList.remove('dropdown');
         document.getElementById("pdfs menu").classList.add('menu');
-        document.getElementById("personal menu").classList.remove('dropdown');
-        document.getElementById("personal menu").classList.add('menu');
+        document.getElementById("interests menu").classList.remove('dropdown');
+        document.getElementById("interests menu").classList.add('menu');
         document.getElementById("cv-github menu").classList.remove('dropdown');
         document.getElementById("cv-github menu").classList.add('menu');        
     }
