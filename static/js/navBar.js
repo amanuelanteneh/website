@@ -1,3 +1,4 @@
+//script is actually for main page (index) 
 const hamMenu = document.getElementsByClassName("ham-menu")[0];
 const navButtons = document.getElementsByClassName("navButtons")[0];
 const bar1 = document.getElementById("bar1");
@@ -18,8 +19,7 @@ $("li").on("click", function() {
     }
 });
 
-
-$(window).on('resize', function() {
+$(window).on('load', function() { //check width when page loads to see if u should use bootstrap dropdown class or nah
     if($(window).width() < 940) {
         document.getElementById("pdfs menu").classList.add('dropdown');
         document.getElementById("pdfs menu").classList.remove('menu');
@@ -27,5 +27,27 @@ $(window).on('resize', function() {
         document.getElementById("personal menu").classList.remove('menu');
         document.getElementById("cv-github menu").classList.add('dropdown');
         document.getElementById("cv-github menu").classList.remove('menu');        
+    }
+})
+
+$(window).on('resize', function() { //same but for if window is resized
+    if($(window).width() < 940) {
+        document.getElementById("pdfs menu").classList.add('dropdown');
+        document.getElementById("pdfs menu").classList.remove('menu');
+        document.getElementById("personal menu").classList.add('dropdown');
+        document.getElementById("personal menu").classList.remove('menu');
+        document.getElementById("cv-github menu").classList.add('dropdown');
+        document.getElementById("cv-github menu").classList.remove('menu');        
+    }
+})
+
+$(window).on('resize', function() { //ibid
+    if($(window).width() > 940) {
+        document.getElementById("pdfs menu").classList.remove('dropdown');
+        document.getElementById("pdfs menu").classList.add('menu');
+        document.getElementById("personal menu").classList.remove('dropdown');
+        document.getElementById("personal menu").classList.add('menu');
+        document.getElementById("cv-github menu").classList.remove('dropdown');
+        document.getElementById("cv-github menu").classList.add('menu');        
     }
 })
