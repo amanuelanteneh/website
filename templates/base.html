@@ -47,7 +47,7 @@
                     <img src="{{url_for('static', filename='img/arrowDownIcon.png')}}" alt="other" width="15" height="15"> 
                     CV/GitHub
                 </a>
-                     <ul class="dropdown"> <!--Using bootstrap dropdown class-->
+                     <ul id="cv-github menu" class="menu"> <!--Changed from bootstrap dropdown class to make less disorientating for tew4fs--> 
                        <li onclick="window.open('{{url_for('static', filename='Resume.pdf')}}')"><img src="{{url_for('static', filename='img/CVIcon.png')}}" alt="CV" width="25" height="25">
                           <span class="caption">CV</span>
                         </li>
@@ -60,7 +60,7 @@
                     <img src="{{url_for('static', filename='img/arrowDownIcon.png')}}" alt="other" width="15" height="15"> 
                     PDFs
                 </a>
-                     <ul class="dropdown"> <!--Using bootstrap dropdown class-->
+                     <ul id="pdfs menu" class="menu"> 
                        <li onclick="window.open('{{url_for('static', filename='Math_Refrence_Sheet.pdf')}}')"><img src="{{url_for('static', filename='img/lineIntegralIcon.png')}}" alt="CV" width="25" height="25">
                           <span class="caption">Math Reference</span>
                         </li>
@@ -71,9 +71,9 @@
                 </li>
                 <li class="navBar-li" id="personal"><a href="#">
                     <img src="{{url_for('static', filename='img/arrowDownIcon.png')}}" alt="other" width="15" height="15"> 
-                    Personal
+                    Interests
                 </a>
-                     <ul class="dropdown"> <!--Using bootstrap dropdown class-->
+                     <ul id="personal menu" class="menu"> 
                        <li><a href="/books"><img src="{{url_for('static', filename='img/bookIcon.png')}}" alt="books" width="25" height="25">
                           <span class="caption">Readings</span></a>
                         </li>

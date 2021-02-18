@@ -17,3 +17,15 @@ $("li").on("click", function() {
         navButtons.classList.toggle('active');
     }
 });
+
+
+$(window).on('resize', function() {
+    if($(window).width() < 940) {
+        document.getElementById("pdfs menu").classList.add('dropdown');
+        document.getElementById("pdfs menu").classList.remove('menu');
+        document.getElementById("personal menu").classList.add('dropdown');
+        document.getElementById("personal menu").classList.remove('menu');
+        document.getElementById("cv-github menu").classList.add('dropdown');
+        document.getElementById("cv-github menu").classList.remove('menu');        
+    }
+})

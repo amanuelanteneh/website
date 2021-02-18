@@ -75,24 +75,30 @@ header {
 }
 
 ul li ul { /* for dropdown */
-  visibility: hidden;
+  visibility: hidden; 
   opacity: 0;
+  opacity:0;
+  transition:visibility 0.5s linear,opacity 0.5s linear;
   position: absolute;
   margin-top: 0rem;
   left: inherit;
-  display: none;
+  border: 2px solid white;
+  border-radius: 2px; 
+  padding: 0.5%;
+  background:black;
+
+  /*display: none;*/
 }
 
 .navButtons ul li ul li a { /* So theres no padding on dropdown items with href/anchor tag, basically overrides css rule for '.navButtons li a' */
   padding: 0%;
 }
 
-
 ul li:hover > ul, /* for dropdown */
 ul li ul:hover {  /* on hover show drop down menu */
   visibility: visible;
   opacity: 1;
-  display: block;
+  /*display: block;*/
 }
 
 ul li ul li {  /* for dropdown */
@@ -306,6 +312,23 @@ padding: 1rem;
     .navButtons.active {
       display: flex;
     }
+    ul li ul { /* for dropdown */
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
+      margin-top: 0rem;
+      left: inherit;
+      display: none;
+      border: none;
+      background: transparent;
+    }
+    
+    ul li:hover > ul, /* for dropdown */
+    ul li ul:hover {  /* on hover show drop down menu */
+      visibility: visible;
+      opacity: 1;
+      display: block;
+  } 
   .caption {
      display: contents; /* to not have text stack with icons bc it's big on mobile */ 
    }
