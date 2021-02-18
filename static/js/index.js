@@ -1,4 +1,4 @@
-//script is actually for main page (index) 
+//script is for main page (index) 
 const hamMenu = document.getElementsByClassName("ham-menu")[0];
 const navButtons = document.getElementsByClassName("navButtons")[0];
 const bar1 = document.getElementById("bar1");
