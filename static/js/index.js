@@ -25,7 +25,19 @@ hamMenu.addEventListener('click', () => {
 $("li").on("click", function() {
 
     if ($(this).attr("id") != "interests" && $(this).attr("id") != "pdfs" && $(this).attr("id") != "cv/github" && $(this).attr("class") == "navBar-li" ) {
+    
+        if (!hamMenuOpen) {    //hamburger menu squish animation
+        bar1.style.transform = "translateY(" + "9px" + ")";
+        bar3.style.transform = "translateY(" + "-9px" + ")"; 
         navButtons.classList.toggle('active');
+            }
+        else {
+        bar1.style.transform = "translateY(" + "-0.5px" + ")";
+        bar3.style.transform = "translateY(" + "0.5px" + ")"; 
+        navButtons.classList.toggle('active');        
+            }
+    hamMenuOpen = !hamMenuOpen;
+    
     }
 });
 
