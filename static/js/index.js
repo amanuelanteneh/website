@@ -4,11 +4,21 @@ const navButtons = document.getElementsByClassName("navButtons")[0];
 const bar1 = document.getElementById("bar1");
 const bar2 = document.getElementById("bar2");
 const bar3 = document.getElementById("bar3");
+bar1.style.transition = "transform 0.2s linear";
+bar3.style.transition = "transform 0.2s linear";    
+var hamMenuOpen = 0;
 hamMenu.addEventListener('click', () => { 
-   /* bar1.style.visibility = "hidden" ;
-    bar2.style.transform = "rotate(" + -70 + "deg)";
-    bar3.style.transform = "rotate(" + 70 + "deg)";    */
-    navButtons.classList.toggle('active');
+    if (!hamMenuOpen) {    //hamburger menu squish animation
+        bar1.style.transform = "translateY(" + "9px" + ")";
+        bar3.style.transform = "translateY(" + "-9px" + ")"; 
+        navButtons.classList.toggle('active');
+    }
+    else {
+        bar1.style.transform = "translateY(" + "-0.5px" + ")";
+        bar3.style.transform = "translateY(" + "0.5px" + ")"; 
+        navButtons.classList.toggle('active');        
+    }
+    hamMenuOpen = !hamMenuOpen;
 });
 
 //to make menu collapse once an option is picked after its been expanded on mobile
