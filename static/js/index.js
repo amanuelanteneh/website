@@ -1,11 +1,12 @@
 //script is for main page (index) 
 const hamMenu = document.getElementsByClassName("ham-menu")[0];
-const navButtons = document.getElementsByClassName("navButtons")[0];
+var navButtons = document.getElementsByClassName("navButtons")[0];
 const bar1 = document.getElementById("bar1");
 const bar2 = document.getElementById("bar2");
 const bar3 = document.getElementById("bar3");
 bar1.style.transition = "transform 0.2s linear";
-bar3.style.transition = "transform 0.2s linear";    
+bar3.style.transition = "transform 0.2s linear";  
+navButtons.style.transition = "transform 0.2s linear"; 
 var hamMenuOpen = 0;
 hamMenu.addEventListener('click', () => { 
     if (!hamMenuOpen) {    //hamburger menu squish animation
@@ -25,7 +26,6 @@ hamMenu.addEventListener('click', () => {
 $("li").on("click", function() {
 
     if ($(this).attr("id") != "interests" && $(this).attr("id") != "pdfs" && $(this).attr("id") != "cv/github" && $(this).attr("class") == "navBar-li" ) {
-    
         if (!hamMenuOpen) {    //hamburger menu squish animation
         bar1.style.transform = "translateY(" + "9px" + ")";
         bar3.style.transform = "translateY(" + "-9px" + ")"; 

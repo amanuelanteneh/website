@@ -320,7 +320,9 @@ padding: 1rem;
       border: none;
       background: transparent;
     }
-    
+    .dropdown {
+      transition: transform 0.2s linear;
+    } 
     ul li:hover > ul, /* for dropdown */
     ul li ul:hover {  /* on hover show drop down menu same reason as above */
       visibility: visible;
