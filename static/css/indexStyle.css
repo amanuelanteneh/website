@@ -304,7 +304,7 @@ padding: 1rem;
       flex-direction: column;
     }
     .navButtons li {
-      padding: 0.8rem;
+      padding: 0.3rem;
       text-align: center;
     }
     .navButtons.active {
@@ -319,6 +319,7 @@ padding: 1rem;
       display: none;
       border: none;
       background: transparent;
+      padding: 0%;
     }
     .dropdown {
       transition: transform 0.2s linear;
@@ -328,6 +329,7 @@ padding: 1rem;
       visibility: visible;
       opacity: 1;
       display: block;
+      padding: 0%;
    }        
   .caption {
      display: contents; /* to not have text stack with icons bc it's big on mobile */ 
