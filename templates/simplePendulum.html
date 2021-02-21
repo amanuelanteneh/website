@@ -18,6 +18,10 @@
 </head>
 <style>
 
+.block::-webkit-scrollbar{
+  display: none; /* For Chrome */
+}
+
 body {
     background-image: url("/static/img/image15.png");
 }
@@ -44,7 +48,9 @@ p {
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     padding: 5%;
-    width: 90%;         
+    width: 90%;        
+    -ms-overflow-style: none;  /* For IE and Edge */
+    scrollbar-width: none;  /* For Firefox */ 
 }
 
 .section { /* section class goes within block class divs */
