@@ -46,7 +46,7 @@ header {
 .name {
     color: white;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
 }
 
 .navButtons { /* navbar items w/o a href */
@@ -299,6 +299,11 @@ padding: 1rem;
       flex-direction: column;
       align-items: flex-start;
     }
+    .name {
+      color: white;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1.3rem;
+    }    
     .navButtons ul {
       width: 100%;
       flex-direction: column;
