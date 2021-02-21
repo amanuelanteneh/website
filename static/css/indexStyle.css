@@ -28,8 +28,8 @@ header {
   width: 100%;
   border: 2px solid white;
   border-radius: 2px; 
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
 }
 
 .myNavbar {
@@ -225,7 +225,7 @@ ul li ul li {  /* for dropdown */
 #appBubble {
     font-family: 'Courier New', Courier, monospace;
     font-size: 3.5vmin;
-    border: 2px solid;
+    border: 3px solid;
     border-radius: 5px;
     position: absolute;
     text-align: center;
