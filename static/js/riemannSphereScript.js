@@ -277,7 +277,7 @@ var layout = {
     title: 'The Riemann Sphere & Extended Complex Plane',
     autosize: false,
     plot_bgcolor: "#FFFFFF",
-    paper_bgcolor: "#333333",
+    paper_bgcolor: "rgba(0,0,0,0)",
     scene: {
         yaxis: {
             "tickcolor": "white",

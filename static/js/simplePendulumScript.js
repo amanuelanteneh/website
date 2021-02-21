@@ -122,7 +122,7 @@ svg.append("g")
 
 /*Create legend*/
 svg.append("circle").attr("cx",xAxis(-1.2)).attr("cy",yAxis(1.2)).attr("r", 6).style("fill", "#FFFFFF");
-svg.append("circle").attr("cx",xAxis(-1.2)).attr("cy",yAxis(1)).attr("r", 6).style("fill", "#000000");
+svg.append("circle").attr("cx",xAxis(-1.2)).attr("cy",yAxis(1)).attr("r", 6).style("fill", "#8a8a8a");
 svg.append("text").attr("x", xAxis(-1.15)).attr("y", yAxis(1.2)).text("Small Angle Approximation").style("font-size", "19px").style("fill", "white").attr("alignment-baseline","middle");
 svg.append("text").attr("x", xAxis(-1.15)).attr("y", yAxis(1)).text("Exact Solution").style("font-size", "19px").style("fill", "white").attr("alignment-baseline","middle");
 
@@ -149,7 +149,7 @@ var rodExact = svg.append('line')
     .attr('y2', yAxis(0))
     .attr('x1', xAxis(xBallExact))
     .attr('y1', yAxis(yBallExact))
-    .attr('stroke', '#000000')
+    .attr('stroke', '#8a8a8a')
     .attr('stroke-width', '2px');
 
 var ballExact = svg.append('circle')
@@ -157,7 +157,7 @@ var ballExact = svg.append('circle')
     .attr('cx', xAxis(xBallExact))
     .attr('cy', yAxis(yBallExact))
     .attr('r', 10)
-    .style('fill', '#000000');    
+    .style('fill', '#8a8a8a');    
 
 
 

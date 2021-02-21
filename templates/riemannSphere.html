@@ -18,6 +18,11 @@
 </head>
 
 <style>
+
+body {
+    background-image: url("/static/img/image15.png");
+}
+
 img {
     width: 60%; 
     margin-left: auto; 
@@ -38,11 +43,20 @@ button {
 .block { /* block class hold sections */
     display: flex;
     flex-direction: column;
+    border: 2px solid;
+    border-radius: 10px;
+    color: white;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: 5%;
+    width: 90%;
+
 }
 
 .section { /* section class goes within block class divs */
     display: inline-flex;
     padding: 1rem;
+    width: 100%;
 }
 
 input { /* to align slider output values w slider */
@@ -112,14 +126,30 @@ a {
         display:block; 
         height:auto;
         }
+    body,html {
+        overflow: auto;
+        width: 130%;
+        }
+    .block { /* block class hold sections */
+        display: flex;
+        flex-direction: column;
+        border: 2px solid;
+        border-radius: 10px;
+        color: white;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        padding: 5%;
+        width: 100%;
+        }
+
 }
 </style>
 
 <body lang=EN-US link=blue vlink="#954F72" style="background-color: #333333; margin:150;padding:0"> <!--For Dark mode-->
 <font color="white"> <!--For Dark mode-->
-<a href="/#simulatePage" style="color:white; font-size: 2.8vmin; border-radius: 1px; border: 1px solid white; padding: 4px; text-decoration: none; font-family: 'Courier New', Courier, monospace;">Back to visualizers</a> <!--for leaving document-->    
-
 <div class="block">
+<a href="/#simulatePage" style="width: 20vmin; color:white; font-size: 2.8vmin; border-radius: 1px; border: 1px solid white; padding: 4px; text-decoration: none; font-family: 'Courier New', Courier, monospace;">
+    Back to visualizers</a>
 <p>
     In complex analysis the <a href="https://en.wikipedia.org/wiki/Riemann_sphere" target="_blank">Riemann Sphere</a> is a model of the extended complex plane. The extended
     complex plane being the union of the complex plane and infinity denoted as \( \mathbb{C} \cup \{ \infty \} \).
