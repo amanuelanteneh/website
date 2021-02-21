@@ -426,7 +426,7 @@ var layoutWFR = { //layout for plot of Re(Psi)
   title: 'Wave Function: Re[&#968;<sub>n<sub>x</sub></sub><sub>,n<sub>y</sub></sub>(x,y,t)]',
   autosize: false,
   plot_bgcolor: "#FFFFFF",
-  paper_bgcolor: "#333333",
+  paper_bgcolor: "rgba(0,0,0,0)",
   scene: {
     yaxis: {
       tickcolor: "white",
@@ -470,7 +470,7 @@ var layoutWFI = { //layout for plot of Im(Psi)
   title: 'Wave Function: Im[&#968;<sub>n<sub>x</sub></sub><sub>,n<sub>y</sub></sub>(x,y,t)]',
   autosize: false,
   plot_bgcolor: "#FFFFFF",
-  paper_bgcolor: "#333333",
+  paper_bgcolor: "rgba(0,0,0,0)",
   scene: {
     yaxis: {
       tickcolor: "white",
@@ -514,7 +514,7 @@ var layoutPD = { //layout for plot of |Psi|^2
   title: 'Probability Density: |&#968;<sub>n<sub>x</sub></sub><sub>,n<sub>y</sub></sub>(x,y,t)|<sup>2</sup>',
   autosize: false,
   plot_bgcolor: "#FFFFFF",
-  paper_bgcolor: "#333333",
+  paper_bgcolor: "rgba(0,0,0,0)",
   scene: {
     yaxis: { 
       tickcolor: "white",
@@ -558,7 +558,7 @@ var layoutWFRS = { //layout for plot of Re(Psi) superposition
   title: 'Wave Function: Re[&#968;<sub>n<sub>x</sub></sub><sub>,n<sub>y</sub></sub>(x,y,t)]',
   autosize: false,
   plot_bgcolor: "#FFFFFF",
-  paper_bgcolor: "#333333",
+  paper_bgcolor: "rgba(0,0,0,0)",
   scene: {
     yaxis: {
       tickcolor: "white",
@@ -602,7 +602,7 @@ var layoutWFIS = { //layout for plot of Im(Psi) superposition
   title: 'Wave Function: Im[&#968;<sub>n<sub>x</sub></sub><sub>,n<sub>y</sub></sub>(x,y,t)]',
   autosize: false,
   plot_bgcolor: "#FFFFFF",
-  paper_bgcolor: "#333333",
+  paper_bgcolor: "rgba(0,0,0,0)",
   scene: {
     yaxis: {
       tickcolor: "white",
@@ -646,7 +646,7 @@ var layoutPDS = { //layout for plot of |Psi|^2 superposition
   title: 'Probability Density: |&#968;<sub>n<sub>x</sub></sub><sub>,n<sub>y</sub></sub>(x,y,t)|<sup>2</sup>',
   autosize: false,
   plot_bgcolor: "#FFFFFF",
-  paper_bgcolor: "#333333",
+  paper_bgcolor: "rgba(0,0,0,0)",
   scene: {
     yaxis: { 
       tickcolor: "white",
