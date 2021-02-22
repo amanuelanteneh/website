@@ -328,14 +328,7 @@ padding: 1rem;
     }
     .dropdown {
       transition: transform 0.2s linear;
-    } 
-    ul li:hover > ul, /* for dropdown */
-    ul li ul:hover {  /* on hover show drop down menu same reason as above */
-      visibility: visible;
-      opacity: 1;
-      display: block;
-      padding: 0%;
-   }        
+    }       
   .caption {
      display: contents; /* to not have text stack with icons bc it's big on mobile */ 
    }
