@@ -38,7 +38,7 @@ hamMenu.addEventListener('click', () => {
     hamMenuOpen = !hamMenuOpen;
 });
 
-interests.addEventListener('click', () => { 
+interests.addEventListener('click', () => { //to control visibility of dropdown items on mobile
     if ($(window).width() >= 940) {
         return;
     }
