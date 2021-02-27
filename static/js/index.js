@@ -131,11 +131,11 @@ $(window).on('resize', function() { //same but for if window is resized
         document.getElementById("cv-github-menu").classList.remove('menu');        
     }
     else {
-        document.getElementById("pdfs-menu").classList.remove('dropdown');
         document.getElementById("pdfs-menu").classList.add('menu');
-        document.getElementById("interests-menu").classList.remove('dropdown');
+        document.getElementById("pdfs-menu").classList.remove('dropdown');
         document.getElementById("interests-menu").classList.add('menu');
+        document.getElementById("interests-menu").classList.remove('dropdown');
+        document.getElementById("cv-github-menu").classList.add('menu');    
         document.getElementById("cv-github-menu").classList.remove('dropdown');
-        document.getElementById("cv-github-menu").classList.add('menu');        
     }
 });
