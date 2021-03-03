@@ -85,8 +85,7 @@ ul li ul { /* for dropdown */
   border: 2px solid white;
   border-radius: 2px; 
   padding: 0.5%; /* to pad inside of menu bubble */
-  background:black;
-
+  background: black;
 }
 
 .navButtons ul li ul li a { /* So theres no padding on dropdown items with href/anchor tag, basically overrides css rule for '.navButtons li a' */
