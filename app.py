@@ -53,5 +53,9 @@ def annealing():
 def particleInBox():
     return(render_template("particleInBox.html"))
 
+@app.route("/Group-Theory-Physics")
+def groupTheoryPhysics():
+    return(render_template("groupTheoryPhysics.html"))
+
 if __name__ == "__main__":
     app.run(debug=True)
